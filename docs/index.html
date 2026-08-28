@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#090c0f">
+    <meta
+      name="description"
+      content="A living intelligence index of large language model security research, updated daily from arXiv."
+    >
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self'; font-src 'self'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'; base-uri 'self'; form-action 'none'"
+    >
+    <meta property="og:title" content="SecPapers / LLM Defense Research Index">
+    <meta
+      property="og:description"
+      content="Search and track the latest research across prompt injection, agent security, privacy, adversarial ML, and cyber defense."
+    >
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://turenlabs.github.io/secpapers/">
+    <meta name="twitter:card" content="summary">
+    <title>SecPapers / LLM Defense Research Index</title>
+    <link rel="canonical" href="https://turenlabs.github.io/secpapers/">
+    <link rel="icon" href="./icon.svg" type="image/svg+xml">
+    <link rel="manifest" href="./site.webmanifest">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#catalog">Skip to research catalog</a>
+    <div class="grid-field" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <a class="wordmark" href="./" aria-label="SecPapers home">
+        <span class="wordmark-mark" aria-hidden="true">
+          <span></span>
+        </span>
+        <span class="wordmark-copy">
+          <strong>TUREN LABS</strong>
+          <small>SECPAPERS / INTELLIGENCE INDEX</small>
+        </span>
+      </a>
+      <nav class="header-nav" aria-label="Repository links">
+        <span class="system-status" id="system-status"><i></i> INDEX AVAILABLE</span>
+        <a href="https://github.com/turenlabs/secpapers" target="_blank" rel="noreferrer">
+          GITHUB <span aria-hidden="true">[NE]</span>
+        </a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="section-code">SECURITY RESEARCH INTELLIGENCE <span>/ 01</span></p>
+          <h1 id="hero-title">Map the attack surface.<br><em>Read the research.</em></h1>
+          <p class="hero-intro">
+            A continuously updated field index for the people securing language models,
+            autonomous agents, software, and the systems around them.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#catalog">EXPLORE THE INDEX</a>
+            <a
+              class="button button-quiet"
+              href="https://github.com/turenlabs/secpapers/blob/main/docs/methodology.md"
+              target="_blank"
+              rel="noreferrer"
+            >
+              REVIEW METHODOLOGY
+            </a>
+          </div>
+        </div>
+
+        <aside class="signal-panel" aria-label="Collection telemetry">
+          <div class="panel-corners" aria-hidden="true"></div>
+          <div class="signal-heading">
+            <span>COLLECTION STATUS</span>
+            <strong id="signal-state"><i></i> CURRENT</strong>
+          </div>
+          <div class="signal-readout">
+            <span id="signal-count">---</span>
+            <small>PAPERS INDEXED</small>
+          </div>
+          <dl class="signal-grid">
+            <div>
+              <dt>Source</dt>
+              <dd>arXiv Atom</dd>
+            </div>
+            <div>
+              <dt>Cycle</dt>
+              <dd>06:17 UTC</dd>
+            </div>
+            <div>
+              <dt>Last signal</dt>
+              <dd id="signal-date">Loading</dd>
+            </div>
+            <div>
+              <dt>Abstract index</dt>
+              <dd id="abstract-status" role="status" aria-live="polite">Standby</dd>
+            </div>
+          </dl>
+          <div class="activity-block">
+            <div class="activity-label">
+              <span>12-MONTH PUBLICATION SIGNAL</span>
+              <span id="activity-total">---</span>
+            </div>
+            <div class="activity-bars" id="activity-bars" aria-hidden="true"></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="operations" id="catalog" aria-labelledby="catalog-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-code">ACTIVE RESEARCH CATALOG <span>/ 02</span></p>
+            <h2 id="catalog-title">Threat research, indexed.</h2>
+          </div>
+          <p>Search titles, authors, summaries, categories, and full abstracts.</p>
+        </div>
+
+        <div class="search-console">
+          <label for="paper-search">
+            <span>QUERY</span>
+            <strong>Research vector</strong>
+          </label>
+          <div class="search-input-wrap">
+            <span aria-hidden="true">/</span>
+            <input
+              id="paper-search"
+              type="search"
+              autocomplete="off"
+              maxlength="200"
+              spellcheck="false"
+              placeholder="prompt injection, agent memory, malware generation..."
+            >
+            <kbd>CTRL K</kbd>
+          </div>
+          <button class="clear-search" id="clear-search" type="button">CLEAR</button>
+        </div>
+
+        <div class="metric-strip" aria-label="Catalog statistics">
+          <div>
+            <span id="metric-total">---</span>
+            <small>TOTAL PAPERS</small>
+          </div>
+          <div>
+            <span id="metric-topics">--</span>
+            <small>THREAT DOMAINS</small>
+          </div>
+          <div>
+            <span id="metric-years">--</span>
+            <small>PUBLICATION YEARS</small>
+          </div>
+          <div>
+            <span id="metric-new">--</span>
+            <small>LATEST 30 DAYS</small>
+          </div>
+        </div>
+
+        <div class="catalog-layout">
+          <aside class="filter-rail" aria-label="Topic filters">
+            <div class="rail-heading">
+              <span>FILTER MATRIX</span>
+              <button id="reset-filters" type="button">RESET</button>
+            </div>
+            <div class="topic-list" id="topic-list">
+              <div class="topic-placeholder"></div>
+              <div class="topic-placeholder"></div>
+              <div class="topic-placeholder"></div>
+            </div>
+            <div class="rail-note">
+              <span>DISCOVERY POLICY</span>
+              <p>Automated relevance filtering. Inclusion is not an endorsement or quality score.</p>
+            </div>
+          </aside>
+
+          <div class="results-column">
+            <div class="results-toolbar">
+              <p id="result-summary" aria-live="polite">Loading research index...</p>
+              <label>
+                <span>SORT</span>
+                <select id="paper-sort">
+                  <option value="newest">Newest published</option>
+                  <option value="updated">Recently updated</option>
+                  <option value="relevance">Highest signal</option>
+                  <option value="title">Title A-Z</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="active-context" id="active-context" hidden>
+              <span id="active-context-label"></span>
+              <button id="clear-context" type="button">REMOVE</button>
+            </div>
+
+            <div class="paper-list" id="paper-list" aria-busy="true">
+              <div class="loading-card"></div>
+              <div class="loading-card"></div>
+              <div class="loading-card"></div>
+            </div>
+
+            <div class="empty-state" id="empty-state" hidden>
+              <span>NO SIGNAL</span>
+              <h3>No papers match this vector.</h3>
+              <p>Broaden the query or reset the active topic filter.</p>
+              <button class="button button-primary" id="empty-reset" type="button">RESET SEARCH</button>
+            </div>
+
+            <button class="load-more" id="load-more" type="button" hidden>
+              <span>LOAD NEXT SIGNAL BLOCK</span>
+              <small id="load-more-count"></small>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div>
+        <strong>TUREN LABS / SECPAPERS</strong>
+        <span>OPEN SECURITY RESEARCH INFRASTRUCTURE</span>
+      </div>
+      <p>
+        Metadata provided by <a href="https://arxiv.org" target="_blank" rel="noreferrer">arXiv</a>.
+        SecPapers is not affiliated with or endorsed by arXiv.
+      </p>
+      <span id="footer-year"></span>
+    </footer>
+
+    <dialog
+      class="paper-dialog"
+      id="paper-dialog"
+      aria-labelledby="dialog-title"
+      aria-describedby="dialog-authors dialog-abstract"
+    >
+      <div class="dialog-frame">
+        <header class="dialog-header">
+          <span>PAPER INTELLIGENCE FILE</span>
+          <button id="dialog-close" type="button">CLOSE [ESC]</button>
+        </header>
+        <div class="dialog-content">
+          <p class="dialog-id" id="dialog-id"></p>
+          <h2 id="dialog-title"></h2>
+          <p class="dialog-authors" id="dialog-authors"></p>
+          <div class="dialog-meta">
+            <div><span>PUBLISHED</span><strong id="dialog-published"></strong></div>
+            <div><span>UPDATED</span><strong id="dialog-updated"></strong></div>
+            <div><span>PRIMARY CLASS</span><strong id="dialog-category"></strong></div>
+            <div><span>SIGNAL SCORE</span><strong id="dialog-score"></strong></div>
+          </div>
+          <div class="dialog-topics" id="dialog-topics"></div>
+          <section class="abstract-section">
+            <div class="abstract-heading">
+              <span>ABSTRACT</span>
+              <small id="dialog-abstract-status" role="status" aria-live="polite">Loading</small>
+            </div>
+            <p id="dialog-abstract">Loading abstract...</p>
+          </section>
+        </div>
+        <footer class="dialog-actions">
+          <a class="button button-primary" id="dialog-arxiv" target="_blank" rel="noreferrer">VIEW ON ARXIV</a>
+          <a class="button button-quiet" id="dialog-pdf" target="_blank" rel="noreferrer">OPEN PDF</a>
+          <button class="button button-quiet" id="dialog-copy" type="button">COPY LINK</button>
+        </footer>
+      </div>
+    </dialog>
+
+    <template id="paper-template">
+      <article class="paper-card">
+        <div class="paper-index">
+          <span class="paper-number"></span>
+          <small class="paper-score"></small>
+        </div>
+        <div class="paper-content">
+          <div class="paper-meta">
+            <span class="paper-date"></span>
+            <span class="paper-id"></span>
+            <span class="paper-category"></span>
+          </div>
+          <button class="paper-title" type="button"></button>
+          <p class="paper-authors"></p>
+          <p class="paper-excerpt"></p>
+          <footer class="paper-footer">
+            <div class="paper-topics"></div>
+            <div class="paper-actions">
+              <button class="inspect-paper" type="button">INSPECT</button>
+              <a class="paper-external" target="_blank" rel="noreferrer">ARXIV [NE]</a>
+            </div>
+          </footer>
+        </div>
+      </article>
+    </template>
+
+    <noscript>
+      <div class="noscript">
+        JavaScript is required for the interactive index. Browse the
+        <a href="https://github.com/turenlabs/secpapers/blob/main/papers.md">Markdown catalog</a> instead.
+      </div>
+    </noscript>
+
+    <script type="module" src="./app.mjs"></script>
+  </body>
+</html>

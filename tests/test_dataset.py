@@ -16,6 +16,12 @@ class DatasetTest(unittest.TestCase):
             (ROOT / "data" / "papers.json").read_text(encoding="utf-8")
         )
         cls.papers = cls.payload["papers"]
+        cls.site = json.loads(
+            (ROOT / "docs" / "data" / "papers.json").read_text(encoding="utf-8")
+        )
+        cls.abstracts = json.loads(
+            (ROOT / "docs" / "data" / "abstracts.json").read_text(encoding="utf-8")
+        )
 
     def test_dataset_version_and_required_fields(self):
         required = {
@@ -63,6 +69,25 @@ class DatasetTest(unittest.TestCase):
             [row["id"] for row in rows],
             [paper["id"] for paper in self.papers],
         )
+
+    def test_site_payloads_match_canonical_data(self):
+        canonical_ids = [paper["id"] for paper in self.papers]
+
+        self.assertEqual(self.site["schema_version"], 1)
+        self.assertEqual(self.abstracts["schema_version"], 1)
+        self.assertEqual([paper["id"] for paper in self.site["papers"]], canonical_ids)
+        self.assertEqual(set(self.abstracts["abstracts"]), set(canonical_ids))
+        self.assertEqual(
+            self.site["latest_update"],
+            max(paper["updated"] for paper in self.papers),
+        )
+
+    def test_site_index_is_lightweight_and_safe(self):
+        for paper in self.site["papers"]:
+            self.assertNotIn("abstract", paper)
+            self.assertLessEqual(len(paper["excerpt"]), 283)
+            self.assertEqual(paper["url"], f"https://arxiv.org/abs/{paper['id']}")
+            self.assertEqual(paper["pdf_url"], f"https://arxiv.org/pdf/{paper['id']}")
 
 
 if __name__ == "__main__":

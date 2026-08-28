@@ -24,6 +24,11 @@ jobs:
       - name: Test collector
         run: python3 -m unittest discover -s tests -v
 
+      - name: Test frontend
+        run: |
+          node --check docs/app.mjs
+          node --test tests/site.test.mjs
+
       - name: Verify generated outputs
         run: |
           python3 scripts/collect.py --render-only

@@ -332,6 +332,8 @@ def write_outputs(papers: list[dict], config: dict, data_path: Path) -> None:
     )
     atomic_write(ROOT / "data" / "papers.csv", render_csv(papers))
     atomic_write(ROOT / "papers.md", render_catalog(papers, config))
+    atomic_write(ROOT / "docs" / "data" / "papers.json", render_site_index(papers, config))
+    atomic_write(ROOT / "docs" / "data" / "abstracts.json", render_site_abstracts(papers))
 
     readme_path = ROOT / "README.md"
     readme = readme_path.read_text(encoding="utf-8")
@@ -489,6 +491,62 @@ def render_csv(papers: list[dict]) -> str:
     return output.getvalue()
 
 
+def render_site_index(papers: list[dict], config: dict) -> str:
+    topics = [
+        {
+            "id": topic["id"],
+            "name": topic["name"],
+            "count": sum(topic["id"] in paper["topics"] for paper in papers),
+        }
+        for topic in [*config["topics"], {"id": "other", "name": "Other LLM Security"}]
+    ]
+    payload = {
+        "schema_version": 1,
+        "latest_update": max((paper["updated"] for paper in papers), default=None),
+        "publication_years": sorted({paper["published"][:4] for paper in papers}),
+        "topics": [topic for topic in topics if topic["count"]],
+        "papers": [
+            {
+                "id": paper["id"],
+                "title": paper["title"],
+                "authors": paper["authors"],
+                "published": paper["published"],
+                "updated": paper["updated"],
+                "topics": paper["topics"],
+                "categories": paper["categories"],
+                "primary_category": paper["primary_category"],
+                "relevance_score": paper["relevance_score"],
+                "url": paper["url"],
+                "pdf_url": paper["pdf_url"],
+                "excerpt": short_excerpt(paper["abstract"]),
+            }
+            for paper in papers
+        ],
+    }
+    return compact_json(payload)
+
+
+def render_site_abstracts(papers: list[dict]) -> str:
+    return compact_json(
+        {
+            "schema_version": 1,
+            "abstracts": {paper["id"]: paper["abstract"] for paper in papers},
+        }
+    )
+
+
+def compact_json(value: dict) -> str:
+    return (
+        json.dumps(
+            value,
+            ensure_ascii=False,
+            separators=(",", ":"),
+            sort_keys=True,
+        )
+        + "\n"
+    )
+
+
 def topic_name_map(config: dict) -> dict[str, str]:
     return {
         **{topic["id"]: topic["name"] for topic in config["topics"]},
@@ -515,6 +573,13 @@ def short_authors(authors: list[str]) -> str:
     if len(authors) <= 3:
         return ", ".join(authors)
     return f"{', '.join(authors[:3])}, et al."
+
+
+def short_excerpt(value: str, limit: int = 280) -> str:
+    if len(value) <= limit:
+        return value
+    excerpt = value[: limit + 1].rsplit(" ", 1)[0]
+    return f"{excerpt or value[:limit]}..."
 
 
 if __name__ == "__main__":

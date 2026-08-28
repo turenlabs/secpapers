@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SecPapers">
+  <rect width="64" height="64" fill="#090c0f"/>
+  <path d="M8 8h48v12H38v36H26V20H8z" fill="#edf0f2"/>
+  <path d="M8 8h48v5H8zM26 20h5v36h-5z" fill="#1e7bff"/>
+</svg>

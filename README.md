@@ -6,10 +6,11 @@
 
 [![Update papers](https://github.com/turenlabs/secpapers/actions/workflows/update.yml/badge.svg)](https://github.com/turenlabs/secpapers/actions/workflows/update.yml)
 [![CI](https://github.com/turenlabs/secpapers/actions/workflows/ci.yml/badge.svg)](https://github.com/turenlabs/secpapers/actions/workflows/ci.yml)
+[![Explore](https://img.shields.io/badge/explore-live%20index-1e7bff.svg)](https://turenlabs.github.io/secpapers/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-0f766e.svg)](LICENSE)
 [![Data: JSON + CSV](https://img.shields.io/badge/data-JSON%20%2B%20CSV-334155.svg)](data)
 
-[Browse all papers](papers.md) | [Use the dataset](data/papers.json) | [Methodology](docs/methodology.md) | [Suggest a paper](https://github.com/turenlabs/secpapers/issues/new?template=paper.yml)
+[Explore the web index](https://turenlabs.github.io/secpapers/) | [Browse all papers](papers.md) | [Use the dataset](data/papers.json) | [Methodology](docs/methodology.md) | [Suggest a paper](https://github.com/turenlabs/secpapers/issues/new?template=paper.yml)
 
 </div>
 
@@ -88,7 +89,7 @@ query + pagination -> relevance scoring -> revision deduplication
       +-------------------> data/papers.json <---+
                                   |
                                   v
-                   README.md + papers.md + CSV
+            README.md + papers.md + CSV + web index
 ```
 
 The collector uses only the Python standard library. There is no package
@@ -115,6 +116,8 @@ also be started manually from the Actions tab.
 - [`data/papers.json`](data/papers.json) is the canonical, stable dataset.
 - [`data/papers.csv`](data/papers.csv) is convenient for spreadsheets and analysis.
 - [`papers.md`](papers.md) is the human-readable catalog grouped by topic.
+- [`docs/data`](docs/data) contains compact, generated payloads for the
+  [SecPapers web index](https://turenlabs.github.io/secpapers/).
 - Each record links to the authoritative arXiv abstract and PDF.
 - Paper titles, abstracts, and author metadata remain attributable to their
   respective authors and are not relicensed by this repository's MIT license.

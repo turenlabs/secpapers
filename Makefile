@@ -8,3 +8,4 @@ render:
 
 test:
 	python3 -m unittest discover -s tests -v
+	node --test tests/site.test.mjs

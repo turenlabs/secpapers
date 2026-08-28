@@ -1,3 +1,4 @@
 data/papers.json linguist-generated=true
 data/papers.csv linguist-generated=true
 papers.md linguist-generated=true
+docs/data/*.json linguist-generated=true

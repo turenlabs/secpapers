@@ -1,0 +1,17 @@
+{
+  "name": "SecPapers / LLM Defense Research Index",
+  "short_name": "SecPapers",
+  "description": "A living index of large language model security research.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#090c0f",
+  "theme_color": "#090c0f",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
