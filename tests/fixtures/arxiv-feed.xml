@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"
+      xmlns:arxiv="http://arxiv.org/schemas/atom"
+      xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/">
+  <title>arXiv Query</title>
+  <opensearch:totalResults>2</opensearch:totalResults>
+  <entry>
+    <id>http://arxiv.org/abs/2608.01234v2</id>
+    <updated>2026-08-20T10:00:00Z</updated>
+    <published>2026-08-18T10:00:00Z</published>
+    <title>Securing LLM Agents Against Indirect Prompt Injection</title>
+    <summary>
+      We evaluate large language model tool use under prompt injection attacks
+      and introduce a security benchmark for browser agents.
+    </summary>
+    <author><name>Ada Researcher</name></author>
+    <author><name>Sam Security</name></author>
+    <category term="cs.CR" />
+    <category term="cs.AI" />
+    <arxiv:primary_category term="cs.CR" />
+    <arxiv:comment>12 pages</arxiv:comment>
+    <arxiv:doi>10.1000/example</arxiv:doi>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/cs/0601001v1</id>
+    <updated>2006-01-03T00:00:00Z</updated>
+    <published>2006-01-03T00:00:00Z</published>
+    <title>A General Language Modeling Tutorial</title>
+    <summary>This paper explains language models without discussing security.</summary>
+    <author><name>Example Author</name></author>
+    <category term="cs.CL" />
+    <arxiv:primary_category term="cs.CL" />
+  </entry>
+</feed>

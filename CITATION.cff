@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: If SecPapers helps your research, cite the repository and the original papers you use.
+title: "SecPapers: A Living Catalog of LLM Security Research"
+type: dataset
+authors:
+  - name: Turen Labs
+repository-code: https://github.com/turenlabs/secpapers
+url: https://github.com/turenlabs/secpapers
+license: MIT
+date-released: 2026-08-28

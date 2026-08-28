@@ -1,0 +1,30 @@
+name: Suggest a paper
+description: Report a missing or incorrectly classified arXiv paper
+title: "paper: "
+labels: [paper]
+body:
+  - type: input
+    id: arxiv
+    attributes:
+      label: arXiv URL
+      placeholder: https://arxiv.org/abs/2601.01234
+    validations:
+      required: true
+  - type: dropdown
+    id: request
+    attributes:
+      label: Request
+      options:
+        - Add a missing paper
+        - Remove a false positive
+        - Correct topic classification
+        - Correct metadata
+    validations:
+      required: true
+  - type: textarea
+    id: rationale
+    attributes:
+      label: Rationale
+      description: Explain why this paper is or is not in scope and suggest useful matching terms.
+    validations:
+      required: true

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/turenlabs/secpapers/main/data/schema.json",
+  "title": "SecPapers dataset",
+  "type": "object",
+  "required": ["schema_version", "papers"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "papers": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/paper"}
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "paper": {
+      "type": "object",
+      "required": [
+        "id",
+        "version",
+        "title",
+        "authors",
+        "abstract",
+        "categories",
+        "primary_category",
+        "published",
+        "updated",
+        "url",
+        "pdf_url",
+        "topics",
+        "relevance_score"
+      ],
+      "properties": {
+        "id": {"type": "string"},
+        "version": {"type": "integer", "minimum": 1},
+        "title": {"type": "string"},
+        "authors": {"type": "array", "items": {"type": "string"}},
+        "abstract": {"type": "string"},
+        "categories": {"type": "array", "items": {"type": "string"}},
+        "primary_category": {"type": "string"},
+        "published": {"type": "string", "format": "date-time"},
+        "updated": {"type": "string", "format": "date-time"},
+        "url": {"type": "string", "format": "uri"},
+        "pdf_url": {"type": "string", "format": "uri"},
+        "doi": {"type": ["string", "null"]},
+        "journal_ref": {"type": ["string", "null"]},
+        "comment": {"type": ["string", "null"]},
+        "topics": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "relevance_score": {"type": "integer", "minimum": 0}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "api_url": "https://export.arxiv.org/api/query",
+  "query": "((all:\"large language model\" OR all:\"large language models\" OR all:\"language model\" OR all:\"language models\" OR all:LLM OR all:LLMs OR all:ChatGPT) AND (all:security OR all:cybersecurity OR all:vulnerability OR all:malware OR all:phishing OR all:privacy OR all:jailbreak OR all:\"prompt injection\" OR all:\"red team\" OR all:backdoor OR all:poisoning OR all:misuse OR all:safety)) AND (cat:cs.CR OR cat:cs.CL OR cat:cs.AI OR cat:cs.SE OR cat:cs.LG OR cat:cs.MA OR cat:stat.ML)",
+  "allowed_categories": ["cs.CR", "cs.CL", "cs.AI", "cs.SE", "cs.LG", "cs.MA", "stat.ML"],
+  "max_results": 500,
+  "batch_size": 100,
+  "request_delay_seconds": 3,
+  "minimum_relevance_score": 4,
+  "llm_terms": [
+    "large language model",
+    "large language models",
+    "language model",
+    "language models",
+    "llm",
+    "llms",
+    "chatgpt",
+    "gpt-4",
+    "claude"
+  ],
+  "security_terms": [
+    "security",
+    "secure",
+    "cybersecurity",
+    "cyber security",
+    "vulnerability",
+    "vulnerabilities",
+    "malware",
+    "phishing",
+    "privacy",
+    "data leakage",
+    "data extraction",
+    "memorization",
+    "prompt injection",
+    "jailbreak",
+    "jailbreaking",
+    "red team",
+    "red teaming",
+    "adversarial attack",
+    "adversarial attacks",
+    "backdoor",
+    "backdoors",
+    "poisoning",
+    "misuse",
+    "model safety",
+    "alignment",
+    "attack",
+    "attacks",
+    "threat",
+    "threats"
+  ],
+  "strong_security_terms": [
+    "cybersecurity",
+    "cyber security",
+    "llm security",
+    "language model security",
+    "agent security",
+    "software security",
+    "code security",
+    "secure code",
+    "security vulnerability",
+    "security vulnerabilities",
+    "security benchmark",
+    "security evaluation",
+    "security testing",
+    "data leakage",
+    "data extraction",
+    "membership inference",
+    "model inversion",
+    "prompt injection",
+    "jailbreak",
+    "jailbreaking",
+    "red team",
+    "red teaming",
+    "adversarial attack",
+    "adversarial attacks",
+    "backdoor",
+    "backdoors",
+    "poisoning",
+    "malware",
+    "phishing",
+    "model safety",
+    "threat intelligence",
+    "intrusion detection"
+  ],
+  "topics": [
+    {
+      "id": "prompt-security",
+      "name": "Prompt Injection & Jailbreaks",
+      "keywords": ["prompt injection", "indirect prompt", "jailbreak", "jailbreaking", "system prompt", "prompt attack"]
+    },
+    {
+      "id": "agent-security",
+      "name": "Agent & Tool Security",
+      "keywords": ["agent security", "agentic", "autonomous agent", "llm agent", "language model agent", "persistent agent", "tool use", "tool-use", "computer use", "browser agent", "multi-agent", "mcp", "model context protocol"]
+    },
+    {
+      "id": "privacy",
+      "name": "Privacy & Data Leakage",
+      "keywords": ["privacy", "data leakage", "data extraction", "memorization", "membership inference", "model inversion", "personally identifiable", "private data", "training data extraction"]
+    },
+    {
+      "id": "safety",
+      "name": "Safety, Alignment & Misuse",
+      "keywords": ["model safety", "ai safety", "alignment", "misuse", "harmful content", "dual use", "dual-use", "refusal", "guardrail", "content moderation", "weapon"]
+    },
+    {
+      "id": "adversarial-ml",
+      "name": "Adversarial ML, Poisoning & Backdoors",
+      "keywords": ["adversarial attack", "adversarial example", "backdoor", "poisoning", "trojan", "model stealing", "model extraction", "extraction attack", "evasion attack", "gradient attack", "robustness"]
+    },
+    {
+      "id": "software-security",
+      "name": "Software & Vulnerability Security",
+      "keywords": ["vulnerability", "vulnerabilities", "secure code", "code security", "code generation", "program repair", "software security", "smart contract", "dockerfile", "cve", "common weakness", "static analysis", "penetration test", "penetration testing", "pentest"]
+    },
+    {
+      "id": "cyber-defense",
+      "name": "Malware, Phishing & Cyber Defense",
+      "keywords": ["malware", "phishing", "cybersecurity", "cyber security", "intrusion detection", "threat intelligence", "incident response", "security operations", "network security", "digital forensics", "spam", "botnet"]
+    },
+    {
+      "id": "evaluation",
+      "name": "Evaluation, Benchmarks & Red Teaming",
+      "keywords": ["benchmark", "evaluation", "red team", "red teaming", "taxonomy", "survey", "systematic review", "risk assessment", "threat model", "security testing"]
+    }
+  ]
+}
