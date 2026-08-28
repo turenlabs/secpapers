@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import csv
 import html
+import http.client
 import io
 import json
 import re
@@ -22,6 +23,10 @@ ATOM = "{http://www.w3.org/2005/Atom}"
 ARXIV = "{http://arxiv.org/schemas/atom}"
 OPEN_SEARCH = "{http://a9.com/-/spec/opensearch/1.1/}"
 USER_AGENT = "secpapers/1.0 (+https://github.com/turenlabs/secpapers)"
+MAX_FEED_BYTES = 8 * 1024 * 1024
+MAX_RETRY_DELAY_SECONDS = 60
+ALLOWED_ARXIV_HOSTS = {"arxiv.org", "export.arxiv.org"}
+ARXIV_ID = re.compile(r"(?:\d{4}\.\d{4,5}|[a-z][a-z0-9.-]*/\d{7})", re.IGNORECASE)
 
 
 def main() -> None:
@@ -96,8 +101,7 @@ def fetch_papers(config: dict, max_results: int) -> list[dict]:
         request = urllib.request.Request(
             f"{config['api_url']}?{query}", headers={"User-Agent": USER_AGENT}
         )
-        payload = fetch_with_retries(request, config["request_delay_seconds"])
-        page = parse_feed(payload)
+        page = fetch_with_retries(request, config["request_delay_seconds"])
         papers.extend(page)
         if len(page) < min(batch_size, max_results - start):
             break
@@ -105,12 +109,18 @@ def fetch_papers(config: dict, max_results: int) -> list[dict]:
     return papers
 
 
-def fetch_with_retries(request: urllib.request.Request, delay: float) -> bytes:
+def fetch_with_retries(request: urllib.request.Request, delay: float) -> list[dict]:
     last_error = None
     for attempt in range(3):
         try:
             with urllib.request.urlopen(request, timeout=45) as response:
-                return response.read()
+                validate_response_url(response.geturl())
+                payload = response.read(MAX_FEED_BYTES + 1)
+                if len(payload) > MAX_FEED_BYTES:
+                    raise RuntimeError(
+                        f"arXiv response exceeds {MAX_FEED_BYTES} byte limit"
+                    )
+                return parse_feed(payload)
         except urllib.error.HTTPError as error:
             if error.code != 429 and error.code < 500:
                 raise RuntimeError(f"arXiv request failed with HTTP {error.code}") from error
@@ -118,11 +128,17 @@ def fetch_with_retries(request: urllib.request.Request, delay: float) -> bytes:
             if attempt < 2:
                 retry_after = error.headers.get("Retry-After") if error.headers else None
                 time.sleep(
-                    float(retry_after)
+                    min(float(retry_after), MAX_RETRY_DELAY_SECONDS)
                     if retry_after and retry_after.isdigit()
                     else delay * (attempt + 1)
                 )
-        except (urllib.error.URLError, TimeoutError) as error:
+        except (
+            urllib.error.URLError,
+            TimeoutError,
+            ConnectionError,
+            http.client.HTTPException,
+            ET.ParseError,
+        ) as error:
             last_error = error
             if attempt < 2:
                 time.sleep(delay * (attempt + 1))
@@ -130,16 +146,37 @@ def fetch_with_retries(request: urllib.request.Request, delay: float) -> bytes:
     raise RuntimeError(f"failed to fetch arXiv after 3 attempts: {last_error}") from last_error
 
 
+def validate_response_url(value: str) -> None:
+    parsed = urllib.parse.urlparse(value)
+    if parsed.scheme != "https" or parsed.hostname not in ALLOWED_ARXIV_HOSTS:
+        raise RuntimeError(f"arXiv redirected to untrusted URL: {value}")
+
+
 def parse_feed(payload: bytes) -> list[dict]:
+    if len(payload) > MAX_FEED_BYTES:
+        raise ValueError(f"Atom feed exceeds {MAX_FEED_BYTES} byte limit")
+    if b"<!DOCTYPE" in payload or b"<!ENTITY" in payload:
+        raise ValueError("Atom feed contains a forbidden DTD or entity declaration")
     root = ET.fromstring(payload)
     return [parse_entry(entry) for entry in root.findall(f"{ATOM}entry")]
 
 
 def parse_entry(entry: ET.Element) -> dict:
     raw_id = required_text(entry, f"{ATOM}id")
-    versioned_id = raw_id.split("/abs/", 1)[-1]
-    version_match = re.search(r"v(\d+)$", versioned_id)
-    paper_id = re.sub(r"v\d+$", "", versioned_id)
+    parsed_id = urllib.parse.urlparse(raw_id)
+    if (
+        parsed_id.scheme not in {"http", "https"}
+        or parsed_id.hostname not in ALLOWED_ARXIV_HOSTS
+        or not parsed_id.path.startswith("/abs/")
+        or parsed_id.query
+        or parsed_id.fragment
+    ):
+        raise ValueError(f"arXiv entry has an invalid identifier URL: {raw_id}")
+    versioned_id = parsed_id.path.removeprefix("/abs/")
+    version_match = re.fullmatch(rf"({ARXIV_ID.pattern})v(\d+)", versioned_id, re.IGNORECASE)
+    if version_match is None:
+        raise ValueError(f"arXiv entry has an invalid identifier: {versioned_id}")
+    paper_id = version_match.group(1)
     categories = [item.attrib["term"] for item in entry.findall(f"{ATOM}category")]
     if not categories:
         raise ValueError(f"arXiv entry {paper_id} has no categories")
@@ -147,7 +184,7 @@ def parse_entry(entry: ET.Element) -> dict:
 
     return {
         "id": paper_id,
-        "version": int(version_match.group(1)) if version_match else 1,
+        "version": int(version_match.group(2)),
         "title": clean_text(required_text(entry, f"{ATOM}title")),
         "authors": [
             clean_text(required_text(author, f"{ATOM}name"))
@@ -222,6 +259,8 @@ def paper_revision_key(paper: dict) -> tuple[int, str]:
 
 
 def enrich_paper(paper: dict, config: dict) -> dict | None:
+    if ARXIV_ID.fullmatch(paper["id"]) is None:
+        raise ValueError(f"dataset contains an invalid arXiv identifier: {paper['id']}")
     if not set(paper["categories"]).intersection(config["allowed_categories"]):
         return None
 
@@ -266,8 +305,8 @@ def enrich_paper(paper: dict, config: dict) -> dict | None:
         "primary_category": paper["primary_category"],
         "published": paper["published"],
         "updated": paper["updated"],
-        "url": paper["url"],
-        "pdf_url": paper["pdf_url"],
+        "url": f"https://arxiv.org/abs/{paper['id']}",
+        "pdf_url": f"https://arxiv.org/pdf/{paper['id']}",
         "doi": paper.get("doi"),
         "journal_ref": paper.get("journal_ref"),
         "comment": paper.get("comment"),

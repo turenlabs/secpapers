@@ -1,12 +1,17 @@
 import csv
+import http.client
 import io
 import json
 import tempfile
 import unittest
+import urllib.request
 from pathlib import Path
+from unittest.mock import patch
 
 from scripts.collect import (
+    MAX_FEED_BYTES,
     enrich_paper,
+    fetch_with_retries,
     merge_papers,
     parse_feed,
     render_catalog,
@@ -18,6 +23,32 @@ from scripts.collect import (
 ROOT = Path(__file__).resolve().parents[1]
 
 
+class FeedResponse:
+    def __init__(
+        self,
+        payload=None,
+        error=None,
+        url="https://export.arxiv.org/api/query",
+    ):
+        self.payload = payload
+        self.error = error
+        self.url = url
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_):
+        return False
+
+    def geturl(self):
+        return self.url
+
+    def read(self, _):
+        if self.error:
+            raise self.error
+        return self.payload
+
+
 class CollectorTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -25,6 +56,15 @@ class CollectorTest(unittest.TestCase):
             (ROOT / "config" / "topics.json").read_text(encoding="utf-8")
         )
         cls.feed = parse_feed((ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes())
+
+    def fetch_responses(self, responses):
+        with patch(
+            "scripts.collect.urllib.request.urlopen", side_effect=responses
+        ) as opener:
+            papers = fetch_with_retries(
+                urllib.request.Request("https://export.arxiv.org/api/query"), 0
+            )
+        return papers, opener.call_count
 
     def test_parses_atom_metadata_and_preserves_legacy_ids(self):
         modern, legacy = self.feed
@@ -36,6 +76,51 @@ class CollectorTest(unittest.TestCase):
         self.assertEqual(modern["doi"], "10.1000/example")
         self.assertEqual(legacy["id"], "cs/0601001")
 
+    def test_rejects_untrusted_arxiv_identifier_url(self):
+        payload = (ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes()
+        payload = payload.replace(
+            b"http://arxiv.org/abs/2608.01234v2",
+            b"https://evil.example/abs/2608.01234v2",
+        )
+
+        with self.assertRaisesRegex(ValueError, "invalid identifier URL"):
+            parse_feed(payload)
+
+    def test_rejects_dtds_and_oversized_feeds(self):
+        with self.assertRaisesRegex(ValueError, "forbidden DTD"):
+            parse_feed(b'<!DOCTYPE feed [<!ENTITY x "x">]><feed>&x;</feed>')
+        with self.assertRaisesRegex(ValueError, "byte limit"):
+            parse_feed(b"x" * (MAX_FEED_BYTES + 1))
+
+    def test_malformed_success_response_is_retried(self):
+        valid = (ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes()
+        papers, attempts = self.fetch_responses(
+            [FeedResponse(b"<feed>"), FeedResponse(valid)]
+        )
+
+        self.assertEqual(len(papers), 2)
+        self.assertEqual(attempts, 2)
+
+    def test_incomplete_response_body_is_retried(self):
+        valid = (ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes()
+        papers, attempts = self.fetch_responses(
+            [
+                FeedResponse(error=http.client.IncompleteRead(b"<feed>", 100)),
+                FeedResponse(valid),
+            ]
+        )
+
+        self.assertEqual(len(papers), 2)
+        self.assertEqual(attempts, 2)
+
+    def test_rejects_redirect_to_untrusted_host(self):
+        valid = (ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes()
+
+        with self.assertRaisesRegex(RuntimeError, "untrusted URL"):
+            self.fetch_responses(
+                [FeedResponse(valid, url="https://evil.example/api/query")]
+            )
+
     def test_relevance_and_multi_topic_classification(self):
         paper = enrich_paper(self.feed[0], self.config)
 
@@ -44,6 +129,18 @@ class CollectorTest(unittest.TestCase):
         self.assertIn("prompt-security", paper["topics"])
         self.assertIn("agent-security", paper["topics"])
         self.assertIn("evaluation", paper["topics"])
+
+    def test_relevance_rebuilds_links_from_validated_id(self):
+        source = dict(
+            self.feed[0],
+            url="https://evil.example/paper",
+            pdf_url="https://evil.example/paper.pdf",
+        )
+
+        paper = enrich_paper(source, self.config)
+
+        self.assertEqual(paper["url"], "https://arxiv.org/abs/2608.01234")
+        self.assertEqual(paper["pdf_url"], "https://arxiv.org/pdf/2608.01234")
 
     def test_rejects_paper_without_security_signal(self):
         paper = dict(self.feed[1])

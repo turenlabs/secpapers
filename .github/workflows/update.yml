@@ -56,5 +56,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add README.md papers.md data/papers.json data/papers.csv
           git commit -m "chore(data): update arXiv papers"
-          git pull --rebase origin main
+          # A concurrent main update must fail the push rather than receive stale output.
           git push origin HEAD:main
