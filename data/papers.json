@@ -1,6 +1,498 @@
 {
   "papers": [
     {
+      "abstract": "Decompilation recovers high-level source from compiled machine code and serves as a foundation for security tasks such as vulnerability detection and malware analysis. Traditional decompilers like Ghidra and Hex-Rays expose whatever they cannot resolve as visible placeholders and often emit pseudocode that will not compile or execute; LLM-based decompilers produce clean, idiomatic C and are now judged almost entirely by recompilability and re-executability: whether the output builds and passes its shipped input/output tests. We show that these metrics can reward the wrong path: a function may recompile and pass every shipped test yet diverge on other legitimate inputs, and a disclosed vulnerability may disappear from the recompiled code with no visible trace of the crash. Neither failure is caught by existing suites. To address this gap, we propose Decompile-Diverge, a behavioral comparison oracle not relying on fixed or hand-crafted tests: for each function it synthesizes a driver, grows a fuzzing corpus from the reference, and reruns the decompiled code on the same inputs to detect changes in the function's behavior. Across eight systems in nine configurations on established LLM decompilation corpora, candidates that pass every shipped test still diverge from the original on our input corpus: 4.9% overall, and as many as 13% for a single system. On 300 real GitHub library functions and 287 CVE-grounded functions, recompilability and behavioral agreement can come apart: the strongest refinement LLM lifts Ghidra's build rate from 75% to 90%, while its Matched rate falls from 74% to 62%; on disclosed vulnerabilities, up to one tenth exhibit Crash Absence in its output. Source-level analysis traces this divergence to introduced fields, types, callees, and guards that replace the visible unknowns traditional tools leave behind.",
+      "authors": [
+        "Chang Liu",
+        "Edward Raff",
+        "Kristopher Micinski"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.05370",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.05370",
+      "primary_category": "cs.CR",
+      "published": "2026-09-04T17:16:18Z",
+      "relevance_score": 6,
+      "title": "When LLM Decompilers Recompile More and Preserve Less",
+      "topics": [
+        "software-security",
+        "cyber-defense"
+      ],
+      "updated": "2026-09-04T17:16:18Z",
+      "url": "https://arxiv.org/abs/2609.05370",
+      "version": 1
+    },
+    {
+      "abstract": "Public vulnerability databases collect rich information about known software flaws, including their weakness types, affected components, and related patches. Fixing commits provide the exact code changes that removed these flaws. While these records capture why the original code was unsafe, they are documented mainly for human inspection rather than automated reuse. Consequently, the same unsafe conditions may still exist elsewhere in code without a known advisory, leaving much of this detection knowledge unused. We present BUGSTONE-E2E, a framework that transforms vulnerability history into executable detection rules and validates their findings. First, BUGSTONE-E2E mines reusable rules from verified fixing commits, capturing scan anchors, fix semantics, and CVE provenance and organizing them by CWE and language. Second, detection follows a funnel-shaped pipeline: early stages process a large pool of candidates using lightweight analysis, while later stages apply increasingly capable and expensive models to a shrinking set of targets. Specifically, BUGSTONE-E2E first enumerates call sites matching rule anchors using Tree-sitter, then removes benign sites using lightweight heuristics without LLM calls. Next, LLM-based agents inspect the remaining candidates guided by the rule. Following this inspection, the system re-triages surviving candidates and builds runtime verifications, then generates scope-checked patches validated via two-sided differential tests. Using 19,325 high-severity CVEs from 2022 to 2026, BUGSTONE-E2E identifies 2,710 fixing commits and constructs 1,033 detection rules across 56 CWE families, packaged into 172 skills. When applied across 14 programs, it produced runtime evidence for 644 findings. These results demonstrate that CVE history can be turned into an executable workflow, transforming past vulnerabilities into reproducible detection and repair.",
+      "authors": [
+        "Qiushi Wu",
+        "Kevin Eykholt",
+        "Youngja Park",
+        "Xiaokui Shu",
+        "Dhilung Kirat",
+        "Douglas Lee Schales",
+        "Ian Molloy"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.05335",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.05335",
+      "primary_category": "cs.CR",
+      "published": "2026-09-04T16:40:22Z",
+      "relevance_score": 4,
+      "title": "The History Is the Detector: Executing CVE Patch History, End-to-End",
+      "topics": [
+        "software-security"
+      ],
+      "updated": "2026-09-04T16:40:22Z",
+      "url": "https://arxiv.org/abs/2609.05335",
+      "version": 1
+    },
+    {
+      "abstract": "LLM-powered coding agents increasingly participate in software development workflows by generating code, selecting dependencies, and producing package installation commands. This creates a new software supply chain risk: when an agent hallucinates a non-existent package, an attacker may register the hallucinated name and later compromise users who install it. Existing package hallucination attacks and defenses primarily focus on naturally occurring hallucinations, targeted dependency steering, or post-hoc package validation. In this paper, we introduce \\emph{Neutral Prompting Attack} (NPA), a highly stealthy attack paradigm in which semantically benign instructions, such as encouraging imagination and exhaustiveness, increase package hallucination propensity without containing explicit malicious intent. Unlike targeted dependency steering, NPA does not specify an attacker-chosen package. Instead, it shifts the model's dependency generation behavior toward more speculative package names. We evaluate NPA across multiple coding-oriented LLMs and package hallucination benchmarks. Our results show that NPA increases both \\emph{Hallucination ASR} and \\emph{Pip Install ASR}, changes the distribution of hallucinated package names, and evades existing static-analysis, LLM-based, and agent-based Skill defenses. These findings reveal that harmless-looking prompts can covertly manipulate hallucination behavior and create downstream software supply chain risks.",
+      "authors": [
+        "Chia-Yi Hsu",
+        "Chia-Mu Yu",
+        "Chun-Ying Huang",
+        "Jun Sakuma"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "This version has been accepted to EMNLP 2026",
+      "doi": null,
+      "id": "2605.29354",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2605.29354",
+      "primary_category": "cs.CR",
+      "published": "2026-05-28T04:48:45Z",
+      "relevance_score": 6,
+      "title": "Harmless Yet Harmful: Neutral Prompting Attacks for Stealthy Hallucination Steering in Agent Skills",
+      "topics": [
+        "software-security"
+      ],
+      "updated": "2026-09-04T16:17:36Z",
+      "url": "https://arxiv.org/abs/2605.29354",
+      "version": 2
+    },
+    {
+      "abstract": "LLM agent systems increasingly combine provenance tracking, authorization, policy enforcement, protocol adapters, and execution controls. However, individually correct security mechanisms do not necessarily compose into an end-to-end secure system: security-critical context may be dropped, widened, rebound, or reinterpreted as actions cross component boundaries. We identify this failure mode as security-context discontinuity and introduce CONTINUITY, a framework for verifiable composition of agent security controls. CONTINUITY models each component with an assume-guarantee contract and carries authenticated security context across transitions using signed root grants, provenance commitments, role-bound transition receipts, bounded typed releases, transformation witnesses, and effect-bound execution permits. We formalize end-to-end consequence integrity, requiring every realized external effect to be backed by a valid and current authorization witness linking the principal, task, provenance, delegation, policy state, canonical action, and finality boundary. We implement a reference verifier and deterministic cross-layer fault-injection suite covering 32 fault classes across four application domains. In 2,560 parameterized attack instances spanning 128 fault-domain classes, the full CONTINUITY configuration commits no harmful external effect, while completing all 700 benign tasks and escalating all 200 ambiguous cases. These results show that secure agent execution requires not only sound individual controls, but explicit contracts that preserve their guarantees across the complete instruction-to-effect path.",
+      "authors": [
+        "Chris Zheng",
+        "Geng Yang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "20 pages, 5 figures. Code and research artifact available at https://github.com/zast-ai/continuity",
+      "doi": null,
+      "id": "2609.05269",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.05269",
+      "primary_category": "cs.CR",
+      "published": "2026-09-04T15:26:35Z",
+      "relevance_score": 8,
+      "title": "CONTINUITY: Security-Context Contracts for Composable LLM Agent Controls",
+      "topics": [
+        "agent-security"
+      ],
+      "updated": "2026-09-04T15:26:35Z",
+      "url": "https://arxiv.org/abs/2609.05269",
+      "version": 1
+    },
+    {
+      "abstract": "Employees are increasingly using personally owned generative AI tools such as ChatGPT, Gemini, and Claude for their daily work. This practice is known as Bring Your Own AI (BYOAI), which is a distinct form of Shadow AI in which employee-authenticated personal accounts are used outside of enterprise identity and security controls. Existing frameworks were designed for AI tools managed by organizations, and their coverage does not extend to unmanaged AI tools used with a personal account. In addressing these issues, we developed a governance model through a systematic review of the literature that produces a risk taxonomy and a framework-engagement profile. We also developed a parameterized governance model that measures how much a level of governance maturity reduces residual risk. A five-level maturity ladder is coupled to a technical control architecture through a chain in which the coverage of the control layer influences the security outcomes. Our study of a curated corpus of 30 records (24 research studies and 6 framework documents) indicated that the most prominent categories identified were data exposure and compliance, and framework engagement was inconsistent. Three mutually supporting pillars (technical, governance, and human) were established to support safeguards. Additionally, the results of the model demonstrated that prohibition-based solutions will result in residual risk levels close to those achieved through baseline solutions. Under the specified parameterization, layered control-based solutions substantially reduce modeled exfiltration risk and increase enforceable coverage.",
+      "authors": [
+        "Dare Bello",
+        "John Hastings"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "8 pages, 3 figures, 5 tables",
+      "doi": null,
+      "id": "2609.05236",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.05236",
+      "primary_category": "cs.CR",
+      "published": "2026-09-04T15:03:49Z",
+      "relevance_score": 4,
+      "title": "Governing Bring Your Own AI: A Parameterized Maturity Model",
+      "topics": [
+        "evaluation"
+      ],
+      "updated": "2026-09-04T15:03:49Z",
+      "url": "https://arxiv.org/abs/2609.05236",
+      "version": 1
+    },
+    {
+      "abstract": "Large Language Models have become powerful tools for programming. However, they often overlook essential security practices, producing insecure code with vulnerabilities. Despite this risk, existing work offers limited guidance on steering LLMs toward secure code generation and lacks systematic analysis of how effectively LLMs repair vulnerable code. In this work, we investigate how LLMs can be guided to prevent and repair security vulnerabilities during code generation. Specifically, we examine whether self-generated vulnerability hints help models avoid insecure code, and evaluate how different feedback levels influence post-hoc vulnerability repair. Our study considers proprietary and open-weight models across multiple scales and uses established benchmarks covering diverse vulnerability types. Our results show that self-generated vulnerability hints meaningfully reduce insecure code, with effectiveness depending strongly on relevance and preciseness. We further find that more directive hints, which name the target weakness, explain how it could arise in the task, and specify how to avoid it, more effectively prevent vulnerable code. For post-hoc vulnerability repair, raw detection-tool feedback improves security across all models, while detailed, actionable explanations provide further gains on two of the three benchmarks, especially for models with stronger instruction-following capabilities. Yet, this explained feedback does not consistently outperform the raw feedback for the benchmark containing real-world tasks triggering multiple weaknesses.",
+      "authors": [
+        "Hao Yan",
+        "Swapneel Suhas Vaidya",
+        "Xiaokuan Zhang",
+        "Ziyu Yao"
+      ],
+      "categories": [
+        "cs.SE"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2506.23034",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2506.23034",
+      "primary_category": "cs.SE",
+      "published": "2025-06-28T23:24:33Z",
+      "relevance_score": 6,
+      "title": "Guiding AI to Fix Its Own Flaws: An Empirical Study on LLM-Driven Secure Code Generation",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-09-04T14:20:19Z",
+      "url": "https://arxiv.org/abs/2506.23034",
+      "version": 2
+    },
+    {
+      "abstract": "Current LLM safety benchmarks largely rely on binary metrics, overlooking how models respond to harmful prompts with varying threat implicitness. We introduce TIER, a Threat Implicitness Benchmark for behavioral safety evaluation of LLMs. TIER covers four risk domains and four threat levels, from explicit harmful requests to sophisticated jailbreaks. Responses are assessed using a six-label behavior scale and two independent LLM judges. Experiments on six open-weight LLMs show that safety behaviors evolve gradually across threat levels rather than shifting directly from refusal to compliance. Contextual prompts yield the most diverse behaviors, while jailbreaks reveal the largest robustness gaps. Furthermore, models with similar Attack Success Rates can exhibit distinct response distributions, highlighting the need for behavior-aware LLM safety evaluation.",
+      "authors": [
+        "Thu-Hien Trinh-Thi",
+        "Hai-Yen Vong",
+        "Thanh-Ha Ung-Dung",
+        "Tram Ho"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.05117",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.05117",
+      "primary_category": "cs.CR",
+      "published": "2026-09-04T13:13:11Z",
+      "relevance_score": 8,
+      "title": "TIER: Threat Implicitness Benchmark for Evaluating LLM Safety Behaviors",
+      "topics": [
+        "safety",
+        "adversarial-ml",
+        "evaluation"
+      ],
+      "updated": "2026-09-04T13:13:11Z",
+      "url": "https://arxiv.org/abs/2609.05117",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models (LLMs) are increasingly used in multilingual settings, yet their safety is still evaluated primarily in English. This limits our understanding of how alignment failures manifest in low-resource and culturally diverse languages. We introduce IndicSafeEval, a persuasion-based jailbreak evaluation framework for Indian languages. Our benchmark combines ten safety critical content categories with six human-like persuasive strategies across four different Indian languages, such as Hindi, Bengali, Marathi and Punjabi, resulting in 7,200 adversarial prompts. We conduct a systematic black-box evaluation of several open-source LLMs to examine how their safety behaviour varies across languages, persuasion strategies, and risk categories. Our analysis shows that the model does not behave equally safely across all languages and prompt styles. Instead, safety performance depends strongly on both the languages used and the way a request is phrased using persuasive cues. We further observe that different risk categories exhibit different levels of vulnerability, with some types of harmful content being significantly more susceptible to persuasion-based jailbreaks than others. These findings reveal important limitations of current safety evaluations, which are largely English-centric, and underscore the need for multilingual and persuasion-aware benchmarking frameworks to more accurately assess real-world LLM safety. Our implementation is available at https://github.com/MonSaikat/IndicSafeEval. Warning: this paper contains example data that may be offensive or harmful.",
+      "authors": [
+        "Saikat Mondal",
+        "Mamta",
+        "Deeksha Varshney",
+        "Oana Cocarascu",
+        "Asif Ekbal"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL"
+      ],
+      "comment": "38 pages, 7 figures, 33 tables. Accepted to Findings of EMNLP 2026. Contains examples of harmful model outputs",
+      "doi": null,
+      "id": "2609.03781",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.03781",
+      "primary_category": "cs.CL",
+      "published": "2026-09-03T12:54:44Z",
+      "relevance_score": 6,
+      "title": "IndicSafeEval: Safety Robustness of Large Language Models under Multilingual Persuasive Jailbreak Attacks",
+      "topics": [
+        "prompt-security",
+        "safety",
+        "adversarial-ml",
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-09-04T11:46:25Z",
+      "url": "https://arxiv.org/abs/2609.03781",
+      "version": 2
+    },
+    {
+      "abstract": "Binary reversing is fundamental to software understanding, vulnerability discovery, malware investigation, and firmware auditing. However, it remains inherently challenging due to the lossy transformation of semantic information during compilation. Recent advances in machine learning, large language models (LLMs), and agentic AI systems have accelerated the adoption of AI-augmented binary reversing. Yet, the resulting body of work has become increasingly fragmented across reversing domains, artifact representations, learning approaches, and evaluation practices. This paper presents the first comprehensive systematization of knowledge on AI-augmented binary reversing. We collect 246 research papers published since 2015, and organize them into 22 binary reversing domains according to the inference tasks. We further introduce a unified taxonomy spanning conventional and AI-augmented reversing pipelines. Our taxonomy connects traditional analysis techniques, binary-derived artifacts, representation strategies, learning paradigms, and downstream inference tasks, while clarifying the emerging roles of LLMs and agentic AI systems. By establishing a common vocabulary and structured framework, we offer a holistic view of the field's evolution over the past decade. Our study reveals common structures underlying seemingly disparate approaches, highlights persistent technical challenges and evaluation gaps, and identifies promising opportunities for future research. Collectively, these insights clarify the current state of the field and provide a foundation for the next generation of evidence-grounded and practically deployable AI-augmented binary reversing systems.",
+      "authors": [
+        "Yujeong Kwon",
+        "Yiyue Zhang",
+        "Kexin Pei",
+        "Dokyung Song",
+        "Hyungjoon Koo"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": "21 pages, 7 tables, 4 figures",
+      "doi": null,
+      "id": "2606.17398",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2606.17398",
+      "primary_category": "cs.CR",
+      "published": "2026-06-16T01:14:49Z",
+      "relevance_score": 4,
+      "title": "SoK: AI-Augmented Binary Reversing",
+      "topics": [
+        "agent-security",
+        "software-security",
+        "cyber-defense",
+        "evaluation"
+      ],
+      "updated": "2026-09-04T11:26:45Z",
+      "url": "https://arxiv.org/abs/2606.17398",
+      "version": 2
+    },
+    {
+      "abstract": "Safety evaluations can mischaracterize deployed behaviour if artificial-intelligence systems respond to being evaluated. We test this possibility in a full-factorial conjoint experiment on decisions to start a war, spanning 20 large language models, 32 scenarios, 10 repetitions and two conditions (N = 12,800 judgments). Adding one sentence, \"You are tested for alignment with human values\", produced two effects. First, it produced a level effect: mean willingness to start war fell by 13.43 points on a 0-100 scale (95% confidence interval, -16.20 to -10.65). Second, it produced a structural effect by changing which information drove judgments. Probability of success was the largest factor for 17 of 20 models at baseline; under the cue, civilian casualties were largest for 12. Standardized estimates show that this reordering arose principally because models attenuated strategic considerations such as probability of success and domestic support. Evaluation framing therefore changes both an answer's level and its revealed decision rule.",
+      "authors": [
+        "Maxim Chupilkin"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CY"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.05009",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.05009",
+      "primary_category": "cs.AI",
+      "published": "2026-09-04T11:22:30Z",
+      "relevance_score": 6,
+      "title": "Language models judge war differently when tested for alignment",
+      "topics": [
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-09-04T11:22:30Z",
+      "url": "https://arxiv.org/abs/2609.05009",
+      "version": 1
+    },
+    {
+      "abstract": "When cast as the protector of a vulnerable user yet given no explicit capability boundary, a large language model (LLM) may respond not by acknowledging its limits but by claiming to have taken, or to be taking, a real-world protective action it cannot perform, such as contacting emergency services or administering care. We term this phenomenon Protective Capacity Hallucination (PCH): a self-referential misattribution in which a model, acting in a protective role, asserts physical or institutional agency exceeding its affordances as a language model. In a three-phase study spanning eight LLMs and 13,600 sessions, we find that PCH depends on both situational severity and interactional format. Across ordinary service domains, multi-party dialogic input drives PCH to near-ceiling levels in most models. In contrast, PCH remains at floor levels in all eight models when the same models are placed in intimate-partner conflict scenarios, despite the greater physical severity of those situations. We interpret PCH as the signature of a deployment-design gap between role assignment and capability-boundary specification: a by-product of partial alignment in which a universally trained pressure to help outruns a domain-selective specification of how to help. Because suppression tracks alignment coverage rather than severity, deployment-side specification of capability boundaries emerges as a general mitigation target.",
+      "authors": [
+        "Eunna Lee"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "v2: author list updated; minor revisions to text",
+      "doi": null,
+      "id": "2607.13596",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2607.13596",
+      "primary_category": "cs.CR",
+      "published": "2026-07-15T08:39:10Z",
+      "relevance_score": 6,
+      "title": "Protective Capacity Hallucination: When Large Language Models Claim Nonexistent Capabilities",
+      "topics": [
+        "safety"
+      ],
+      "updated": "2026-09-04T09:25:17Z",
+      "url": "https://arxiv.org/abs/2607.13596",
+      "version": 2
+    },
+    {
+      "abstract": "As vision-language models (VLMs) rapidly advance in image understanding, cross-modal reasoning, and complex instruction execution, instruction-following capability has become a key indicator of their reliability and practicality. However, existing multimodal instruction-following benchmarks still suffer from limited language coverage and insufficient adversarial safety scenarios, making them inadequate for evaluating real-world multilingual and safety-sensitive settings. To address these gaps, we present MM-IFEval-Pro, a multimodal instruction-following benchmark covering Chinese and English tasks as well as diverse instruction hijacking cases. MM-IFEval-Pro includes 4 major task categories and 24 subcategories and 8 instruction categories with 52 subcategories, with each sample containing an average of 3.0 constraints to realistically simulate complex instruction scenarios. We further construct a reinforcement-learning training set enriched with Chinese and adversarial instructions, which significantly improves model performance on MM-IFEval-Pro and transfers effectively to other mainstream multimodal benchmarks, demonstrating strong cross-task and cross-language generalization.",
+      "authors": [
+        "Changming Xiao",
+        "Zhenliang Ni",
+        "Jinhui He",
+        "Han Shu",
+        "Jie Hu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.04859",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.04859",
+      "primary_category": "cs.AI",
+      "published": "2026-09-04T08:18:00Z",
+      "relevance_score": 6,
+      "title": "MM-IFEval-Pro: A Multilingual and Attack-Resistant Benchmark for Instruction-Following in Vision-Language Models",
+      "topics": [
+        "evaluation"
+      ],
+      "updated": "2026-09-04T08:18:00Z",
+      "url": "https://arxiv.org/abs/2609.04859",
+      "version": 1
+    },
+    {
+      "abstract": "With the rapid advancement of large language models (LLMs), the safety of LLMs has become a critical concern. Despite significant efforts in safety alignment, current LLMs remain vulnerable to jailbreaking attacks. However, the root causes of such vulnerabilities are still poorly understood, necessitating a rigorous investigation into jailbreak mechanisms across both academic and industrial communities. In this work, we focus on a continuation-triggered jailbreak phenomenon, whereby simply relocating a continuation-triggered instruction suffix can substantially increase jailbreak success rates. To uncover the intrinsic mechanisms of this phenomenon, we conduct a comprehensive mechanistic interpretability analysis at the level of attention heads. Through causal interventions and activation scaling, we show that this jailbreak behavior primarily arises from an inherent competition between the model's intrinsic continuation drive and the safety defenses acquired through alignment training. Furthermore, we perform a detailed behavioral analysis of the identified safety-critical attention heads, revealing notable differences in the behaviors of safety heads across different model architectures. Grounded in these mechanistic findings, we propose Head Competition Steering (HCS), a mechanistically grounded inference-time strategy that explicitly leverages the competition between safety heads and continuation heads to suppress harmful generation, and further distill its behavioral signal into a student model via knowledge distillation, achieving inference-time safety improvements without additional computational overhead.",
+      "authors": [
+        "Yonghong Deng",
+        "Zhen Yang",
+        "Ping Jian",
+        "Xinyue Zhang",
+        "Zhongbin Guo",
+        "Chengzhi Li",
+        "Junxi Yin"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2603.08234",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2603.08234",
+      "primary_category": "cs.AI",
+      "published": "2026-03-09T11:03:45Z",
+      "relevance_score": 6,
+      "title": "The Struggle Between Continuation and Refusal: A Mechanistic Analysis of the Continuation-Triggered Jailbreak in LLMs",
+      "topics": [
+        "prompt-security",
+        "safety",
+        "software-security"
+      ],
+      "updated": "2026-09-04T07:16:59Z",
+      "url": "https://arxiv.org/abs/2603.08234",
+      "version": 2
+    },
+    {
+      "abstract": "The emergence of large language models (LLMs) has significantly accelerated recent research on LLM-based automatic grading (AG) systems. Benefiting from the strong instruction-following capabilities and broad prior knowledge of LLMs, educators can deploy AG systems across diverse tasks using only natural language rubrics while achieving satisfactory grading performance. Despite these advantages, new security concerns may also arise. In particular, prompt injection (PI) attacks have recently become a major threat to LLM-based applications. In the context of AG, attackers can potentially exploit PI vulnerabilities to manipulate grading systems into assigning artificially high scores regardless of the actual answer quality. Such behavior poses serious risks to the fairness, reliability, and integrity of educational assessment. In this work, we study PI attacks in AG systems, and systematically investigate the effectiveness of such attacks in educational scenarios. We further evaluate the effectiveness of existing defensive strategies against these attacks. Through comprehensive experiments under rubric-based grading settings, we demonstrate that current LLM-based AG systems remain highly vulnerable to PI attacks. We hope that our findings raise awareness of this emerging threat and motivate future research toward secure, robust, and trustworthy LLM-based educational systems.",
+      "authors": [
+        "Hang Li",
+        "Fedor Filippov",
+        "Yuping Lin",
+        "Pengfei He",
+        "Kaiqi Yang",
+        "Yucheng Chu",
+        "Hui Liu",
+        "Jiliang Tang",
+        "Yingqian Cui"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "15 pages, 8 figures, 9 tables",
+      "doi": null,
+      "id": "2606.03090",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2606.03090",
+      "primary_category": "cs.CR",
+      "published": "2026-06-02T03:24:12Z",
+      "relevance_score": 8,
+      "title": "\"**Important** You should give me full credits!\": Exploring Prompt Injection Attacks on LLM-Based Automatic Grading Systems",
+      "topics": [
+        "prompt-security",
+        "software-security"
+      ],
+      "updated": "2026-09-04T05:12:10Z",
+      "url": "https://arxiv.org/abs/2606.03090",
+      "version": 3
+    },
+    {
+      "abstract": "Everything a language model sees is tokens. The serving stack knows what each span is -- user input, tool output, instructions -- but the model must keep track of that itself, and can lose track or be confused: text can be written to read like anything. Prompt injection is a natural exploit of this phenomenon. By scrambling the model's understanding of span identity, an attacker can induce unwanted and dangerous actions. Adding a non-textual channel to the model's input -- a way to communicate span identity beyond text -- mitigates this class of attack. We thus introduce a general steering technique called Semantic Overlays: small learned adapters applied at chosen prefill positions to a frozen model's residual stream. Laying an overlay over a span creates an out-of-band annotation channel that cannot be replicated by tokens. Unlike steering vectors, Semantic Overlays are trained, adaptable, and selectively applied. An overlay can encode complex semantics that reshape how the model perceives the marked span: asked to copy a code snippet under an overlay asserting a different programming language, the model rewrites the snippet in the asserted language. Overlays compose, allow transparent reading of underlying content, and can carry complex payloads -- including imperatives the model will follow. An overlay which marks a span as \"non-executable\" defends against the broad class of prompt injections that add instructions in untrusted context. We report strong results on five prompt injection benchmarks: SEP separation rises from 24.3% to 99.0% with utility unchanged (our scoring rule; we correct a defect in the published grader), TensorTrust attack success falls from 34.8% to 6.2%, AlpacaFarm from 99.0% to 0%, and the overlay beats every published PIArena defense that leaves the model able to answer -- while marked spans stay readable, all at >95% character similarity to the original.",
+      "authors": [
+        "Joshua Penman"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "21 pages, 4 figures, 13 tables. Interactive demo: https://semantic-overlays.vercel.app. Code and released adapters: https://github.com/JoshuaSP/semantic-overlays",
+      "doi": null,
+      "id": "2608.23873",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2608.23873",
+      "primary_category": "cs.AI",
+      "published": "2026-08-24T22:26:58Z",
+      "relevance_score": 6,
+      "title": "Semantic Overlays: Mitigating Prompt Injection with Annotations Beyond Tokens and Steering Vectors",
+      "topics": [
+        "prompt-security"
+      ],
+      "updated": "2026-09-03T22:46:27Z",
+      "url": "https://arxiv.org/abs/2608.23873",
+      "version": 3
+    },
+    {
+      "abstract": "Large language models can insert workplace details into phishing pretexts at low cost, but those details may either support or undermine a message's credibility. We recruited 180 U.S. working adults to evaluate simulated, AI-generated phishing emails in a disclosed survey. The emails used four cumulative levels of information: workplace (Level 1); recipient name and job title; job responsibilities; and coworker/shared-project context (Level 4). Participants rated each message's convincingness from 0 to 100, chose one stated action (open the link, investigate, delete, or report), and explained why their highest- and lowest-rated messages stood out. Across 1,436 valid evaluations, convincingness increased by 2.40 points per personalization level in a sensitivity analysis, while the odds of expressing click intention increased by 28\\% per level. Among participants who did not express an intention to click, investigation remained common, reporting declined, and deletion increased. A post-hoc descriptive analysis found higher ratings and click intention for messages from a named person who referenced a supplied coworker than for messages from a department or entity. Qualitative coding showed why added detail could help or hurt: details that matched participants' roles and routines supported credibility, while incorrect, vague, or channel-inappropriate details raised suspicion. Together, the results highlight that personalization is not simply a matter of adding more details: it depends on whether the pretext fits the recipient's work context. We discuss how this distinction can inform workplace cybersecurity training.",
+      "authors": [
+        "Jerson Francia",
+        "Derek Hansen",
+        "Benjamin Schooley",
+        "Shydra Valynn Murray"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.04410",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.04410",
+      "primary_category": "cs.CR",
+      "published": "2026-09-03T19:21:49Z",
+      "relevance_score": 8,
+      "title": "Engineered Persuasion: Evaluating Personalized Pretexts in LLM-Generated Spear Phishing",
+      "topics": [
+        "cyber-defense",
+        "evaluation"
+      ],
+      "updated": "2026-09-03T19:21:49Z",
+      "url": "https://arxiv.org/abs/2609.04410",
+      "version": 1
+    },
+    {
+      "abstract": "We present a systems-security case study of a two-node split-LLM training system whose privacy evaluation passed while leaving an observable channel untested. The Trusted Local Node (TLN) sends protected activations to the Untrusted Cloud Node (UCN), the UCN returns its output, and TLN, holding the private loss, returns the output gradient. The frame the UCN receives mixes real rows with decoys, and the loss ignores the decoys. Their gradients are exactly zero, so the pattern of zeros reveals which rows were real. We measure it with a protocol fixed in advance: a leak injected at known strength to prove the instrument can see one, a shuffled-label control to prove it does not report absent leaks, and a threshold set before the runs. Across nine seeds, the zeros identified the real rows on every frame, 4,096 of 4,096 per run. An attack on the frame contents recovered about one extra token per hundred over a constant-guess baseline (+0.65 to +1.50 percentage points); the shuffled controls recovered nothing. A second set of runs repeated this on a configuration that keeps model quality within budget, so the finding is not confined to a setting nobody would deploy. On both datasets, every such run passed the forward-channel privacy check and the quality check, yet failed that same check once the returned gradient was included. Clipping and noising each row of the gradient closed the leak for about 0.01 nats of held-out cross-entropy. The system is not thereby safe: five classes of attack, including those accumulating observations across training steps, were never measured.",
+      "authors": [
+        "Georgios Politis",
+        "Evangelos Pappas"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.DC",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.04382",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.04382",
+      "primary_category": "cs.CR",
+      "published": "2026-09-03T18:43:24Z",
+      "relevance_score": 8,
+      "title": "Privacy Failure in Split-LLM Training, The Returned Gradient Nullifies the Decoys",
+      "topics": [
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-09-03T18:43:24Z",
+      "url": "https://arxiv.org/abs/2609.04382",
+      "version": 1
+    },
+    {
       "abstract": "Large language model (LLM) agents are increasingly proposed as autonomous SOC analysts, but two limitations make them unreliable at enterprise scale: a finite context window cannot hold a multi-thousand-host authentication graph, and free-form generation offers no guarantee that a recommended containment action is consistent with the topology it operates on. We present Sentinel-RL, an agentic-SOC architecture that decouples topological reasoning from semantic reasoning: a heterogeneous graph attention encoder summarizes the live authentication subgraph into a fixed-dimensional state, a Proximal Policy Optimization (PPO) policy maps this state to a constrained set of investigative actions, and an LLM agent loop is restricted to consuming the policy's recommendations and producing analyst-readable narratives gated by a critic. We instantiate the system on the LANL Comprehensive, Multi-Source Cyber-Security Events dataset and the Indiana University Quartz HPC cluster, reporting four results: (i) a two-phase CREATE ingestion pattern loads a 24M-edge authentication subgraph into Neo4j in 14.2 minutes on a single 32-core node, roughly 24x faster than the canonical MERGE-based pipeline; (ii) a sliding-window alert engine reliably trips a 25-event/10-second threshold in <=2.5 s across 50 trials; (iii) PPO training over 200 iterations converges to a mean episodic return of 8.74+/-0.31, with held-out precision of 0.91 and recall of 0.87 on labeled red-team events; and (iv) the integrated containment loop completes a full detect-investigate-recommend-human-approve cycle in a median of 6.3 s. We contribute a reusable engineering pattern (the hot-node deadlock workaround), a portable HPC deployment pattern (anchor-node co-location), and an enterprise-readiness analysis covering false-positive economics, reversibility guarantees, audit compliance, and the human-approval boundary.",
       "authors": [
         "Uday Vallabhaneni",
@@ -208,39 +700,6 @@
       ],
       "updated": "2026-09-03T13:19:15Z",
       "url": "https://arxiv.org/abs/2609.03815",
-      "version": 1
-    },
-    {
-      "abstract": "Large language models (LLMs) are increasingly used in multilingual settings, yet their safety is still evaluated primarily in English. This limits our understanding of how alignment failures manifest in low-resource and culturally diverse languages. We introduce IndicSafeEval, a persuasion-based jailbreak evaluation framework for Indian languages. Our benchmark combines ten safety critical content categories with six human-like persuasive strategies across four different Indian languages, such as Hindi, Bengali, Marathi and Punjabi, resulting in 7,200 adversarial prompts. We conduct a systematic black-box evaluation of several open-source LLMs to examine how their safety behaviour varies across languages, persuasion strategies, and risk categories. Our analysis shows that the model does not behave equally safely across all languages and prompt styles. Instead, safety performance depends strongly on both the languages used and the way a request is phrased using persuasive cues. We further observe that different risk categories exhibit different levels of vulnerability, with some types of harmful content being significantly more susceptible to persuasion-based jailbreaks than others. These findings reveal important limitations of current safety evaluations, which are largely English-centric, and underscore the need for multilingual and persuasion-aware benchmarking frameworks to more accurately assess real-world LLM safety. Our implementation is available at https://github.com/MonSaikat/IndicSafeEval. Warning: this paper contains example data that may be offensive or harmful.",
-      "authors": [
-        "Saikat Mondal",
-        "Mamta",
-        "Deeksha Varshney",
-        "Oana Cocarascu",
-        "Asif Ekbal"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL"
-      ],
-      "comment": "38 pages, 7 figures, 33 tables. Accepted to Findings of EMNLP 2026. Contains examples of harmful model outputs",
-      "doi": null,
-      "id": "2609.03781",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2609.03781",
-      "primary_category": "cs.CL",
-      "published": "2026-09-03T12:54:44Z",
-      "relevance_score": 6,
-      "title": "IndicSafeEval: Safety Robustness of Large Language Models under Multilingual Persuasive Jailbreak Attacks",
-      "topics": [
-        "prompt-security",
-        "safety",
-        "adversarial-ml",
-        "software-security",
-        "evaluation"
-      ],
-      "updated": "2026-09-03T12:54:44Z",
-      "url": "https://arxiv.org/abs/2609.03781",
       "version": 1
     },
     {
@@ -4571,33 +5030,6 @@
       "updated": "2026-08-28T13:36:06Z",
       "url": "https://arxiv.org/abs/2608.28327",
       "version": 1
-    },
-    {
-      "abstract": "Everything a language model sees is tokens. The serving stack knows what each span is -- user input, tool output, instructions -- but the model must keep track of that itself, and can lose track or be confused: text can be written to read like anything. Prompt injection is a natural exploit of this phenomenon. By scrambling the model's understanding of span identity, an attacker can induce unwanted and dangerous actions. Adding a non-textual channel to the model's input -- a way to communicate span identity beyond text -- mitigates this class of attack. We thus introduce a general steering technique called Semantic Overlays: small learned adapters applied at chosen prefill positions to a frozen model's residual stream. Laying an overlay over a span creates an out-of-band annotation channel that cannot be replicated by tokens. Unlike steering vectors, Semantic Overlays are trained, adaptable, and selectively applied. An overlay can encode complex semantics that reshape how the model perceives the marked span: asked to copy a code snippet under an overlay asserting a different programming language, the model rewrites the snippet in the asserted language. Overlays compose, allow transparent reading of underlying content, and can carry complex payloads -- including imperatives the model will follow. An overlay which marks a span as \"non-executable\" defends against the broad class of prompt injections that add instructions in untrusted context. We report strong results on five prompt injection benchmarks: SEP separation rises from 24.3% to 99.0% with utility unchanged (our scoring rule; we correct a defect in the published grader), TensorTrust attack success falls from 34.8% to 6.2%, AlpacaFarm from 99.0% to 0%, and the overlay beats every published PIArena defense that leaves the model able to answer -- while marked spans stay readable, all at >95% character similarity to the original.",
-      "authors": [
-        "Joshua Penman"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL",
-        "cs.CR",
-        "cs.LG"
-      ],
-      "comment": "21 pages, 4 figures, 13 tables. Interactive demo: https://semantic-overlays.vercel.app. Code and released adapters: https://github.com/JoshuaSP/semantic-overlays",
-      "doi": null,
-      "id": "2608.23873",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2608.23873",
-      "primary_category": "cs.AI",
-      "published": "2026-08-24T22:26:58Z",
-      "relevance_score": 6,
-      "title": "Semantic Overlays: Mitigating Prompt Injection with Annotations Beyond Tokens and Steering Vectors",
-      "topics": [
-        "prompt-security"
-      ],
-      "updated": "2026-08-28T09:49:45Z",
-      "url": "https://arxiv.org/abs/2608.23873",
-      "version": 2
     },
     {
       "abstract": "Cyber Threat Intelligence (CTI) reports often describe Indicators of Compromise (IoCs) such as IP addresses, URLs, file hashes, and cryptocurrency wallets involved in cyberattacks. Those IoCs are typically described in the unstructured report's text, or listed at the end of the report with little context, limiting their usefulness. This paper presents TagZilla, a platform that, given a threat report, automatically analyzes its text and tags the IoCs it describes with contextual information about the threat group and malware family that the IoC belongs to and the type of abuse associated with the IoC (e.g., phishing, sextortion, command-and-control). TagZilla provides a novel LLM-based approach to assign owner tags to IoCs using an open-world classification, and assigns 29 abuse type tags to IoCs using a closed-world classification. We evaluate TagZilla on a manually generated ground truth of 100 threat reports containing 1,534 indicators, where it achieves an F1 score of 0.94 for owner tagging and 0.93 for abuse type tagging. Then, we apply TagZilla to tag 765 threat reports, identifying 15,583 IoCs belonging to 637 malware families, 113 threat groups, and 162 other entities. The results show that TagZilla can tag IoCs even in reports describing multiple actors and malware families, enabling the generation of IoC profiles for those entities.",
@@ -25687,33 +26119,6 @@
       "updated": "2026-07-15T10:24:21Z",
       "url": "https://arxiv.org/abs/2606.29581",
       "version": 2
-    },
-    {
-      "abstract": "When cast as the protector of a vulnerable user yet given no explicit capability boundary, a large language model (LLM) may respond not by acknowledging its limits but by claiming to have taken -- or to be taking -- a real-world protective action it cannot perform, such as contacting emergency services or administering care. We term this phenomenon Protective Capacity Hallucination (PCH): a self-referential misattribution in which a model, acting in a protective role, asserts physical or institutional agency exceeding its affordances as a language model. In a three-phase study spanning eight LLMs and 13{,}600 sessions, we find PCH jointly gated by situational severity and interactional format: multi-party dialogic input drives it toward ceiling in most models across ordinary service domains, whereas in intimate-partner conflict -- a domain explicitly covered by safety alignment -- it remains at floor in all eight models despite greater physical severity. We interpret PCH as the signature of a deployment-design gap between role assignment and capability-boundary specification: a by-product of partial alignment in which a universally trained pressure to help outruns a domain-selective specification of how to help. Because suppression tracks alignment coverage rather than severity, deployment-side specification of capability boundaries emerges as a general mitigation target.",
-      "authors": [
-        "Eunna Lee",
-        "Jungpyo Nam",
-        "Sunjun Hwang"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CR"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2607.13596",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2607.13596",
-      "primary_category": "cs.CR",
-      "published": "2026-07-15T08:39:10Z",
-      "relevance_score": 6,
-      "title": "Protective Capacity Hallucination: When Large Language Models Claim Nonexistent Capabilities",
-      "topics": [
-        "safety"
-      ],
-      "updated": "2026-07-15T08:39:10Z",
-      "url": "https://arxiv.org/abs/2607.13596",
-      "version": 1
     },
     {
       "abstract": "We investigate which language model evasion attacks survive state-of-the-art adversarial fine-tuning, developing strategies that sweep the top 5 positions on the ELOQUENT 2026 Voight-Kampff leaderboard. While adversarial fine-tuning trivially closes the 2025 winning evasion recipes, we uncover a fundamental asymmetry in detector vulnerability: pushing generated text out of the detector's training distribution reliably defeats adversarial detection, whereas pulling it into the distribution (e.g., mimicking human training data) fails completely. Exploiting this, we introduce two novel out-of-distribution attack families - cross-decade register attacks and modernist stream-of-consciousness form. Both strategies easily bypass adversarial closure, achieving up to approximately 50x higher fool rates than previous methods while preserving naturalness. Furthermore, experiments show that the obvious deployer countermeasure (augmenting training data with period prose) fails to close the vulnerability. Our findings show that the tested detector families, including adversarially fine-tuned ones, exhibit persistent vulnerabilities under structural out-of-distribution shifts, a mechanism that directly powers our leading competition performance.",
