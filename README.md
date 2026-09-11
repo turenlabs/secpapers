@@ -22,18 +22,18 @@ paper revisions, and regenerates this repository from stable source data.
 ## At a glance
 
 <!-- SECPAPERS:STATS:START -->
-**1169 papers** across **4 publication years**. Latest arXiv metadata update: **2026-09-09**.
+**1189 papers** across **4 publication years**. Latest arXiv metadata update: **2026-09-10**.
 
 | Topic | Papers |
 | --- | ---: |
-| [Prompt Injection &amp; Jailbreaks](papers.md#prompt-injection--jailbreaks) | 253 |
-| [Agent &amp; Tool Security](papers.md#agent--tool-security) | 286 |
-| [Privacy &amp; Data Leakage](papers.md#privacy--data-leakage) | 170 |
-| [Safety, Alignment &amp; Misuse](papers.md#safety-alignment--misuse) | 285 |
-| [Adversarial ML, Poisoning &amp; Backdoors](papers.md#adversarial-ml-poisoning--backdoors) | 255 |
-| [Software &amp; Vulnerability Security](papers.md#software--vulnerability-security) | 373 |
-| [Malware, Phishing &amp; Cyber Defense](papers.md#malware-phishing--cyber-defense) | 147 |
-| [Evaluation, Benchmarks &amp; Red Teaming](papers.md#evaluation-benchmarks--red-teaming) | 555 |
+| [Prompt Injection &amp; Jailbreaks](papers.md#prompt-injection--jailbreaks) | 258 |
+| [Agent &amp; Tool Security](papers.md#agent--tool-security) | 291 |
+| [Privacy &amp; Data Leakage](papers.md#privacy--data-leakage) | 175 |
+| [Safety, Alignment &amp; Misuse](papers.md#safety-alignment--misuse) | 286 |
+| [Adversarial ML, Poisoning &amp; Backdoors](papers.md#adversarial-ml-poisoning--backdoors) | 259 |
+| [Software &amp; Vulnerability Security](papers.md#software--vulnerability-security) | 382 |
+| [Malware, Phishing &amp; Cyber Defense](papers.md#malware-phishing--cyber-defense) | 149 |
+| [Evaluation, Benchmarks &amp; Red Teaming](papers.md#evaluation-benchmarks--red-teaming) | 560 |
 | [Other LLM Security](papers.md#other-llm-security) | 87 |
 <!-- SECPAPERS:STATS:END -->
 
@@ -42,21 +42,21 @@ paper revisions, and regenerates this repository from stable source data.
 <!-- SECPAPERS:LATEST:START -->
 | Updated | Paper | Topics | Links |
 | --- | --- | --- | --- |
-| 2026-09-09 | **Towards Tackling Application Logic Flaws through Autonomous Formal-Logic Modeling and Automated Reasoning**<br>Yiwei Fang, Yichen Liu, Ze Jin, et al. | Privacy &amp; Data Leakage, Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2609.10537) / [PDF](https://arxiv.org/pdf/2609.10537) |
-| 2026-09-09 | **TrajMark: Ownership Attribution and Segment-Level Tamper Localization for Coding-Agent Trajectories**<br>Bokang Zeng, Zheng Gao, Xiaoyu Li, et al. | Other LLM Security | [abstract](https://arxiv.org/abs/2609.10416) / [PDF](https://arxiv.org/pdf/2609.10416) |
-| 2026-09-09 | **Towards Scalable and Cost-Efficient Vulnerability Detection: A Study on Automatic Query Generation**<br>Ivana Clairine Irsan, Ratnadira Widyasari, Huihui Huang, et al. | Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2609.10412) / [PDF](https://arxiv.org/pdf/2609.10412) |
-| 2026-09-09 | **Ensembling LLMs for AI-Augmented Cybersecurity Software Requirements Generation**<br>Santiago Perez-Acuna, Yod-Samuel Martín, Juan C. Yelmo | Malware, Phishing &amp; Cyber Defense | [abstract](https://arxiv.org/abs/2609.10316) / [PDF](https://arxiv.org/pdf/2609.10316) |
-| 2026-09-09 | **Maverick: Private and Verifiable LLM Inference Made Practical via Matrix-Vector Multiplication Delegation**<br>Ben Merbaum, Mohammad Amin Raeisi, Wenhao Wang, et al. | Privacy &amp; Data Leakage | [abstract](https://arxiv.org/abs/2609.10264) / [PDF](https://arxiv.org/pdf/2609.10264) |
-| 2026-09-09 | **Active Adaptation, Not Static Defense: Temporal Dynamics of Preventative Steering in Adversarial Fine-Tuning**<br>Jing Guan, Yachao Yang, Zhaoliang Liu, et al. | Safety, Alignment &amp; Misuse, Adversarial ML, Poisoning &amp; Backdoors, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2609.10142) / [PDF](https://arxiv.org/pdf/2609.10142) |
-| 2026-09-09 | **Chameleon: An Adaptive AI-Driven Honeypot Architecture Using Threat-Calibrated Particle Swarm Optimization and Semantic Deception Rapidly-Exploring Random Trees**<br>Rohit Swami, Tushar Singh, Akash Warde, et al. | Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2608.15407) / [PDF](https://arxiv.org/pdf/2608.15407) |
-| 2026-09-09 | **Understanding the Security Boundary of Obfuscation-based On-Device LLM Protection**<br>Hanyi Zhou, Chenyang Li, Yuanzhe Pang, et al. | Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2609.10117) / [PDF](https://arxiv.org/pdf/2609.10117) |
-| 2026-09-09 | **Bounty Hunter: Autonomous, Comprehensive Emulation of Multi-Faceted Adversaries**<br>Louis Hackländer-Jansen, Rafael Uetz, Martin Henze | Malware, Phishing &amp; Cyber Defense | [abstract](https://arxiv.org/abs/2512.15275) / [PDF](https://arxiv.org/pdf/2512.15275) |
-| 2026-09-09 | **AutoTrans: AI-Assisted Automatic Translation of Security Assertions for RISC-V Processors**<br>Sharjeel Imtiaz, Uljana Reinsalu, Tara Ghasempouri | Other LLM Security | [abstract](https://arxiv.org/abs/2609.10057) / [PDF](https://arxiv.org/pdf/2609.10057) |
-| 2026-09-09 | **Belief-State Engine: Augmenting LLMs for Principled Planning Under Partial Observability**<br>Arnab Chattopadhayay, Debdipta Halder | Agent &amp; Tool Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2609.10036) / [PDF](https://arxiv.org/pdf/2609.10036) |
-| 2026-09-09 | **HoneyRoute: Honeypot-Model Routing for Adversarial LLM Serving**<br>Han Jin | Other LLM Security | [abstract](https://arxiv.org/abs/2609.08306) / [PDF](https://arxiv.org/pdf/2609.08306) |
-| 2026-09-09 | **"Tab, Tab, Bug": Security Pitfalls of Next Edit Suggestions in AI-Integrated IDEs**<br>Yunlong Lyu, Yixuan Tang, Peng Chen, et al. | Adversarial ML, Poisoning &amp; Backdoors, Software &amp; Vulnerability Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2602.06759) / [PDF](https://arxiv.org/pdf/2602.06759) |
-| 2026-09-09 | **CS-Guard: Benchmarking LLM Guardrails for Code Generation Security**<br>Jinyang Li, Mingyu Guo, Hung X. Nguyen | Prompt Injection &amp; Jailbreaks, Safety, Alignment &amp; Misuse, Software &amp; Vulnerability Security, Malware, Phishing &amp; Cyber Defense, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2609.09798) / [PDF](https://arxiv.org/pdf/2609.09798) |
-| 2026-09-09 | **Privacy-Preserving Split Learning for Federated LLM Fine-Tuning**<br>Heng Jin, Chaoyu Zhang, Hexuan Yu, et al. | Privacy &amp; Data Leakage | [abstract](https://arxiv.org/abs/2609.09794) / [PDF](https://arxiv.org/pdf/2609.09794) |
+| 2026-09-10 | **BlueSTAR: Tiered Agentic Architecture for Autonomous Cyber Defense**<br>Simona Boboila, Xavier Cadet, Edward Koh, et al. | Agent &amp; Tool Security | [abstract](https://arxiv.org/abs/2609.11852) / [PDF](https://arxiv.org/pdf/2609.11852) |
+| 2026-09-10 | **SpecGuard: Inference-Time Backdoor Detection For Free**<br>Rui Wen, Ahmed Salem, Andrew Paverd, et al. | Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2609.11799) / [PDF](https://arxiv.org/pdf/2609.11799) |
+| 2026-09-10 | **Component-Aware Differential Privacy for Federated Multilingual Speech-LLMs**<br>Jordi Luque, Fernando López, Aleix Sant | Privacy &amp; Data Leakage | [abstract](https://arxiv.org/abs/2609.11762) / [PDF](https://arxiv.org/pdf/2609.11762) |
+| 2026-09-10 | **VectraYX-Vision-1B: A Sub-2B Spanish/LATAM Cybersecurity Vision-Language Model with Structured Visual Reasoning and Native Tool Use**<br>Juan S. Santillana | Agent &amp; Tool Security, Malware, Phishing &amp; Cyber Defense | [abstract](https://arxiv.org/abs/2608.08477) / [PDF](https://arxiv.org/pdf/2608.08477) |
+| 2026-09-10 | **Whitewashing Hate, Smearing Harmless Content: Annotator-Style Rebuttal Attacks on LLM-Based Moderation**<br>Junyu Lu, Kaiyuan Liu, Kaichun Wang, et al. | Adversarial ML, Poisoning &amp; Backdoors, Software &amp; Vulnerability Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2608.22230) / [PDF](https://arxiv.org/pdf/2608.22230) |
+| 2026-09-10 | **Exploring the Role of Security Experience and ChatGPT Usage Strategies on Secure Software Engineering Education**<br>Alessio Ferrari, Minh An Nguyen, Kushal Ramkumar, et al. | Software &amp; Vulnerability Security, Malware, Phishing &amp; Cyber Defense | [abstract](https://arxiv.org/abs/2609.11303) / [PDF](https://arxiv.org/pdf/2609.11303) |
+| 2026-09-10 | **Off-Target Effects of Response-Style Alignment in a Korean 27B Language Model**<br>Hyojung Han | Safety, Alignment &amp; Misuse, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2609.11291) / [PDF](https://arxiv.org/pdf/2609.11291) |
+| 2026-09-10 | **Privacy Auditing with Zero (0) Training Run**<br>Tudor Cebere, Mathieu Even, Linus Bleistein, et al. | Privacy &amp; Data Leakage, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2605.14591) / [PDF](https://arxiv.org/pdf/2605.14591) |
+| 2026-09-10 | **ToxicRAG: Compromising Retrieval-Augmented Generation Systems via Single-Shot Knowledge Poisoning Attacks**<br>Haozhe Lu, Jiaqi Li, Xinyuan Zhu, et al. | Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2609.11082) / [PDF](https://arxiv.org/pdf/2609.11082) |
+| 2026-09-10 | **DeFiFusion: Combining Transaction Events with Smart Contracts to Detect Price Manipulation Attacks**<br>Rui Cao, Shaojing Fan, Liming Fang, et al. | Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2609.11008) / [PDF](https://arxiv.org/pdf/2609.11008) |
+| 2026-09-10 | **Demystifying the Privacy-Utility Trade-off in LLM Interactions**<br>Zhenhua Liu, Zhanxu Xie, Junjie Yu, et al. | Privacy &amp; Data Leakage | [abstract](https://arxiv.org/abs/2609.10992) / [PDF](https://arxiv.org/pdf/2609.10992) |
+| 2026-09-10 | **LLMVul: A Vulnerability-Labeled Dataset of LLM-Generated C/C++ Functions from Real Production Repositories**<br>Mohammad Farhad, Shuvalaxmi Dass | Software &amp; Vulnerability Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2609.10945) / [PDF](https://arxiv.org/pdf/2609.10945) |
+| 2026-09-09 | **DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents**<br>Asif Pinjari, Mithun Paul Saint-Germain | Prompt Injection &amp; Jailbreaks, Agent &amp; Tool Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2609.10892) / [PDF](https://arxiv.org/pdf/2609.10892) |
+| 2026-09-09 | **A2ABreak: Systematic Security Analysis of the A2A Protocol**<br>Alireza Lotfi, Mirza Masfiqur Rahman, Imtiaz Karim, et al. | Agent &amp; Tool Security, Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2609.10871) / [PDF](https://arxiv.org/pdf/2609.10871) |
+| 2026-09-09 | **No-Box Vulnerability Analysis: Description-only Detection of Indirect Prompt Injection Vulnerabilities in MCP Servers**<br>Zehua Zhang, Jie Hu, Pratham Hegde, et al. | Prompt Injection &amp; Jailbreaks, Agent &amp; Tool Security, Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2609.10854) / [PDF](https://arxiv.org/pdf/2609.10854) |
 <!-- SECPAPERS:LATEST:END -->
 
 ## Scope

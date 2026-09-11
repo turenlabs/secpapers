@@ -1,6 +1,566 @@
 {
   "papers": [
     {
+      "abstract": "Cyber attacks are increasingly automated, narrowing the time available for human analysts to detect, reason about, and respond to intrusions. Large language models (LLMs) offer a promising foundation for autonomous cyber defense because they can correlate heterogeneous evidence and reason about previously unseen threats. However, directly applying LLMs to operational security telemetry is impractical: raw logs arrive faster than current models can process them, individual events are often ambiguous, and unconstrained LLM actions can introduce significant operational risk. We present BlueSTAR, a tiered agentic architecture for autonomous cyber defense in enterprise IT/OT networks. BlueSTAR first transforms high-volume security telemetry into compact indicators of compromise. We further introduce a resilience metric that jointly captures attacker reach, impact on mission-critical assets, and disruption caused by defensive actions. We evaluate BlueSTAR on two live enterprise IT/OT cyber ranges using seven attack chains based on real-world intrusion techniques. Across attack chains, BlueSTAR retains the fast containment of deterministic response for known threats while successfully defending against attacks requiring contextual and cross-cycle reasoning, including credential theft, repeated compromise, concurrent attackers, and attacks against physical processes.",
+      "authors": [
+        "Simona Boboila",
+        "Xavier Cadet",
+        "Edward Koh",
+        "Daniel Balasubramanian",
+        "Dirk Van Bruggen",
+        "Peter Chin",
+        "Alina Oprea"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.11852",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11852",
+      "primary_category": "cs.CR",
+      "published": "2026-09-10T17:36:18Z",
+      "relevance_score": 4,
+      "title": "BlueSTAR: Tiered Agentic Architecture for Autonomous Cyber Defense",
+      "topics": [
+        "agent-security"
+      ],
+      "updated": "2026-09-10T17:36:18Z",
+      "url": "https://arxiv.org/abs/2609.11852",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models are often fine-tuned, shared, or downloaded from third parties, so a deployed model may carry a hidden backdoor that behaves normally on benign inputs but switches to attacker-controlled behavior when a secret trigger appears. While backdoors can be audited before deployment, runtime monitoring remains important for models that are frequently updated. The challenge is that LLM serving is latency-sensitive: existing inference-time detectors either rely on assumptions about the trigger form, which can fail on stealthy attacks, or require extra model computation, such as input perturbations or an additional generation pass. We introduce SpecGuard, an inference-time backdoor detector that repurposes speculative decoding at zero added model-computation cost. Speculative decoding speeds up inference by using a small draft model to propose tokens and a target model to verify them. We observe that this verification process already exposes a useful signal: when a backdoor is triggered, the target model shifts toward the attacker's behavior, while a clean draft model does not predict this shift, causing the draft-token acceptance rate to change. We formalize when this signal appears and show that an attacker who suppresses it must also weaken the backdoor. Across diverse backdoor types and model families, SpecGuard reliably detects triggered behavior, including stealthy cases where input-level filters are blind, while avoiding the extra generation cost of existing runtime detectors. Speculative decoding therefore doubles as a free, always-on signal for detecting backdoored LLM behavior.",
+      "authors": [
+        "Rui Wen",
+        "Ahmed Salem",
+        "Andrew Paverd",
+        "Mark Russinovich",
+        "Zheng Li"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.11799",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11799",
+      "primary_category": "cs.CR",
+      "published": "2026-09-10T16:51:59Z",
+      "relevance_score": 6,
+      "title": "SpecGuard: Inference-Time Backdoor Detection For Free",
+      "topics": [
+        "adversarial-ml"
+      ],
+      "updated": "2026-09-10T16:51:59Z",
+      "url": "https://arxiv.org/abs/2609.11799",
+      "version": 1
+    },
+    {
+      "abstract": "Per-layer differential privacy (DP) clipping improves gradient fidelity in federated learning by allocating per-matrix clipping budgets proportional to parameter count. We show that this recipe breaks for speech large language models (speech-LLMs), when the acoustic encoder and the language decoder differ by an order of magnitude in update norm. Single-pool per-layer methods suffer \\emph{cross-component budget collapse}, dragging word error rate (WER) far from flat global clipping or collapsing training entirely. When the norm imbalance is milder, adaptive single-pool methods partially recover, confirming that collapse severity scales with the inter-component norm ratio. We empirically diagnose the root cause across six per-layer methods and three speech-LLM architectures. We then propose \\emph{$\u03b1$-split}, a two-pool allocation that normalises encoder and LLM parameters into independent pools, and show that joint $\\ell_2$ sensitivity and the original $(\\varepsilon,\u03b4)$-DP guarantee are unchanged. At architecture-calibrated $\u03b1$, our method recovers WER utility compared to flat DP, while granting the encoder $4.47{\\times}$ tighter per-component noise protection against speaker voice-based gradient-inversion attacks at only $+2.6\\%$ LLM noise overhead.",
+      "authors": [
+        "Jordi Luque",
+        "Fernando L\u00f3pez",
+        "Aleix Sant"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "comment": "Accepted in SLT2026",
+      "doi": null,
+      "id": "2609.11762",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11762",
+      "primary_category": "cs.CL",
+      "published": "2026-09-10T16:17:19Z",
+      "relevance_score": 6,
+      "title": "Component-Aware Differential Privacy for Federated Multilingual Speech-LLMs",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-09-10T16:17:19Z",
+      "url": "https://arxiv.org/abs/2609.11762",
+      "version": 1
+    },
+    {
+      "abstract": "25 pages, 1 figure, 10 tables. v3: transplanting a natively-trained visual tower (Qwen2-VL) onto the same frozen decoder takes the failing 8-nibble address field from 0.00 to 0.81 exact, at a coarser token budget than 2x2 tiling, refuting resolution as the operative variable. Second pre-registered field found 63% contaminated, demoted. B6/B7 tool-id remains at floor. Code/checkpoints on HF.",
+      "authors": [
+        "Juan S. Santillana"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "comment": "20 pages, 1 figure, 9 tables. v2: retracted the B6 tool-id score of 0.08 (v1) after finding 3 benchmark harness bugs; under the fixed harness every B6/B7 metric is 0.0. Fixed a LoRA LR bug and a checkpoint-load-order bug. Added a 9-field gate + linear probe. Reframed the NoPE ablation as open, confound quantified. Code/checkpoints on HF",
+      "doi": null,
+      "id": "2608.08477",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2608.08477",
+      "primary_category": "cs.CL",
+      "published": "2026-08-09T04:46:58Z",
+      "relevance_score": 6,
+      "title": "VectraYX-Vision-1B: A Sub-2B Spanish/LATAM Cybersecurity Vision-Language Model with Structured Visual Reasoning and Native Tool Use",
+      "topics": [
+        "agent-security",
+        "cyber-defense"
+      ],
+      "updated": "2026-09-10T14:59:27Z",
+      "url": "https://arxiv.org/abs/2608.08477",
+      "version": 3
+    },
+    {
+      "abstract": "Large language models (LLMs) are increasingly used for hate speech moderation, often within human--AI workflows in which reviewers provide feedback before a final decision. Such feedback introduces two manipulation directions: whitewashing hateful content as normal and smearing normal content as hateful. This study examines the susceptibility of initially correct model judgments to annotator-style rebuttals and analyzes whether attack effectiveness differs across manipulation directions. We introduce a rejudge protocol that extends direct contradiction with decision-boundary perturbations and adversarial rationales. Experiments with multiple LLMs on two hate speech datasets show that annotator-style rebuttals substantially degrade moderation performance, with stronger effects in multi-turn settings. The results further reveal stable, model-specific asymmetries between whitewashing and smearing across attack configurations, indicating distinct directional vulnerability patterns. Explicit reasoning prompts and defensive instructions reduce these effects but do not eliminate them. These findings highlight the need for direction-aware safeguards and dedicated feedback-robustness evaluation in human--AI moderation workflows.",
+      "authors": [
+        "Junyu Lu",
+        "Kaiyuan Liu",
+        "Kaichun Wang",
+        "Jingyi Kang",
+        "Deyi Ji",
+        "Hailong Zhang",
+        "Lanyun Zhu",
+        "Qi Zhu",
+        "Bo Xu",
+        "Liang Yang",
+        "Hongfei Lin"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "comment": "We identified errors in the experimental setup and analysis that affect several key results and conclusions. As substantial re-analysis is required and the conclusions may change, we respectfully request withdrawal of the current version",
+      "doi": null,
+      "id": "2608.22230",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2608.22230",
+      "primary_category": "cs.CL",
+      "published": "2026-08-23T05:59:25Z",
+      "relevance_score": 6,
+      "title": "Whitewashing Hate, Smearing Harmless Content: Annotator-Style Rebuttal Attacks on LLM-Based Moderation",
+      "topics": [
+        "adversarial-ml",
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-09-10T13:42:49Z",
+      "url": "https://arxiv.org/abs/2608.22230",
+      "version": 3
+    },
+    {
+      "abstract": "The rapid adoption of Large Language Models (LLMs) is reshaping software engineering education, but their role in secure software engineering education remains underexplored. We report an exploratory empirical study of how 26 graduate students in a part-time MSc Cybersecurity programme used ChatGPT during a vulnerability-fixing assignment. To characterise ChatGPT use, we analysed students' ChatGPT interaction logs using a structured double-coding procedure and examined whether usage patterns and prior cybersecurity expertise were associated with assignment performance. The results show that students with varying levels of cybersecurity expertise used broadly similar ChatGPT strategies. Individual usage patterns showed descriptive differences by grade, but none remained statistically significant after correcting for multiple comparisons. In contrast, diversity of ChatGPT usage, i.e., the number of distinct usage patterns adopted, was positively associated with performance, even after controlling for cybersecurity expertise. These exploratory findings suggest that the way students engage with ChatGPT may be more informative than whether they use it, and motivate future controlled studies to guide students toward effective LLM use in secure software engineering education.",
+      "authors": [
+        "Alessio Ferrari",
+        "Minh An Nguyen",
+        "Kushal Ramkumar",
+        "Liliana Pasquale"
+      ],
+      "categories": [
+        "cs.SE"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.11303",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11303",
+      "primary_category": "cs.SE",
+      "published": "2026-09-10T09:31:37Z",
+      "relevance_score": 6,
+      "title": "Exploring the Role of Security Experience and ChatGPT Usage Strategies on Secure Software Engineering Education",
+      "topics": [
+        "software-security",
+        "cyber-defense"
+      ],
+      "updated": "2026-09-10T09:31:37Z",
+      "url": "https://arxiv.org/abs/2609.11303",
+      "version": 1
+    },
+    {
+      "abstract": "We post-train Qwen3.8-27B for Korean response style -- verbosity, list and markdown usage, discourse structure and register -- and measure two behaviours the objective never targets: abstention on ambiguous social questions in KoBBQ, where the benchmark-correct answer is UNKNOWN, and unprompted disclosure in securities guidance. Both move, and the changes are expressed primarily through the model's emission policy: how often it answers and how much it says. Matched target-form controls show that answer propensity depends on the training target, not the prompt set or recipe alone. Holding prompts, recipe, data volume and serving fixed and changing only the target text, three style seeds give positive answer-rate point estimates (mean +0.82 pp) and three neutral seeds negative ones (mean -1.53 pp); the observed seed ranges do not overlap and the means differ by 2.34 pp. A length-matched arm lies between them, and a fourth arm that stays short while preserving hedging is unstable across seeds, so which feature of the form is responsible is unresolved. For absolute stereotyped exposure the decomposition into an answer-propensity term and a conditional-composition term is an algebraic identity, not a finding; its empirical content is where the movement went. Across the trained checkpoints the changes are dominated by answer propensity while the composition term stays small, and because that term is evaluated on treatment-dependent answered subsets we do not read it as evidence about latent preference. Two measurement results follow. A between-arm contrast in conditional stereotyped share does not identify a change in conditional content preference when answer status is treatment-dependent. And agreement between two rule detectors for the same construct runs from 0.44 to 0.99 depending on which checkpoint produced the text -- observable without any reference labels.",
+      "authors": [
+        "Hyojung Han"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": "19 pages. Korean-language evaluation (KoBBQ); all uncertainty estimates over KoBBQ items are clustered on the benchmark template",
+      "doi": null,
+      "id": "2609.11291",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11291",
+      "primary_category": "cs.AI",
+      "published": "2026-09-10T09:23:04Z",
+      "relevance_score": 6,
+      "title": "Off-Target Effects of Response-Style Alignment in a Korean 27B Language Model",
+      "topics": [
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-09-10T09:23:04Z",
+      "url": "https://arxiv.org/abs/2609.11291",
+      "version": 1
+    },
+    {
+      "abstract": "Privacy auditing provides empirical lower bounds on the differential privacy parameters of learning algorithms. Existing methods, however, require interventional access to the training pipeline, either to retrain models multiple times or to randomize data inclusion. This is often infeasible for large and opaque deployed systems such as foundation or language models. We introduce Zero-Run privacy auditing, a framework for auditing models post-hoc using two fixed datasets: examples known to be training-set members and examples known to be non-members. In this observational regime, membership is no longer randomized; instead, member and non-member data often differ in distribution, so membership inference scores may reflect a distribution shift rather than algorithmic leakage. Drawing on ideas from causal inference, we formalize this confounding effect and propose two complementary corrections that yield valid privacy audits. Our first approach models the combined effect of distribution shift and algorithmic leakage as an adaptive composition, producing conservative global corrections. Our second approach conditions on observed data and adjusts pointwise membership guesses, yielding sharper instance-dependent bounds. Experiments on synthetic data and large-scale image and text models show that Zero-Run auditing enables practical privacy evaluation when retraining or controlled data insertion is infeasible.",
+      "authors": [
+        "Tudor Cebere",
+        "Mathieu Even",
+        "Linus Bleistein",
+        "Aur\u00e9lien Bellet"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2605.14591",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2605.14591",
+      "primary_category": "cs.CR",
+      "published": "2026-05-14T09:00:56Z",
+      "relevance_score": 6,
+      "title": "Privacy Auditing with Zero (0) Training Run",
+      "topics": [
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-09-10T08:49:30Z",
+      "url": "https://arxiv.org/abs/2605.14591",
+      "version": 2
+    },
+    {
+      "abstract": "Retrieval-Augmented Generation (RAG) can ground large language model (LLM) outputs in external evidence, but it also exposes the system to knowledge poisoning. Representative attacks use multiple injected documents or templates that directly assert a target answer. We present ToxicRAG, a one-document-per-target attack that expresses misinformation as a coherent knowledge-update narrative. The generated document first acknowledges the previously accepted answer, introduces fabricated events that appear to invalidate it, and then attributes the attacker-selected answer to a set of purported authorities. An answer-focused self-validation loop optionally revises a candidate when a surrogate language model does not reproduce the target answer. We evaluate the attack on 100 target questions from each of Natural Questions, HotpotQA, and MS-MARCO, using four victim LLMs and four dense retrievers. In the sampled-corpus setting reported in this paper, ToxicRAG obtains ASRs between 0.61 and 0.91 across the twelve dataset--model combinations. It matches or exceeds the strongest evaluated baseline in every combination, with margins ranging from 0 to 11 percentage points. These results show that narrative-form poisoned documents can remain influential under the evaluated RAG configurations and motivate further study of factual consistency and source provenance in RAG systems.",
+      "authors": [
+        "Haozhe Lu",
+        "Jiaqi Li",
+        "Xinyuan Zhu",
+        "Xiang Li"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.11082",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11082",
+      "primary_category": "cs.CR",
+      "published": "2026-09-10T04:42:21Z",
+      "relevance_score": 6,
+      "title": "ToxicRAG: Compromising Retrieval-Augmented Generation Systems via Single-Shot Knowledge Poisoning Attacks",
+      "topics": [
+        "adversarial-ml"
+      ],
+      "updated": "2026-09-10T04:42:21Z",
+      "url": "https://arxiv.org/abs/2609.11082",
+      "version": 1
+    },
+    {
+      "abstract": "Decentralized Finance (DeFi) has emerged as a rapidly growing blockchain-based financial service, where market transaction dynamics and underlying smart contract logic are intricately intertwined. This autonomous interplay, while eliminating centralized intermediaries, significantly expands the vulnerability surface of DeFi protocols to Price Manipulation Attacks (PMAs), which have already inflicted catastrophic financial losses. Despite their gravity, existing detection paradigms suffer from fundamental limitations. Transaction-centric methods lack awareness of contract execution semantics, making them prone to false positives under legitimate market volatility, while static contract analyses ignore real transaction behaviors and frequently report vulnerabilities that are infeasible to exploit in practice. We present DeFiFusion, a dual-modal PMA detection framework that closes this gap by jointly modeling transaction events and smart contract semantics within a unified pipeline. Our core insight is that PMA maliciousness emerges only from the interaction between transaction behaviors and the contract logic they exploit; neither signal suffices in isolation. Accordingly, we derive price-manipulation-aware event encoding for extracting fine-grained temporal and economic features tailored to manipulation patterns. We further introduce LLM-based contract semantic extraction to supply the execution-logic context that prior behavioral methods lack. To fuse these modalities, we propose a Dual-Modal Projection-Fusion Transformer with T5-style relative positional encoding, capturing the cyclic multi-stage execution structures that distinguish PMAs from benign market activity. Extensive experiments demonstrate that DeFiFusion consistently achieves state-of-the-art detection performance, effectively recalling 222 of the 225 PMA cases while maintaining a precision of 96.10%.",
+      "authors": [
+        "Rui Cao",
+        "Shaojing Fan",
+        "Liming Fang",
+        "Yuchan Liu",
+        "Yingying Jiao",
+        "Zhenguang Liu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": "12 pages, 10 figures",
+      "doi": null,
+      "id": "2609.11008",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.11008",
+      "primary_category": "cs.CR",
+      "published": "2026-09-10T02:36:45Z",
+      "relevance_score": 6,
+      "title": "DeFiFusion: Combining Transaction Events with Smart Contracts to Detect Price Manipulation Attacks",
+      "topics": [
+        "software-security"
+      ],
+      "updated": "2026-09-10T02:36:45Z",
+      "url": "https://arxiv.org/abs/2609.11008",
+      "version": 1
+    },
+    {
+      "abstract": "The integration of Large Language Models into daily tasks relies on context-rich instructions, inevitably exposing sensitive user information. Current privacy-preserving methods typically employ context-agnostic static rules, causing severe utility degradation. However, the specific mechanisms governing how sanitization impacts downstream performance remain largely underexplored. To address this, we conduct a systematic analysis to deconstruct the privacy-utility trade-off, uncovering three underlying mechanisms: (1) Context-Dependent Utility, which first establishes when to sanitize by revealing that data value shifts from critical constraints to dispensable noise based on user intent; (2) Strategic Adaptation, which subsequently determines how to sanitize by dictating that the choice between removal and replacement depends on the task's reliance on factual integrity versus structural coherence; and (3) Combinatorial Interplay, which finally extends the protection scope by demonstrating that attributes form a semantic web of synergistic dependencies or antagonistic redundancies. Guided by these insights, we introduce an intent-driven local protection framework. By distilling a lightweight model Veilmind-4B to drive a dynamic extraction-sanitization-restoration pipeline, our approach reaches a low-leakage privacy point while preserving substantially higher response utility than existing privacy-oriented baselines, advancing the privacy-utility trade-off toward the Pareto frontier.",
+      "authors": [
+        "Zhenhua Liu",
+        "Zhanxu Xie",
+        "Junjie Yu",
+        "Tong Zhu",
+        "Lijun Li",
+        "Wenliang Chen"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.10992",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10992",
+      "primary_category": "cs.AI",
+      "published": "2026-09-10T02:12:51Z",
+      "relevance_score": 8,
+      "title": "Demystifying the Privacy-Utility Trade-off in LLM Interactions",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-09-10T02:12:51Z",
+      "url": "https://arxiv.org/abs/2609.10992",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models (LLMs) are increasingly used to generate and assist with software development, yet existing vulnerability datasets largely focus on human-written code or controlled prompting environments. This limits the ability to study security weaknesses in LLM-generated code as it appears in real-world software projects. We present LLMVul, a vulnerability-labeled dataset of LLM-generated C/C++ functions mined from real production repositories. We mine AI-assisted development activity from GitHub over a 4 year period, from November 13, 2022 to September 3, 2026, using provenance signals such as commit metadata and AI-related authorship evidence. After filtering and deduplication, LLMVul contains 21,430 unique C/C++ functions from 226 repositories, together with repository, commit, function, provenance, and AI-tool metadata. We establish vulnerability labels using an ensemble of complementary static-analysis and pattern-based techniques and assign Common Weakness Enumeration (CWE) categories to confirmed vulnerable functions. To assess labeling reliability, we additionally conduct independent manual annotation and measure inter-rater agreement using Cohen's kappa ($k=0.79$). LLMVul contains 1,540 ensemble-vulnerable functions spanning 17 unique CWE categories, providing substantially more real-world LLM-generated vulnerable C/C++ functions than existing vulnerability-oriented LLM code benchmarks. By preserving both code-level vulnerability labels and generation/provenance metadata, LLMVul enables reproducible research on vulnerability detection, security evaluation of LLM-generated code, and analysis of vulnerability patterns in AI-assisted software development. The LLMVul dataset is publicly available at https://doi.org/10.5281/zenodo.22668216.",
+      "authors": [
+        "Mohammad Farhad",
+        "Shuvalaxmi Dass"
+      ],
+      "categories": [
+        "cs.SE"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.10945",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10945",
+      "primary_category": "cs.SE",
+      "published": "2026-09-10T01:10:12Z",
+      "relevance_score": 6,
+      "title": "LLMVul: A Vulnerability-Labeled Dataset of LLM-Generated C/C++ Functions from Real Production Repositories",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-09-10T01:10:12Z",
+      "url": "https://arxiv.org/abs/2609.10945",
+      "version": 1
+    },
+    {
+      "abstract": "When an indirect prompt injection succeeds against an LLM agent, the compromise is visible in the agent's own behavior: a benign prefix of tool calls, a poisoned observation, and a suffix of actions that serve the attacker. An operator needs three facts: where the attack entered, which steps it corrupted, and whether apparent poison was resisted. Existing systems return either a whole-trace verdict or a single unsafe index. We present DriftNet, a dual-head trajectory Transformer that reads a logged tool-call trajectory and answers all three questions in one forward pass: one head classifies the trajectory as compromised or not, and a second assigns every step one of four labels (benign, injection point, hijacked, failed injection). To our knowledge it is the first supervised detector to produce this joint output. A frozen sentence encoder and four identity-free world features embed each step; the trained trunk, under two million parameters and optimized with a class-weighted joint objective over both heads, needs no access to the agent's model. On the task-disjoint split of the AgentDrift benchmark (12,536 trajectories, 71,024 labeled steps), with a 20-configuration sweep bounding hyperparameter sensitivity to 0.011 F1 and the test part evaluated exactly once, DriftNet reaches trajectory-level F1 of 0.983, exact injection-point recovery on 98.7% of attacked trajectories, hijacked-span IoU of 0.979, zero flags on 218 resisted attacks, and 2.9% flags on hard negatives. A surface baseline retrained on the identical split recovers 11.1% of partial hijacks and 17.1% of delayed executions; DriftNet reaches 98.6% and 93.2% while lowering every false-alarm rate. Reading all 26 residual errors shows that most misses trace to trajectories whose labeled injection observation carries no legible instruction, and we report the benchmark's measured world-identity regularity alongside the results.",
+      "authors": [
+        "Asif Pinjari",
+        "Mithun Paul Saint-Germain"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "15 pages, 8 figures, 11 tables. Companion detector paper to the AgentDrift benchmark (arXiv:2609.06972); dataset at https://github.com/Asif-0209/AgentDrift",
+      "doi": null,
+      "id": "2609.10892",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10892",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T22:52:23Z",
+      "relevance_score": 8,
+      "title": "DriftNet: A Dual-Head Trajectory Transformer for Detecting and Localizing Prompt Injection in LLM Agents",
+      "topics": [
+        "prompt-security",
+        "agent-security",
+        "evaluation"
+      ],
+      "updated": "2026-09-09T22:52:23Z",
+      "url": "https://arxiv.org/abs/2609.10892",
+      "version": 1
+    },
+    {
+      "abstract": "The Agent2Agent (A2A) protocol, now governed by the Linux Foundation, is an open standard that enables autonomous AI agents to discover, authenticate with, and delegate tasks to one another across organizational boundaries. Designed to complement the Model Context Protocol (MCP) for tool integration, A2A is rapidly emerging as the horizontal communication layer of the multi-agent ecosystem. Yet the protocol's security has received no systematic analysis. This paper presents A2ABreak, the first rigorous systematic security analysis of the A2A protocol. We introduce a novel framework that utilizes an LLM-assisted extraction of a verified finite-state machine directly from the natural-language specification, producing a unified model of 37 states and 76 transitions from 929 formalized statements, and then systematically reasons over this model to discover protocol-level vulnerabilities through adversarial verification, under a full-compliance assumption. Our analysis uncovers 11 new vulnerabilities, each exploitable by a specification-compliant adversary without requiring any implementation flaw. Among the findings are cross-client context injection through unprotected context identifiers, credential harvesting via multi-hop identity loss in delegation chains, and data exfiltration through rogue agents advertising unattested capability claims. A2ABreak achieves 73.3% precision and 84.6% F1 against independent expert review, while a zero-shot LLM baseline operating over the same specification produces zero confirmed findings, demonstrating that explicit formal grounding is essential for sound protocol security analysis.",
+      "authors": [
+        "Alireza Lotfi",
+        "Mirza Masfiqur Rahman",
+        "Imtiaz Karim",
+        "Elisa Bertino"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.10871",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10871",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T22:18:36Z",
+      "relevance_score": 6,
+      "title": "A2ABreak: Systematic Security Analysis of the A2A Protocol",
+      "topics": [
+        "agent-security",
+        "software-security"
+      ],
+      "updated": "2026-09-09T22:18:36Z",
+      "url": "https://arxiv.org/abs/2609.10871",
+      "version": 1
+    },
+    {
+      "abstract": "Conventional vulnerability analysis relies on either system access or dynamic interaction, all of which may be unavailable to third-party analysts auditing closed-source, remotely hosted, critical in situ systems, or commercially gated software. Therefore, we propose a new paradigm of no-box vulnerability analysis in which neither access nor runtime interaction is available, and only functionality metadata is available. Such metadata defines the intended behavior of the system, including its inputs, outputs, and side effects, while constraining the space of implementations consistent with that behavior. We propose hypothesizing about vulnerabilities that exist across all possible implementations of a given system metadata, without observing or interacting with the target system. An analyst can later validate these hypotheses when additional access is available. We showcase the feasibility of no-box vulnerability analysis through implementing a prototype called MCPSEC, which audits Model Context Protocol (MCP) servers for indirect prompt injection vulnerabilities using only the tool metadata exposed at server registration time. We evaluate MCPSEC on 20 widely deployed MCP servers comprising 177 tools, among which human evaluators confirm 95 vulnerable tools. MCPSEC identified 143 tools as vulnerable, and for each vulnerable tool, it produced a hypothesized vulnerability along with exploitation technique. Using metadata alone, MCPSEC predicted 94 (98.9% recall) real verified vulnerabilities, compared against an LLM baseline with 80 (84.2% recall). Overall, our results introduce no-box vulnerability analysis as a new analysis paradigm and demonstrate its practical feasibility in realistic systems.",
+      "authors": [
+        "Zehua Zhang",
+        "Jie Hu",
+        "Pratham Hegde",
+        "Aditya Maheshbhai Gabani",
+        "Souradip Nath",
+        "Yibo Liu",
+        "Siyu Liu",
+        "Hongkai Chen",
+        "Hulin Wang",
+        "Zhuoer Lyu",
+        "Chang Zhu",
+        "Divij Handa",
+        "Yan Shoshitaishvili",
+        "Tiffany Bao",
+        "Ruoyu Wang",
+        "Adam Doupe"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.10854",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10854",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T21:43:27Z",
+      "relevance_score": 6,
+      "title": "No-Box Vulnerability Analysis: Description-only Detection of Indirect Prompt Injection Vulnerabilities in MCP Servers",
+      "topics": [
+        "prompt-security",
+        "agent-security",
+        "software-security"
+      ],
+      "updated": "2026-09-09T21:43:27Z",
+      "url": "https://arxiv.org/abs/2609.10854",
+      "version": 1
+    },
+    {
+      "abstract": "Large language model (LLM) agents are increasingly applied to penetration testing, but we still know little about what they can do or how they fail. We compare two PentestGPT-based systems: a legacy human-in-the-loop system running the open-weight Kimi K2.5, and a newer autonomous system running Claude Opus 4.8. Across three public targets, the autonomous system solves all three, including the two the legacy system never finishes. The legacy result is the more surprising of the two. Even on the machines the legacy system fails to solve, it completes about half the subtasks, while running on ordinary university GPUs with no provider guardrails. We can describe the trend but not explain it, since model, harness, autonomy, and memory architecture all change together. Its direction still points to the next question: what will limit these agents as they take on more complex tasks? The usual answer is long-horizon memory, the loss of access to earlier findings during long attack chains. We test it by adding a coverage-memory layer to both systems, and neither improves outcomes. In the legacy stalled runs we could review, the limiting factor appeared to be planning and commitment rather than lost memory: agents held the evidence for a route forward and never turned it into a concrete exploitation hypothesis, which may suggest that offensive capability will advance with agents' ability to plan rather than with better memory. The same subtask scoring that tracks this capability is available to defenders, who can measure it as it rises instead of waiting to meet it in the field.",
+      "authors": [
+        "Victoria Lovelace",
+        "Cameron Berryman",
+        "Yuhan You",
+        "Suhas Reddy Adavelly",
+        "Joel Sadler",
+        "Daniel Graham"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "17 pages, 1 figure, 1 table",
+      "doi": null,
+      "id": "2609.10780",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10780",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T19:28:22Z",
+      "relevance_score": 6,
+      "title": "Big Enough to Break Out: Tracking the Rising Capability of LLM Penetration-Testing Agents",
+      "topics": [
+        "software-security"
+      ],
+      "updated": "2026-09-09T19:28:22Z",
+      "url": "https://arxiv.org/abs/2609.10780",
+      "version": 1
+    },
+    {
+      "abstract": "Advances in large language models (LLMs) fuel the quest for scalable methods to assess the security of generated and security-sensitive software. Static analysis is widely adopted as a scalable, reproducible, and inexpensive security gate, but cannot directly observe runtime exploit behaviour. Vulnerabilities dependent on adversarial inputs, execution context, or exploit chaining may evade static checks while remaining exploitable in practice, yet passing static analysis is often treated as evidence of secure behaviour. This paper introduces the Static-Pass Dynamic-Fail (SPDF) phenomenon and a three-stage agentic pipeline combining static scanning, LLM-driven Common Weakness Enumeration (CWE) reasoning, and autonomous exploit verification in isolated Docker containers. We evaluate 1,355 Python samples from SecurityEval, RedCode, and CyberNative datasets. Of the 654 samples producing no findings under the composite Bandit-Semgrep gate, the LLM detection stage identified 394 candidate vulnerabilities across 235 files. Dynamic verification confirmed or partially confirmed exploitability in 95 files, yielding an inclusive pipeline rate of 14.53% (roughly 1 in 7 statically clean samples). This rate represents the proportion of Bandit-Semgrep-clean samples for which the pipeline identified a candidate vulnerability and obtained runtime evidence supporting exploitability. Outcomes varied by dataset: among candidate file--CWE pairs, confirmed exploitability was 33.7% for RedCode, 28.6% for CyberNative, and 5.4% for SecurityEval. Several frequently confirmed classes, including CWE-338 and CWE-916, were flagged by neither Bandit nor Semgrep. These findings indicate that static-analysis success and runtime security are hierarchical layers of software assurance rather than interchangeable measures, and have the potential to reshape how AI-generated and security-sensitive code is evaluated.",
+      "authors": [
+        "Jessica Pourleyli",
+        "Maitreyee Das Urmi",
+        "Glaucia Melo"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": "Accepted at CASCON 2026",
+      "doi": null,
+      "id": "2609.10762",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10762",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T19:02:55Z",
+      "relevance_score": 8,
+      "title": "Beyond Static Guarantees: Measuring the Static-Pass Dynamic-Fail Gap in Security-Sensitive and LLM-Generated Python Code",
+      "topics": [
+        "agent-security",
+        "software-security"
+      ],
+      "updated": "2026-09-09T19:02:55Z",
+      "url": "https://arxiv.org/abs/2609.10762",
+      "version": 1
+    },
+    {
+      "abstract": "Autoregressive language models can be used to transform a payload text into a stegotext of identical token length by preserving per-position rank information across contexts - a methodology we formalize as Contextual Autoregressive Rank Transcoding Steganography (CARTS). While the Calgacus construction of Norelli et al. demonstrated this phenomenon experimentally, no formal security analysis existed. This paper provides the first rigorous treatment of CARTS. We show its exact correctness under deterministic model assumptions, introduce a rank-coordinate representation in which keys act as bijections on rank-vector space, define relevant security notions and the computational problems naturally associated with the construction - context search, key collisions, message equivocation, and non-commutativity of the encoding maps - and study the theoretical relationships between them, including the characterization of message equivocation in terms of context search, and the tension between key collisions and message equivocation. An empirical study on Llama 3 8B confirms exact recovery of the original payload in all tested cases, finds no key collisions under random key generation, establishes that a hand-crafted collision is local rather than global, and finds no commuting key pairs - suggesting resistance to the attack vectors studied. This work opens a formally grounded research agenda for the constructive use of language models in cryptography and privacy-preserving communication.",
+      "authors": [
+        "Wissam Ghantous",
+        "Alexander V. Mantzaris"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.10744",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10744",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T18:41:11Z",
+      "relevance_score": 4,
+      "title": "CARTS: Contextual Autoregressive Rank Transcoding Steganography for Full-Capacity Keyed Text Encoding",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-09-09T18:41:11Z",
+      "url": "https://arxiv.org/abs/2609.10744",
+      "version": 1
+    },
+    {
+      "abstract": "The integration of Large Language Models (LLMs) into Security Operations Centers (SOCs) streamlines threat intelligence but introduces critical vulnerabilities, notably indirect prompt injection via log poisoning. Adversaries exploit this vector to execute multistep ``promptware'' kill chains by embedding malicious payloads within system logs to hijack the LLM's operational logic. Securing this pipeline presents a dichotomy: deterministic defenses are computationally efficient yet semantically blind, while purely neural evaluations introduce prohibitive latency and probabilistic flaws. To address this, we propose a novel neurosymbolic defense-in-depth architecture that ensures end-to-end pipeline integrity. The primary layer employs customized SIEM decoders as a deterministic pre-filter, performing immediate structural sanitization to neutralize volumetric padding and signature-based injections at the ingestion edge. The secondary layer leverages NeMo Guardrails to enforce strict semantic boundaries through self-checking validation on the structured SIEM alerts prior to LLM processing. Furthermore, the framework integrates a closed-loop telemetry system, providing critical Human-in-the-Loop (HITL) visibility into thwarted attacks directly within the SOC dashboard. We present a comprehensive experimental evaluation mapped to the MITRE ATLAS taxonomy, assessing the framework against diverse prompt injections. Our results demonstrate that this synergistic approach effectively dismantles the promptware kill chain - bounding LLM stochasticity with verifiable constraints, and delivering a resilient, highly observable defense mechanism for next-generation AI-SOCs.",
+      "authors": [
+        "Anna Gazani",
+        "Spyridon Kounoupidis",
+        "Panagiotis Katsaros",
+        "Nikolaos Kekatos",
+        "Grigorios Tsoumakas",
+        "Georgios Koutidis"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "21 pages",
+      "doi": null,
+      "id": "2609.10707",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10707",
+      "primary_category": "cs.CR",
+      "published": "2026-09-09T18:03:41Z",
+      "relevance_score": 6,
+      "title": "Architecting the Secure AI-SOC: A Neurosymbolic Framework for Pipeline Integrity and Threat Mitigation",
+      "topics": [
+        "prompt-security",
+        "adversarial-ml",
+        "software-security",
+        "cyber-defense",
+        "evaluation"
+      ],
+      "updated": "2026-09-09T18:03:41Z",
+      "url": "https://arxiv.org/abs/2609.10707",
+      "version": 1
+    },
+    {
       "abstract": "Logic flaws pose significant challenges in the design and implementation of modern, semantically rich systems and applications, impacting security, privacy, and trust. These flaws are inherently tied to business-specific semantics and threat models, making their discovery and reasoning difficult and hard to scale. Real-world systems often exhibit diverse application features, complex protocol logic, and domain-specific threat models, necessitating substantial human effort and domain expertise for effective security analysis. In this paper, we introduce LL-Verifier, a novel, automated framework for identifying logic vulnerabilities built on (1) large language models for autonomous modeling, and (2) logic model checkers for rigorous reasoning. LL-Verifier processes natural language inputs, in particular protocol descriptions and security goals, to automatically generate formal logic models and properties expressed in a new logic language built on a generic logic language Maude, optimized for modeling arbitrary application-level semantics. These formal models are then converted into logical state machines, enabling exhaustive, rigorous verification through logic level model checking. This approach streamlines the analysis of diverse, application-level protocols deployed in real-world scenarios, offering automated, exhaustive, and precise reasoning within their logical constraints. We evaluated the high effectiveness, efficiency, and practicality of LL-Verifier by applying it to 27 access control protocols of widely used IoT devices, which come with vendor-specific logic flows and semantics. While LL-verifier tackles a hard problem in application security, i.e., automatic logic flaws discovery, our analysis uncovers a range of sophisticated logic vulnerabilities in IoT protocols and devices with serious security and privacy implications.",
       "authors": [
         "Yiwei Fang",
@@ -668,30 +1228,34 @@
       "version": 3
     },
     {
-      "abstract": "21 pages, 1 figure, 9 tables. v2: retracted the B6 tool-id score of 0.08 (v1) after finding 3 benchmark harness bugs; under the fixed harness every B6/B7 metric is 0.0. Fixed a LoRA LR bug and a checkpoint-load-order bug. Added a 9-field gate + linear probe. Reframed the NoPE ablation as open, confound quantified. Code/checkpoints on HF.",
+      "abstract": "In-context learning (ICL) jailbreaks reveal a critical vulnerability in multimodal large language models (MLLMs): harmful demonstrations in the prompt can induce unsafe outputs without modifying model parameters. Despite extensive empirical evidence, existing work lacks a principled understanding of why such jailbreaks reliably succeed or how their effectiveness scales with context composition. We propose a posterior reweighting framework that models a safety-aligned MLLM as implicitly operating over competing behavioral modes, and interprets in-context demonstrations as inference-time evidence that dynamically shifts the model's posterior preference between safe and harmful behaviors. This view formalizes jailbreak as a process of evidence accumulation, yielding predictive scaling laws with respect to demonstration count, harmful ratio, adversarial strength, and semantic diversity. Guided by this framework, we introduce a posterior-aware inference-time defense that adaptively injects benign counter-evidence based on estimated risk, effectively suppressing harmful posterior drift while preserving model utility. Compared to existing in-context defenses, our method achieves a significantly improved robustness-utility trade-off under a fixed intervention budget. Together, our results establish posterior reweighting as a unifying and predictive framework for understanding and mitigating ICL jailbreak in MLLMs.",
       "authors": [
-        "Juan S. Santillana"
+        "Xu Zhang",
+        "Dev Mistry",
+        "Xiang Xu",
+        "Ren Wang"
       ],
       "categories": [
-        "cs.CL"
+        "cs.CR",
+        "cs.LG"
       ],
-      "comment": "20 pages, 1 figure, 9 tables. v2: retracted the B6 tool-id score of 0.08 (v1) after finding 3 benchmark harness bugs; under the fixed harness every B6/B7 metric is 0.0. Fixed a LoRA LR bug and a checkpoint-load-order bug. Added a 9-field gate + linear probe. Reframed the NoPE ablation as open, confound quantified. Code/checkpoints on HF",
+      "comment": null,
       "doi": null,
-      "id": "2608.08477",
+      "id": "2609.10613",
       "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2608.08477",
-      "primary_category": "cs.CL",
-      "published": "2026-08-09T04:46:58Z",
-      "relevance_score": 6,
-      "title": "VectraYX-Vision-1B: A Sub-2B Spanish/LATAM Cybersecurity Vision-Language Model with Structured Visual Reasoning and Native Tool Use",
+      "pdf_url": "https://arxiv.org/pdf/2609.10613",
+      "primary_category": "cs.CR",
+      "published": "2026-09-08T15:26:43Z",
+      "relevance_score": 4,
+      "title": "Understanding In-Context Multimodal Jailbreaks via Posterior Reweighting",
       "topics": [
-        "agent-security",
-        "cyber-defense",
-        "evaluation"
+        "prompt-security",
+        "adversarial-ml",
+        "software-security"
       ],
-      "updated": "2026-09-08T16:03:15Z",
-      "url": "https://arxiv.org/abs/2608.08477",
-      "version": 2
+      "updated": "2026-09-08T15:26:43Z",
+      "url": "https://arxiv.org/abs/2609.10613",
+      "version": 1
     },
     {
       "abstract": "Software supply chain security has become increasingly critical due to the widespread reliance on third-party dependencies and the growing attack surface of modern software ecosystems. However, existing quantitative, measurement-based analysis and vulnerability management approaches remain largely fragmented and ecosystem-specific, limiting their ability to provide comparable risk assessments across environments. This paper presents a structured research plan, starting with a Systematization of Knowledge (SoK) to synthesize the current state of research and identify key gaps, highlighting the limitations in dependency modeling and vulnerability propagation analysis, particularly in the treatment of transitive dependencies and their real-world exploitability. Based on these insights, we argue for a unified measurement perspective capable of consistently representing and analyzing the cross-ecosystem dependency structure. We further identify emerging challenges introduced by AI-assisted software development, where coding LLMs are likely to contribute to new dependency patterns that are not captured by traditional Software Composition Analysis (SCA) tools. These shifts motivate a rethink of dependency modeling to account for evolving software-generation practices and their long-term structural impact on software security.",
@@ -775,6 +1339,34 @@
       ],
       "updated": "2026-09-08T14:01:22Z",
       "url": "https://arxiv.org/abs/2609.08765",
+      "version": 1
+    },
+    {
+      "abstract": "Membership inference attacks (MIAs) have emerged as critical tools for auditing privacy risks in large language models (LLMs), aiming to determine whether a given text was included in a model's training corpus. However, most existing MIAs require access to per-token logits or probabilities, making them inapplicable in practice to proprietary LLMs that expose only textual continuations. To address this underexplored setting, we propose Word-level Probability MIA (WPMIA), a statistically principled MIA for strict black-box privacy auditing. WPMIA estimates word-level generation probabilities via Monte Carlo sampling with local kernel smoothing, then aggregates these estimates into a sequence-level likelihood estimator. Furthermore, WPMIA constructs the likelihood conditioned on different prefixes, thereby amplifying the distributional differences between members and non-members. We evaluate WPMIA across various open-source LLMs and find that it consistently outperforms existing black-box baselines. Importantly, we also evaluate WPMIA on modern proprietary LLMs, including GPT-5-Chat, Gemini-2.5-Flash, and Claude-4.5-Haiku, achieving an average TPR@5\\%FPR of 42.0 across these models. These results offer a sound foundation for future research on strict black-box membership inference. Code is available at \\href{https://github.com/niusj03/WPMIA}{https://github.com/niusj03/WPMIA}.",
+      "authors": [
+        "Shengjie Niu",
+        "Yeheng Ge",
+        "Jian Huang"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.LG",
+        "stat.ML"
+      ],
+      "comment": "17 pages, 5 figures, and 17 tables",
+      "doi": null,
+      "id": "2609.10611",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10611",
+      "primary_category": "cs.CR",
+      "published": "2026-09-08T13:15:21Z",
+      "relevance_score": 4,
+      "title": "Black-Box Membership Inference via Word-Level Probability Estimation",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-09-08T13:15:21Z",
+      "url": "https://arxiv.org/abs/2609.10611",
       "version": 1
     },
     {
@@ -1552,6 +2144,32 @@
       "updated": "2026-09-07T03:32:59Z",
       "url": "https://arxiv.org/abs/2504.08192",
       "version": 2
+    },
+    {
+      "abstract": "Expert evaluation of jailbreak responses is costly and difficult to scale, so the community increasingly relies on automated evaluators to determine whether an attack succeeds. However, jailbreak studies typically validate their chosen evaluator independently, repeatedly spending resources on similar evaluation efforts while making results across papers difficult to compare. Different evaluators also encode different definitions of jailbreak success, meaning that reported attack strength and apparent progress can depend substantially on which evaluator is used. We systematically compare six evaluators that recur in recent jailbreak attack and defense research: HarmBench, JailbreakBench, JailbreakRadar, StrongReject, JADES, and JailMeter. To our knowledge, no prior study has evaluated all six on the same human-labeled data under a controlled setup. We evaluate them on JailbreakQR and JailMeter-Eva, using human judgments as the reference, and measure agreement with humans, error types, and consistency across attack families. For evaluators that require a general-purpose LLM judge, we use a shared backbone to control for model-specific variation. We found that JADES exhibits the best overall performance, while HarmBench and StrongReject also demonstrate good performance.",
+      "authors": [
+        "Yujie Mu"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "12 pages",
+      "doi": null,
+      "id": "2609.10594",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.10594",
+      "primary_category": "cs.CR",
+      "published": "2026-09-07T03:16:25Z",
+      "relevance_score": 6,
+      "title": "An Empirical Measurement of Jailbreaking Evaluators",
+      "topics": [
+        "prompt-security",
+        "evaluation"
+      ],
+      "updated": "2026-09-07T03:16:25Z",
+      "url": "https://arxiv.org/abs/2609.10594",
+      "version": 1
     },
     {
       "abstract": "LLM agents complete tasks by issuing sequences of tool calls, and every observation they read is a channel through which an indirect prompt injection can enter. A successful injection has a characteristic shape when the trajectory is read in order: a benign prefix gives way to actions that serve the attacker rather than the user. Existing benchmarks measure whether such attacks succeed against live agents, and existing guard models judge a trace as a whole; no public corpus labels, step by step, where an injection enters a trajectory and which steps it corrupts. We present AgentDrift, a benchmark of 12,536 synthetic tool-call trajectories over five agent domains in which every one of the 71,024 steps carries one of four labels: benign, injection point, hijacked, or failed injection. The corpus contains 4,000 benign, 5,536 attacked, 1,500 failed-attack, and 1,500 hard-negative trajectories; attacked trajectories follow three compliance patterns whose label strings obey a stated regular grammar. Failed attacks carry an injection the agent resisted, and hard negatives carry legitimate content that resembles an attack, so a detector must separate attempt from success and deviation from novelty. Trajectories were generated by a single open model under category-specific protocols, enforced by a closed-vocabulary structural validator, screened by an LLM judge, and audited by hand on 1,200 trajectories; we show that the LLM judge was itself fooled by the hard negatives. A surface-feature logistic regression recovers only 55.4% of attacks (F1 0.647), including only 8.2% of partial hijacks and 23.1% of delayed executions, so nearly half of the attacks require modeling the behavioral sequence. We measure template concentration, attack-goal-family collapse, and world-identity leakage in the generated data, and release the corpus with its documentation under CC BY 4.0.",
@@ -3946,41 +4564,6 @@
       "updated": "2026-09-02T14:00:29Z",
       "url": "https://arxiv.org/abs/2512.16310",
       "version": 4
-    },
-    {
-      "abstract": "Large language models (LLMs) are increasingly used for hate speech moderation, often within human--AI workflows in which reviewers provide feedback before a final decision. Such feedback introduces two manipulation directions: whitewashing hateful content as normal and smearing normal content as hateful. This study examines the susceptibility of initially correct model judgments to annotator-style rebuttals and analyzes whether attack effectiveness differs across manipulation directions. We introduce a rejudge protocol that extends direct contradiction with decision-boundary perturbations and adversarial rationales. Experiments with multiple LLMs on two hate speech datasets show that annotator-style rebuttals substantially degrade moderation performance, with stronger effects in multi-turn settings. The results further reveal stable, model-specific asymmetries between whitewashing and smearing across attack configurations, indicating distinct directional vulnerability patterns. Explicit reasoning prompts and defensive instructions reduce these effects but do not eliminate them. These findings highlight the need for direction-aware safeguards and dedicated feedback-robustness evaluation in human--AI moderation workflows.",
-      "authors": [
-        "Junyu Lu",
-        "Kaiyuan Liu",
-        "Jingyi Kang",
-        "Deyi Ji",
-        "Hailong Zhang",
-        "Lanyun Zhu",
-        "Qi Zhu",
-        "Bo Xu",
-        "Liang Yang",
-        "Hongfei Lin"
-      ],
-      "categories": [
-        "cs.CL"
-      ],
-      "comment": "We identified errors in the experimental setup and analysis that affect several key results and conclusions. As substantial re-analysis is required and the conclusions may change, we respectfully request withdrawal of the current version",
-      "doi": null,
-      "id": "2608.22230",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2608.22230",
-      "primary_category": "cs.CL",
-      "published": "2026-08-23T05:59:25Z",
-      "relevance_score": 6,
-      "title": "Whitewashing Hate, Smearing Harmless Content: Annotator-Style Rebuttal Attacks on LLM-Based Moderation",
-      "topics": [
-        "adversarial-ml",
-        "software-security",
-        "evaluation"
-      ],
-      "updated": "2026-09-02T13:48:49Z",
-      "url": "https://arxiv.org/abs/2608.22230",
-      "version": 2
     },
     {
       "abstract": "Reusable agent skills extend large language model (LLM) agents with task procedures, tool-use guidance, and output constraints. Yet these skills also act as externalized behavioral policies, which create a supply-chain risk: a third-party skill may preserve the declared task and valid output interface while covertly redirecting agent decisions toward an undisclosed objective. We formalize Skill Policy Integrity, which requires a Skill-induced policy to remain aligned with its declared functionality and the user-authorized objective. We further present SkillShift, a constrained black-box framework for covert policy steering without explicit target command injection or task hijacking. It combines semantically plausible policy edits with hierarchical validation, failure-guided optimization, and strategy compression to preserve effectiveness, output validity, transferability, and inconspicuousness. We instantiate this threat in agentic commerce and software dependency use, with SkillShift achieving attacker-favored selection rates of 81.33% and 63.33% while maintaining a 100% utility-preserving rate. The frozen policies also transfer without further optimization across heterogeneous LLM backends and agent environments. Moreover, the evaluated scanners fail to detect the constructed skills, motivating behavioral auditing of reusable skills as agent policy artifacts.",
