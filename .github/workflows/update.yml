@@ -19,7 +19,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     permissions:
       contents: write
       pages: write
@@ -40,7 +40,19 @@ jobs:
       - name: Collect and render papers
         env:
           MAX_RESULTS: ${{ inputs.max_results || '500' }}
-        run: python3 scripts/collect.py --max-results "$MAX_RESULTS"
+        run: |
+          # arXiv's edge intermittently 406s shared CI egress IPs; each pass
+          # opens new connections and may leave through a different address.
+          for attempt in 1 2 3; do
+            if python3 scripts/collect.py --max-results "$MAX_RESULTS"; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning:: arXiv collection attempt $attempt failed; retrying in 2 minutes"
+              sleep 120
+            fi
+          done
+          exit 1
 
       - name: Validate generated data
         run: |
@@ -80,7 +92,17 @@ jobs:
           python3 -m unittest discover -s tests -v
           node --check docs/app.mjs
           node --test tests/site.test.mjs
-          python3 scripts/collect.py --max-results "$MAX_RESULTS"
+          for attempt in 1 2 3; do
+            if python3 scripts/collect.py --max-results "$MAX_RESULTS"; then
+              break
+            fi
+            if [ "$attempt" -lt 3 ]; then
+              echo "::warning:: arXiv collection attempt $attempt failed; retrying in 2 minutes"
+              sleep 120
+            else
+              exit 1
+            fi
+          done
           python3 -m unittest discover -s tests -v
           python3 scripts/collect.py --render-only
           git diff --check
