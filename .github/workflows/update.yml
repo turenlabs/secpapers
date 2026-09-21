@@ -3,6 +3,7 @@ name: Update papers
 on:
   schedule:
     - cron: "17 6 * * *"
+    - cron: "17 18 * * *"
   workflow_dispatch:
     inputs:
       max_results:
@@ -19,7 +20,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 40
     permissions:
       contents: write
       pages: write
@@ -41,15 +42,16 @@ jobs:
         env:
           MAX_RESULTS: ${{ inputs.max_results || '500' }}
         run: |
-          # arXiv's edge intermittently 406s shared CI egress IPs; each pass
-          # opens new connections and may leave through a different address.
-          for attempt in 1 2 3; do
+          # arXiv's edge intermittently 406s shared CI egress IPs in windows
+          # that can last tens of minutes; each pass opens new connections and
+          # may leave through a different address.
+          for attempt in 1 2 3 4; do
             if python3 scripts/collect.py --max-results "$MAX_RESULTS"; then
               exit 0
             fi
-            if [ "$attempt" -lt 3 ]; then
-              echo "::warning:: arXiv collection attempt $attempt failed; retrying in 2 minutes"
-              sleep 120
+            if [ "$attempt" -lt 4 ]; then
+              echo "::warning:: arXiv collection attempt $attempt failed; retrying in 4 minutes"
+              sleep 240
             fi
           done
           exit 1
@@ -92,13 +94,13 @@ jobs:
           python3 -m unittest discover -s tests -v
           node --check docs/app.mjs
           node --test tests/site.test.mjs
-          for attempt in 1 2 3; do
+          for attempt in 1 2 3 4; do
             if python3 scripts/collect.py --max-results "$MAX_RESULTS"; then
               break
             fi
-            if [ "$attempt" -lt 3 ]; then
-              echo "::warning:: arXiv collection attempt $attempt failed; retrying in 2 minutes"
-              sleep 120
+            if [ "$attempt" -lt 4 ]; then
+              echo "::warning:: arXiv collection attempt $attempt failed; retrying in 4 minutes"
+              sleep 240
             else
               exit 1
             fi
