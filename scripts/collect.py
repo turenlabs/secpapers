@@ -24,7 +24,11 @@ ARXIV = "{http://arxiv.org/schemas/atom}"
 OPEN_SEARCH = "{http://a9.com/-/spec/opensearch/1.1/}"
 USER_AGENT = "secpapers/1.0 (+https://github.com/turenlabs/secpapers)"
 MAX_FEED_BYTES = 8 * 1024 * 1024
+MAX_FETCH_ATTEMPTS = 10
 MAX_RETRY_DELAY_SECONDS = 60
+# arXiv's edge answers shared CI egress IPs with 406 blocks; each retry opens a
+# new connection and may leave through a different address.
+RETRYABLE_HTTP_CODES = {406, 429}
 ALLOWED_ARXIV_HOSTS = {"arxiv.org", "export.arxiv.org"}
 ARXIV_ID = re.compile(r"(?:\d{4}\.\d{4,5}|[a-z][a-z0-9.-]*/\d{7})", re.IGNORECASE)
 
@@ -101,7 +105,16 @@ def fetch_papers(config: dict, max_results: int) -> list[dict]:
         request = urllib.request.Request(
             f"{config['api_url']}?{query}", headers={"User-Agent": USER_AGENT}
         )
-        page = fetch_with_retries(request, config["request_delay_seconds"])
+        try:
+            page = fetch_with_retries(request, config["request_delay_seconds"])
+        except RuntimeError:
+            if not papers:
+                raise
+            print(
+                "::warning:: arXiv pagination stopped early; "
+                "keeping partial results"
+            )
+            break
         papers.extend(page)
         if len(page) < min(batch_size, max_results - start):
             break
@@ -111,7 +124,7 @@ def fetch_papers(config: dict, max_results: int) -> list[dict]:
 
 def fetch_with_retries(request: urllib.request.Request, delay: float) -> list[dict]:
     last_error = None
-    for attempt in range(3):
+    for attempt in range(MAX_FETCH_ATTEMPTS):
         try:
             with urllib.request.urlopen(request, timeout=45) as response:
                 validate_response_url(response.geturl())
@@ -122,10 +135,10 @@ def fetch_with_retries(request: urllib.request.Request, delay: float) -> list[di
                     )
                 return parse_feed(payload)
         except urllib.error.HTTPError as error:
-            if error.code != 429 and error.code < 500:
+            if error.code not in RETRYABLE_HTTP_CODES and error.code < 500:
                 raise RuntimeError(f"arXiv request failed with HTTP {error.code}") from error
             last_error = error
-            if attempt < 2:
+            if attempt + 1 < MAX_FETCH_ATTEMPTS:
                 retry_after = error.headers.get("Retry-After") if error.headers else None
                 time.sleep(
                     min(float(retry_after), MAX_RETRY_DELAY_SECONDS)
@@ -140,10 +153,12 @@ def fetch_with_retries(request: urllib.request.Request, delay: float) -> list[di
             ET.ParseError,
         ) as error:
             last_error = error
-            if attempt < 2:
+            if attempt + 1 < MAX_FETCH_ATTEMPTS:
                 time.sleep(delay * (attempt + 1))
 
-    raise RuntimeError(f"failed to fetch arXiv after 3 attempts: {last_error}") from last_error
+    raise RuntimeError(
+        f"failed to fetch arXiv after {MAX_FETCH_ATTEMPTS} attempts: {last_error}"
+    ) from last_error
 
 
 def validate_response_url(value: str) -> None:

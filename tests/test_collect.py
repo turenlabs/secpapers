@@ -4,6 +4,7 @@ import io
 import json
 import tempfile
 import unittest
+import urllib.error
 import urllib.request
 from pathlib import Path
 from unittest.mock import patch
@@ -112,6 +113,32 @@ class CollectorTest(unittest.TestCase):
 
         self.assertEqual(len(papers), 2)
         self.assertEqual(attempts, 2)
+
+    def test_http_406_block_is_retried(self):
+        valid = (ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes()
+        blocked = urllib.error.HTTPError(
+            "https://export.arxiv.org/api/query", 406, "Not Acceptable", {}, None
+        )
+        papers, attempts = self.fetch_responses([blocked, FeedResponse(valid)])
+
+        self.assertEqual(len(papers), 2)
+        self.assertEqual(attempts, 2)
+
+    def test_unretryable_http_error_raises_immediately(self):
+        missing = urllib.error.HTTPError(
+            "https://export.arxiv.org/api/query", 404, "Not Found", {}, None
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "HTTP 404"):
+            self.fetch_responses([missing])
+
+    def test_exhausted_retries_report_attempt_count(self):
+        blocked = urllib.error.HTTPError(
+            "https://export.arxiv.org/api/query", 429, "Too Many Requests", {}, None
+        )
+
+        with self.assertRaisesRegex(RuntimeError, "after 10 attempts"):
+            self.fetch_responses([blocked] * 10)
 
     def test_rejects_redirect_to_untrusted_host(self):
         valid = (ROOT / "tests" / "fixtures" / "arxiv-feed.xml").read_bytes()
