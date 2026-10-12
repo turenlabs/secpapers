@@ -1,6 +1,522 @@
 {
   "papers": [
     {
+      "abstract": "Personal agents increasingly connect to services across the web and applications by using tools. As the effects of their actions accumulate and interact across services, unintended or harmful outcomes can arise when agents fulfill benign user requests. Proactively identifying these compositional failures requires systematically exploring diverse cross-service paths. Existing red-teaming methods often simply prompt LLMs to identify potentially harmful paths from task and environment descriptions or decompose harmful objectives specified by humans or LLMs into seemingly benign action combinations. However, generation is biased toward patterns learned during training, potentially favoring familiar tool combinations and leaving novel cross-service interactions underexplored. To address this, we propose X-AgentRed, a self-evolving red-teaming framework that discovers harmful tool call paths through a graph of tool dependencies and expands and refines them using execution feedback. By analyzing each tool's effects, potential harms, and preconditions for execution, the red-teaming agent constructs a directed graph that captures how one tool's effects can satisfy another's execution preconditions. Recipes sampled from this graph are instantiated as realistic scenarios in which agents can produce harmful outcomes. Execution feedback enables self-improvement by diversifying paths that produce harm through tool substitution and refining preconditions at blocked steps in unsuccessful paths to enable further execution. Across four frontier agentic models, X-AgentRed achieves $1.77\\times$ the harmful path rate of STAC and explores a more diverse set of tools, yielding $2.99\\times$ the tool coverage on average.",
+      "authors": [
+        "Yeonsung Jung",
+        "Zhiyuan Wang",
+        "Zifan Wang",
+        "V\u00edtor Albiero",
+        "Benjamin Newman",
+        "Edoardo Debenedetti",
+        "Ivan Evtimov",
+        "Ninareh Mehrabi"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": "18 pages. Project page: https://yeonsungjung.github.io/projects/x-agentred/",
+      "doi": null,
+      "id": "2610.13886",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.13886",
+      "primary_category": "cs.AI",
+      "published": "2026-10-09T17:34:44Z",
+      "relevance_score": 4,
+      "title": "X-AgentRed: Red-Teaming Personal Agents in Evolving Multi-Service Ecosystems",
+      "topics": [
+        "agent-security",
+        "evaluation"
+      ],
+      "updated": "2026-10-09T17:34:44Z",
+      "url": "https://arxiv.org/abs/2610.13886",
+      "version": 1
+    },
+    {
+      "abstract": "Indirect prompt injection attacks exploit a fundamental weakness of LLMs: executing unauthorized tasks from untrusted sources. Despite the practical significance of this attack vector, existing benchmarks rely on small sets of template-based attacks (100-1,000 examples) that fail to capture the diversity and adaptiveness of real-world adversaries. Consequently, benchmarks are saturated and overfit to static attacks. We introduce LLMail-Inject, a large-scale benchmark of 208,095 distinct human-written attack prompts collected through a public red-teaming challenge with 839 participants. LLMail-Inject evaluates the attack's complete chain of execution: prompts must be retrieved from an email database, evade production-level defenses, and trigger unauthorized tool calls with correct arguments. Evaluation reveals that models that achieve 5% attack success rate (ASR) on existing benchmarks fail more on LLMail-Inject: Meta SecAlign--specifically trained against prompt injection--still yields 32% ASR, GPT-4o exhibits 58% ASR, and GPT-5 mini 47% ASR. We further demonstrate that attacks transfer across domains, achieving 37% ASR on proof-of-concept coding tasks and 28-45% ASR on file management tasks. We release our challenge platform and curated evaluation subsets at multiple difficulty tiers and the full dataset with rich annotations.",
+      "authors": [
+        "Sahar Abdelnabi",
+        "Aideen Fay",
+        "Ahmed Salem",
+        "Egor Zverev",
+        "Kai-Chieh Liao",
+        "Chi-Huang Liu",
+        "Chun-Chih Kuo",
+        "Jannis Weigend",
+        "Danyael Manlangit",
+        "Alex Apostolov",
+        "Haris Umair",
+        "Jo\u00e3o Donato",
+        "Masayuki Kawakita",
+        "Athar Mahboob",
+        "Tran Huu Bach",
+        "Tsun-Han Chiang",
+        "Myeongjin Cho",
+        "Hajin Choi",
+        "Byeonghyeon Kim",
+        "Hyeonjin Lee",
+        "Benjamin Pannell",
+        "Conor McCauley",
+        "Mark Russinovich",
+        "Andrew Paverd",
+        "Giovanni Cherubin"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "Dataset at: https://huggingface.co/datasets/microsoft/llmail-inject-challenge. Accepted at EMNLP 2026 (Findings)",
+      "doi": null,
+      "id": "2506.09956",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2506.09956",
+      "primary_category": "cs.CR",
+      "published": "2025-06-11T17:30:07Z",
+      "relevance_score": 6,
+      "title": "LLMail-Inject: A Dataset from a Realistic Adaptive Prompt Injection Challenge",
+      "topics": [
+        "prompt-security",
+        "evaluation"
+      ],
+      "updated": "2026-10-09T16:01:12Z",
+      "url": "https://arxiv.org/abs/2506.09956",
+      "version": 2
+    },
+    {
+      "abstract": "Large language models (LLMs) are increasingly deployed as agents that interact with external software through tools, with an orchestration layer translating model outputs into structured tool invocations. This architecture creates an LLM-orchestrator-tool trust boundary where tool semantics may go unenforced and LLM-generated arguments may be incorrectly treated as trusted. We present ToFu, a tool-aware framework that automatically derives semantic security checks for LLM tools from their existing metadata and a CWE-guided sanitizer corpus. ToFu specializes these checks to individual tools and automatically generates fuzzing harnesses and semantic oracles using runtime introspection and outcome sanitization. We evaluated ToFu across 273 MCP servers containing 3405 tools and identified verified bugs corresponding to CWE weakness classes in 343 tools across 118 of the servers. Our findings show that real-world tools frequently fail to enforce their documented input semantics, making it unsafe to treat LLM-generated arguments as trusted.",
+      "authors": [
+        "Md Nazmul Islam Ananto",
+        "Pierre Prevost-Avenel",
+        "Colin Smith",
+        "Kyungtae Kim",
+        "Taegyu Kim",
+        "Arslan Khan"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "33 pages, 4 figures, 16 tables. Evaluates 273 open-source MCP servers (3405 tools); 253 verified semantic security bugs in 118 servers. Appendices include a case study, a Repeat-After-Me transcript on LangGraph, the full sanitizer corpus, the list of evaluated repositories, and the verbatim LLM prompts",
+      "doi": null,
+      "id": "2610.13651",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.13651",
+      "primary_category": "cs.CR",
+      "published": "2026-10-09T14:27:32Z",
+      "relevance_score": 6,
+      "title": "ToFu: Exploiting and Fuzzing the LLM-Orchestrator-Tool Trust Boundary",
+      "topics": [
+        "agent-security"
+      ],
+      "updated": "2026-10-09T14:27:32Z",
+      "url": "https://arxiv.org/abs/2610.13651",
+      "version": 1
+    },
+    {
+      "abstract": "Recent advances in large language models (LLMs) have enabled agent-based approaches for repository-level automated vulnerability repair (AVR), showing promising repair capabilities. However, an important issue has received limited attention: how can we ensure that the evidence generated during the repair process is reliable enough to support accurate vulnerability understanding and patch generation? In this paper, we propose EviRepair, an evidence-driven multi-agent framework for repository-level AVR. EviRepair introduces evidence review into the repair process by enabling agents to collaboratively collect vulnerability evidence, verify evidence consistency, and construct a reviewed vulnerability model for patch synthesis and validation. Extensive experiments on PatchEval and SecBench benchmarks with multiple agent frameworks and LLMs demonstrate that EviRepair consistently outperforms existing agent-based baselines, achieving average improvements of 16.37% and 40.33% in resolved rates on PatchEval and SecBench, respectively. Codes are available at https://github.com/lly-s/EviRepair",
+      "authors": [
+        "Yilian Shi",
+        "Qingyu Liu",
+        "Tianyi Zhou",
+        "Wende Tan",
+        "Chenyang Si",
+        "Yueming Lyu",
+        "Xia Hu",
+        "Dongrui Liu"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.13491",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.13491",
+      "primary_category": "cs.CR",
+      "published": "2026-10-09T12:22:43Z",
+      "relevance_score": 6,
+      "title": "EviRepair: Evidence-Driven Agents for Reliable Vulnerability Repair",
+      "topics": [
+        "agent-security",
+        "software-security"
+      ],
+      "updated": "2026-10-09T12:22:43Z",
+      "url": "https://arxiv.org/abs/2610.13491",
+      "version": 1
+    },
+    {
+      "abstract": "Large language model (LLM) agents are highly vulnerable to memory-poisoning attacks. Existing defenses primarily rely on external modules for either static memory isolation or continuous online auditing, resulting in low memory efficiency and high computational overhead. To address these limitations, inspired by neuroscientific mechanisms that weak reactivation can destabilize memories and induce decay in the absence of reinforcement, we propose an agent-intrinsic training-free memory repair framework, DREAM (Dynamic Reactivation for Engram Attenuation in Memory), that enables selective functional forgetting of poisoned memories. Specifically, DREAM implements a three-stage pipeline: perturbation-induced implicit reactivation to reveal the structural fragility of malicious memories, adaptive anomaly diagnosis based on multi-dimensional activation patterns to detect topological anomalies, and a dynamic memory repair module that selectively suppresses harmful memories while reinforcing benign ones. Extensive experiments across diverse attackers and real-world tasks demonstrate that DREAM reduces attack success rates by over 95\\% against backdoor poisoning while preserving strong benign utility. DREAM also achieves competitive robustness against injection attacks. In terms of runtime and token consumption, DREAM achieves up to a 2.13$\\times$ speedup and a 37.7\\% reduction in token consumption compared with A-MemGuard. Furthermore, DREAM also achieves a task success rate of 92.96\\% on poisoned multi-agent systems.",
+      "authors": [
+        "Lei Liu",
+        "Yunji Liang",
+        "Xiaowen Zhang",
+        "Jingqi Liu",
+        "Qi Li",
+        "Bin Guo",
+        "Zhiwen Yu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.13267",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.13267",
+      "primary_category": "cs.AI",
+      "published": "2026-10-09T09:17:00Z",
+      "relevance_score": 4,
+      "title": "Forgetting is Not Always Bad: A Neuro-Inspired Memory Repair Mechanism for Poisoned LLM Agents",
+      "topics": [
+        "agent-security",
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-09T09:17:00Z",
+      "url": "https://arxiv.org/abs/2610.13267",
+      "version": 1
+    },
+    {
+      "abstract": "As Large Language Models (LLMs) evolve into autonomous agents, existing safety evaluations face a fundamental trade-off: manual benchmarks are costly, while LLM-based simulators are scalable but suffer from logic hallucination. We present AutoControl Arena, an automated framework for frontier AI risk evaluation built on the principle of logic-narrative decoupling. By grounding deterministic state in executable code while delegating generative dynamics to LLMs, we mitigate hallucination while maintaining flexibility. This principle, instantiated through a three-agent framework, achieves over 98% end-to-end success and 60% human preference over existing simulators. To elicit latent risks, we vary environmental Stress and Temptation across X-Bench (70 scenarios, 7 risk categories). Evaluating 9 frontier models reveals: (1) Alignment Illusion: risk rates surge from 21.7% to 54.5% under pressure, with capable models showing disproportionately larger increases; (2) Scenario-Specific Safety Scaling: advanced reasoning improves robustness for direct harms but worsens it for gaming scenarios; and (3) Divergent Misalignment Patterns: weaker models cause non-malicious harm while stronger models develop strategic concealment. Code and data are available at https://github.com/CosmosYi/AutoControl-Arena.",
+      "authors": [
+        "Changyi Li",
+        "Pengfei Lu",
+        "Xudong Pan",
+        "Fazl Barez",
+        "Min Yang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "Accepted at the 43rd International Conference on Machine Learning (ICML 2026). Project page: https://cosmosyi.github.io/AutoControl-Arena/. Code: https://github.com/CosmosYi/AutoControl-Arena",
+      "doi": null,
+      "id": "2603.07427",
+      "journal_ref": "Proceedings of the 43rd International Conference on Machine Learning, PMLR 306, 2026",
+      "pdf_url": "https://arxiv.org/pdf/2603.07427",
+      "primary_category": "cs.AI",
+      "published": "2026-03-08T02:49:45Z",
+      "relevance_score": 4,
+      "title": "AutoControl Arena: Synthesizing Executable Test Environments for Frontier AI Risk Evaluation",
+      "topics": [
+        "safety",
+        "adversarial-ml",
+        "evaluation"
+      ],
+      "updated": "2026-10-09T08:53:10Z",
+      "url": "https://arxiv.org/abs/2603.07427",
+      "version": 3
+    },
+    {
+      "abstract": "With the rapid development of blockchain technology, numerous heterogeneous blockchains have emerged, each featuring distinct architectures, consensus mechanisms, and application ecosystems. Cross-chain bridges have consequently become a critical infrastructure component, typically relying on smart contracts to facilitate message passing and asset transfers across heterogeneous blockchains. Unlike single-chain contracts, bridge contracts introduce additional verification logic to validate external-chain data, such as state proofs, message sender identities, and signatures. However, correctly implementing such logic is challenging. We refer to vulnerabilities that violate the security guarantees of cross-chain verification as Cross-chain Verification Vulnerabilities (CVVs). To characterize CVVs, we conduct the first systematic empirical study of this vulnerability class. By analyzing 588 security audit reports from 36 real-world cross-chain bridge projects, we derive 11 CVV patterns and organize them into 5 high-level categories according to the affected verification properties. Following this taxonomy, we construct a CVV dataset containing 830 vulnerability instances across 786 contract files. The dataset establishes mappings among audit reports, audited source-code versions, affected source files, and CVV-pattern labels. We then assess existing detection approaches. Current tools provide limited documented coverage of CVV patterns, while only two of four evaluated LLMs outperform an all-pattern constant baseline of 29.3% Macro-F1; the best reaches 51.2%. Together, the limited tool coverage and inconsistent LLM gains motivate detection methods tailored to cross-chain verification semantics.",
+      "authors": [
+        "Yuying Wang",
+        "Yi Guo",
+        "Jiachi Chen",
+        "Hanwen Zhang",
+        "Yi Sun"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": "22 pages, 12 figures, 10 tables",
+      "doi": null,
+      "id": "2610.13170",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.13170",
+      "primary_category": "cs.CR",
+      "published": "2026-10-09T07:58:02Z",
+      "relevance_score": 6,
+      "title": "Understanding Verification Vulnerabilities in Cross-chain Bridges: An Empirical Study",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-10-09T07:58:02Z",
+      "url": "https://arxiv.org/abs/2610.13170",
+      "version": 1
+    },
+    {
+      "abstract": "Trust evaluation plays a critical role in cybersecurity by supporting risk mitigation and decision-making. A variety of trust evaluation methods have been proposed, with learning-based approaches offering high accuracy and automation. However, they often require substantial ground truth, suffer from low training efficiency, lack support for basic trust properties, and provide limited explainability. Large Language Models (LLMs) offer a compelling alternative due to their strong zero-/few-shot reasoning abilities and broad knowledge. To this end, we propose LLM4Trust, the first benchmark framework that systematically explores the capabilities of LLMs for trust evaluation. We first construct diverse trust graphs to model five basic trust properties and design corresponding property understanding tasks. We then assess the ability of eight representative LLMs to understand these properties under nine prompt methods. Based on this exploration, we identify the most effective LLM-prompt combinations and apply them to five real-world datasets for validating LLMs' trust evaluation capability. During this process, we propose two strategies to extract key information from large-scale trust graphs, addressing the context window limitations of LLMs. Extensive experiments show that LLMs can effectively understand basic trust properties and have great potential for real-world trust evaluation, particularly under limited supervision. However, they remain vulnerable to attacks targeting trust graphs and demonstration examples used in few-shot prompting, and incur high inference costs. Accordingly, we propose a defense mechanism and batch inference to improve the robustness and efficiency of LLM-based trust evaluation. The source code of LLM4Trust is available at https://github.com/Jieerbobo/LLM4Trust",
+      "authors": [
+        "Jie Wang",
+        "Yanbo Sun",
+        "Zheng Yan",
+        "Jiahe Lan",
+        "Elisa Bertino"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "comment": "Accepted by NDSS 2027",
+      "doi": null,
+      "id": "2609.33521",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.33521",
+      "primary_category": "cs.LG",
+      "published": "2026-09-27T12:42:59Z",
+      "relevance_score": 4,
+      "title": "LLM4Trust: Exploring the Capabilities of Large Language Models for Trust Evaluation",
+      "topics": [
+        "adversarial-ml",
+        "cyber-defense",
+        "evaluation"
+      ],
+      "updated": "2026-10-09T02:56:42Z",
+      "url": "https://arxiv.org/abs/2609.33521",
+      "version": 2
+    },
+    {
+      "abstract": "What happens inside a language model when alignment training conflicts with a cultural value it encodes? Across 16 MENA countries, 26 models, and 1.53M human survey responses, we show the answer is suppression, not erasure: at the moment of refusal, a model's internal logit distribution correlates with human survey data more strongly than its freely generated answers. We call this the alignment veto. We distinguish suppression failures (accurate internal distributions blocked at output) from representational bias failures (the encoding itself diverges from human values), and show the two require different interventions. The gate is inequitable: the safety tax reaches 37.6%, with a 19.8% alignment-quality gap between best- and worst-served nations, and native-language prompting widens rather than closes it. Sparse autoencoder analysis corroborated by comparisons across alignment stages identifies a candidate DPO-stage feature mediating suppression in Tulu-3-8B. The gate is real, its costs are unequal, and deciding what it should protect is not a technical question.",
+      "authors": [
+        "Pardis Sadat Zahraei",
+        "Gokhan Tur",
+        "Dilek Hakkani-T\u00fcr",
+        "Ehsaneddin Asgari"
+      ],
+      "categories": [
+        "cs.CL"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2510.13154",
+      "journal_ref": "EMNLP 2026 Main Oral",
+      "pdf_url": "https://arxiv.org/pdf/2510.13154",
+      "primary_category": "cs.CL",
+      "published": "2025-10-15T05:10:57Z",
+      "relevance_score": 6,
+      "title": "The Alignment Veto: How Safety Training Suppresses Cultural Knowledge in LLMs",
+      "topics": [
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-10-09T02:47:49Z",
+      "url": "https://arxiv.org/abs/2510.13154",
+      "version": 3
+    },
+    {
+      "abstract": "LLM agents increasingly operate over sensitive resources, such as private documents and mutable system states, which can create serious safety and security risks. Runtime guardrails should therefore make inspectable, reproducible, and deterministic allow or refuse decisions before potentially irreversible agent actions are executed. However, safety and security requirements are rarely complete before deployment, so guardrails need to keep adapting as new risks emerge. Existing adaptive guardrails learn from deployment experience, but they usually apply safety policies through LLM inference, which can lead to inconsistent decisions and ambiguous policy interpretations. Formal guardrails, on the other hand, enforce policies deterministically, but they usually rely on pre-deployment or task-specific policies and have no mechanism to adapt to newly observed risks. We introduce VEPA, a framework for the verified evolution of formal agent guardrails. VEPA represents the guardrail as a formal policy of executable symbolic rules over typed agent events. During deployment, we use an LLM guided by deployment feedback to propose policy patches that fix newly observed failures while preserving previously correct behavior. Then, a deterministic verifier only accepts policies that are structurally valid and conflict-free. Finally, an evidence-aware authority layer activates a verified rule only when it has enough supporting evidence, so uncertain updates cannot directly affect guardrail decisions. Across ASSEBench-Safety, ASSEBench-Security, and ATBench, VEPA consistently outperforms baselines while expanding the scope of deterministic formal-policy enforcement. These gains also hold under more challenging deployment conditions, including mixed streams, corrupted feedback, and longer horizons.",
+      "authors": [
+        "Duy Nguyen",
+        "Lesly Miculicich",
+        "Bhavana Dalvi Mishra",
+        "Shuo Li",
+        "Krishnamurthy Dj Dvijotham",
+        "Mohit Bansal",
+        "Tomas Pfister",
+        "Long T. Le"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "33 pages, 14 figures",
+      "doi": null,
+      "id": "2610.12813",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.12813",
+      "primary_category": "cs.AI",
+      "published": "2026-10-08T23:49:50Z",
+      "relevance_score": 6,
+      "title": "VEPA: Verified Evolving Formal Policy for Lifelong LLM Agent Guardrails",
+      "topics": [
+        "agent-security",
+        "safety"
+      ],
+      "updated": "2026-10-08T23:49:50Z",
+      "url": "https://arxiv.org/abs/2610.12813",
+      "version": 1
+    },
+    {
+      "abstract": "Language models have been adopted faster than evaluation practices that reliably assess their risks, and a growing share of use is affective rather than informational. Within that traffic users disclose suicide and self-harm (SSH) crises. Existing safety benchmarks score models primarily on refusal, but refusal is not the desired behavior here; the conversation requires a substantive supportive response. We introduce DistressBench, 718 English conversations with clinician-authored user turns spanning 23 SSH subcategories, each paired with a task-specific rubric of weighted atomic criteria across seven dimensions of crisis support and a clinician reference response. A model's score is the weighted average over the criteria its reply satisfies, reading directly as the fraction of required care delivered. The best of 25 frontier models satisfies 88.4% of weighted criteria and the median model 71.4%, against 98.7% for clinician references scored on the same criteria. Pooled across all 25 models, in 35.3% of conversations where a model satisfied every criterion for recognizing the crisis, it failed to route the user toward human help. The shortfall concentrates in the dimensions requiring the model to act rather than withhold. Contrasting each dimension's median model against its best separates capability limits from choices: de-escalation reaches 74.6% in the strongest model against a median of 46.0%, and safety disclaimers 84.6% against 8.3%. Multi-turn conversations score below single-turn ones (68.5% against 74.2%). We release the corpus, rubrics, judge calibration labels, and a companion annex of 20 long-horizon red-team transcripts. These results argue for evaluating crisis safety on the care a model delivers rather than on what it declines to say, and for treating de-escalation and resource routing as deployment requirements.",
+      "authors": [
+        "Drew Rein",
+        "Patrick Oathout",
+        "Vishal Kumar",
+        "Udari Madhushani Sehwag"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CY"
+      ],
+      "comment": "39 pages, 9 figures, 13 tables",
+      "doi": null,
+      "id": "2610.12758",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.12758",
+      "primary_category": "cs.CL",
+      "published": "2026-10-08T22:09:12Z",
+      "relevance_score": 4,
+      "title": "DistressBench: Evaluating Multi-Dimensional Crisis Support in Large Language Models",
+      "topics": [
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-10-08T22:09:12Z",
+      "url": "https://arxiv.org/abs/2610.12758",
+      "version": 1
+    },
+    {
+      "abstract": "Federated Large Language Models (FedLLMs) are promising to deliver privacy-preserving, collaborative intelligence. The decentralized training process is vulnerable to Byzantine attacks that corrupt semantic consistency and factual resilience through malicious model updates. This paper presents a new resilience strategy that prevents semantically corrupted knowledge from propagating during federated aggregation. A defense problem is formulated to jointly maximize global accuracy and suppress manipulated model updates, enabling trustworthy knowledge aggregation without accessing private local data. To strengthen the resilience of FedLLMs, we develop a novel Hypergraph Message Passing Graph Autoencoder (HMP-GAE) framework, where low-rank model updates are represented as nodes in a hypergraph and high-order semantic relationships among multiple agents are exploited through iterative message passing. By leveraging historical checkpoints and cross-agent relational reasoning, HMP-GAE identifies and suppresses semantically inconsistent updates while preserving knowledge alignment among agents throughout federated training. HMP-GAE is implemented using Qwen-2.5 and Llama-3.2 as pretrained FedLLM backbones and evaluated on AG News and Yahoo! Answers datasets. Compared to existing defenses, HMP-GAE improves global accuracy by $1.21$\\%, reduces final-model classification semantic entropy by $44.08$\\%, and lowers perplexity by $13.34$\\%. HMP-GAE outperforms the GAE-based defense by improving the accuracy $1.39$\\%, reducing the semantic entropy by $54.5$\\%, and lowering perplexity by $35.5$\\%.",
+      "authors": [
+        "Kai Li",
+        "Hanlin Cai",
+        "Zihao Liu",
+        "Yichen Li",
+        "Jose Alcaraz Calero",
+        "Wei Ni",
+        "Falko Dressler",
+        "\u00d6zg\u00fcr B. Akan"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.12711",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.12711",
+      "primary_category": "cs.LG",
+      "published": "2026-10-08T20:47:08Z",
+      "relevance_score": 6,
+      "title": "Byzantine-Resilient Federated Large Language Model via Hypergraph Message Passing",
+      "topics": [
+        "privacy",
+        "safety"
+      ],
+      "updated": "2026-10-08T20:47:08Z",
+      "url": "https://arxiv.org/abs/2610.12711",
+      "version": 1
+    },
+    {
+      "abstract": "Post-training alignment of Large Language Models is increasingly bottlenecked by data quality: preference and instruction-tuning corpora accumulate label noise, safety inversions, and inter-annotator contradictions that deduplication misses and full-corpus LLM judging cannot afford. While Data Shapley offers a principled valuation framework, exact computation requires intractable retraining, and embedding surrogates like KNN-Shapley fail to separate high- from low-utility demonstrations ($\u03c1= 0.0003$ with generative utility). We introduce an inference-only valuation pipeline that computes the first-order term of an in-context cooperative game over semantic $k$-NN neighborhoods in $O(k)$ forward passes without parameter updates, correlating positively with multi-shot Monte-Carlo in-context Shapley on 100% of targets at 19x less compute. Projecting pairwise log-likelihood shifts onto a directed influence graph characterizes each record via three signals: outgoing Exemplifying Advantage, incoming Exemplified Advantage, and a topological One-of-a-Kind Score protecting rare prompts. Pre-filtering restricts LLM twin arbitration to 1%-5% of records while achieving 4.5x enrichment in confirmed errors on HelpSteer2 and 2.2x on Anthropic HH-RLHF, catching contradictions that zero-shot likelihood and margin filters miss. During DPO training, confirmed contradictions oppose the update far more often than clean records (56.7% vs. 37.0% in LoRA gradients) and stay below chance in reward accuracy. Finally, auditing the HH-RLHF benchmark exposes label errors where aligned models disagree with human labels 73%-83% of the time, and retraining DPO after repairing or filtering flagged records improves reward accuracy by +0.5%-0.6% overall and +3.1%-3.5% on repaired inversions, even without LLM arbitration.",
+      "authors": [
+        "Yunting Song",
+        "Matthew Watson",
+        "Moustafa Farid Alzantot",
+        "Peter Grabowski",
+        "Jun Qin"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2607.22766",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2607.22766",
+      "primary_category": "cs.LG",
+      "published": "2026-07-24T03:31:44Z",
+      "relevance_score": 6,
+      "title": "First-Order In-Context Shapley: Scalable Data Auditing for LLM Alignment and Evaluation",
+      "topics": [
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-10-08T20:38:14Z",
+      "url": "https://arxiv.org/abs/2607.22766",
+      "version": 2
+    },
+    {
+      "abstract": "Backdoor Attacks on Large Language Models (LLMs) typically follow a trigger-response pattern, where satisfying a trigger condition activates a single terminal behavior. However, this single-point backdoor activation does not explore attacks in which malicious behavior develops gradually through multiple intermediate stages before reaching the terminal activation stage. We present Cancerous Backdoor Attack, that gradually corrupts an LLM's reasoning over a sequence of interactions by leveraging invisible tokens and a stage controller. Specifically, invisible tokens provide hidden stages to the model without appearing in the user's visible request and the stage controller tracks the attack's progression during inference to realize gradual activation. We evaluate Cancerous Backdoor Attack across several reasoning datasets. The attack consistently produces gradual reasoning corruption across models and tasks. We compare Cancerous Backdoor Attack with prior backdoor attack baselines to demonstrate our proposed attack outperforms the baselines. Our results indicate that reasoning corruption can develop gradually before it becomes visible, making answer accuracy alone insufficient for detecting backdoor attacks.",
+      "authors": [
+        "Tahmid Imtiaz Imu",
+        "Emama Nahid",
+        "Prodipta Sen Amartya",
+        "Ahsanul Jobayer",
+        "Yutong Song",
+        "Jiang Wu",
+        "Pengfei Zhang",
+        "Honghui Xu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR"
+      ],
+      "comment": "31 pages, 5 figures, 13 tables",
+      "doi": null,
+      "id": "2610.12644",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.12644",
+      "primary_category": "cs.CR",
+      "published": "2026-10-08T19:05:01Z",
+      "relevance_score": 6,
+      "title": "Cancerous Backdoor Attack: Gradual Activation via Invisible Tokens and A Stage Controller",
+      "topics": [
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-08T19:05:01Z",
+      "url": "https://arxiv.org/abs/2610.12644",
+      "version": 1
+    },
+    {
+      "abstract": "Scaling Federated Learning (FL) to billion-parameter models forces a challenging trade-off between privacy, scalability, and model utility. Existing solutions often tackle these challenges in isolation, sacrificing accuracy, relying on costly cryptographic tools, or introducing communication and optimization inefficiencies that affect convergence. We introduce ERIS, an FL framework centered on Federated Shard Aggregation (FSA), a novel mechanism that partitions each client update into non-overlapping shards whose aggregation is distributed across multiple client-side aggregators. FSA removes the central aggregation bottleneck, limits the information visible to any single observer, and preserves the centralized FL update after reassembly. ERIS can further readily integrate Distributed Shifted Compression (DSC) to reduce transmitted payloads and exposed coordinates. We prove that ERIS preserves convergence under standard assumptions and bounds mutual information leakage by the observable fraction of each update, decreasing with the number of client-side aggregators, and with the compression level when DSC is enabled. Experiments across image and text tasks, including large language models, show that ERIS achieves FedAvg-level utility while substantially reducing communication bottlenecks and improving robustness to membership inference and reconstruction attacks, without relying on heavy cryptography or utility-degrading perturbations.",
+      "authors": [
+        "Dario Fenoglio",
+        "Pasquale Polverino",
+        "Akash Dhasade",
+        "Jacopo Quizi",
+        "Martin Gjoreski",
+        "Marc Langheinrich"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "comment": "Accepted at NeurIPS 2026. 53 pages",
+      "doi": null,
+      "id": "2602.08617",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2602.08617",
+      "primary_category": "cs.LG",
+      "published": "2026-02-09T13:05:41Z",
+      "relevance_score": 4,
+      "title": "ERIS: Enhancing the Privacy-Utility-Scalability Trade-Off in Federated Learning via Federated Shard Aggregation",
+      "topics": [
+        "privacy",
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-08T18:45:18Z",
+      "url": "https://arxiv.org/abs/2602.08617",
+      "version": 3
+    },
+    {
+      "abstract": "Large language models are increasingly deployed in user-facing products that handle sensitive personal data while interacting with untrusted external content. This makes them a prime target for prompt injection attacks, in which an adversary injects malicious instructions in that content to hijack the model. Fine-tuning-based defenses have been proposed to mitigate these attacks by training models to follow benign user instructions and ignore injected ones. Lacking formal guarantees, these defenses are evaluated empirically against the most effective realistic attacks available at the time, often reporting near-zero attack success rates -- giving developers, and the users who depend on them, a false sense of security and leaving open the possibility that future, more capable attacks could circumvent them and cause severe consequences in widely deployed systems. In this paper, we argue that developers should stress-test their defenses before release, and we introduce an auditing framework that does so without requiring defenders to invent the next state-of-the-art attack. Our key insight is that the fine-tuning process itself yields useful artifacts: intermediate checkpoints that serve as stepping stones for optimization-based attacks. Although these artifacts are unavailable to real attackers, we show that the vulnerabilities they expose are genuine and can be exploited by realistic adversaries. Instantiating our framework with optimization-based attacks such as GCG and BEAST, we raise attack success rates against state-of-the-art defenses from near zero to as high as 96\\%, revealing weaknesses missed by prior evaluations. Our results show that current evaluation practices can substantially overestimate robustness, and that auditing defenses under strong adversaries before deployment shortens the feedback loop and helps prevent attacks from causing real-world harm to users.",
+      "authors": [
+        "Xiaoxue Yang",
+        "Bozhidar Stevanoski",
+        "Matthieu Meeus",
+        "Yves-Alexandre de Montjoye"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "Published as a workshop paper (oral) at HAIPS@COLM 2026",
+      "doi": null,
+      "id": "2505.15738",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2505.15738",
+      "primary_category": "cs.CR",
+      "published": "2025-05-21T16:43:17Z",
+      "relevance_score": 6,
+      "title": "Auditing Prompt Injection Defenses Before They Reach Users: What Strong Adversaries Reveal",
+      "topics": [
+        "prompt-security",
+        "adversarial-ml",
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-10-08T17:59:27Z",
+      "url": "https://arxiv.org/abs/2505.15738",
+      "version": 3
+    },
+    {
       "abstract": "Malware defenses often remove or isolate suspicious programs as quickly as possible. While effective for containment, this approach can also waste an opportunity to observe attacker behavior and deploy targeted countermeasures. ORCAGen takes a different approach: it uses GenAI to build malware-specific deception playbooks offline, validates them before deployment, and enforces only the verified logic at runtime. ORCAGen combines Retrieval-Augmented Generation (RAG) with structured prompt engineering to generate both proof-of-concept (PoC) malware and corresponding deception orchestration code. A curated knowledge base (KB) of malware procedures and active defense strategies grounds the generation process, helping the LLM produce threat-specific and executable deception logic rather than generic or hallucinated outputs. The generated PoC malware provides a safe and reproducible way to test whether a deception strategy can disrupt, redirect, or suppress targeted malware behavior before the strategy is added to the runtime playbook. We evaluate ORCAGen across GPT-4o, GPT-5.5, Gemini 3.5 Flash, Qwen3-Coder, and Claude Sonnet 4.5 using execution success, hallucination rate, refinement effort, deception effectiveness, and runtime overhead. The evaluation covers synthesized malware scenarios and 150 real-world malware samples across keyloggers, information stealers, and ransomware. Across the evaluated scenarios, GPT-5.5 required the fewest refinements and produced no observed hallucinated APIs, while Gemini 3.5 Flash achieved the lowest response time and runtime overhead. The results show that RAG-guided structured prompting can support the scalable construction of malware-specific deception playbooks that remain lightweight and deterministic during runtime enforcement.",
       "authors": [
         "Shihab Ahmed",
@@ -11260,36 +11776,6 @@
       "updated": "2026-09-27T12:44:53Z",
       "url": "https://arxiv.org/abs/2507.02699",
       "version": 3
-    },
-    {
-      "abstract": "Trust evaluation plays a critical role in cybersecurity by supporting risk mitigation and decision-making. A variety of trust evaluation methods have been proposed, with learning-based approaches offering high accuracy and automation. However, they often require substantial ground truth, suffer from low training efficiency, lack support for basic trust properties, and provide limited explainability. Large Language Models (LLMs) offer a compelling alternative due to their strong zero-/few-shot reasoning abilities and broad knowledge. To this end, we propose LLM4Trust, the first benchmark framework that systematically explores the capabilities of LLMs for trust evaluation. We first construct diverse trust graphs to model five basic trust properties and design corresponding property understanding tasks. We then assess the ability of eight representative LLMs to understand these properties under nine prompt methods. Based on this exploration, we identify the most effective LLM-prompt combinations and apply them to five real-world datasets for validating LLMs' trust evaluation capability. During this process, we propose two strategies to extract key information from large-scale trust graphs, addressing the context window limitations of LLMs. Extensive experiments show that LLMs can effectively understand basic trust properties and have great potential for real-world trust evaluation, particularly under limited supervision. However, they remain vulnerable to attacks targeting trust graphs and demonstration examples used in few-shot prompting, and incur high inference costs. Accordingly, we propose a defense mechanism and batch inference to improve the robustness and efficiency of LLM-based trust evaluation. The source code of LLM4Trust is available at https://github.com/Jieerbobo/LLM4Trust",
-      "authors": [
-        "Jie Wang",
-        "Yanbo Sun",
-        "Zheng Yan",
-        "Jiahe Lan",
-        "Elisa Bertino"
-      ],
-      "categories": [
-        "cs.LG"
-      ],
-      "comment": "Accepted by NDSS 2027",
-      "doi": null,
-      "id": "2609.33521",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2609.33521",
-      "primary_category": "cs.LG",
-      "published": "2026-09-27T12:42:59Z",
-      "relevance_score": 4,
-      "title": "LLM4Trust: Exploring the Capabilities of Large Language Models for Trust Evaluation",
-      "topics": [
-        "adversarial-ml",
-        "cyber-defense",
-        "evaluation"
-      ],
-      "updated": "2026-09-27T12:42:59Z",
-      "url": "https://arxiv.org/abs/2609.33521",
-      "version": 1
     },
     {
       "abstract": "Security operations centers receive far more alerts than analysts can investigate, and organizations that cannot send their telemetry to hosted models must automate triage with small open-weight LLMs on their own hardware. Current LLM agents leave the investigation procedure to the model, and small local models fail at it: they probe without converging, never commit to a verdict, or dismiss real attacks. In this paper, we present HESP, a controller that holds the investigation procedure outside the model. HESP keeps a ledger of competing explanations, selects read-only probes by expected information gain per cost, accepts only verdicts backed by current evidence, can end an investigation itself, and journals every prediction before its observation. We evaluated HESP in four pre-registered studies with five open-weight models from two families (7B to 72B), totalling 7,272 audited episodes in a controlled triage environment. With likelihood tables counted from LLM-free runs, HESP lifts Qwen2.5-7B from 0.125 to 1.000 verified completion, matching oracle tables. The information-gain ranking adds +0.26 to +0.35 on every model that concludes, and a controller-side stop lifts Llama-3.1-8B, which never concludes on its own, from 0 to 0.917. What to probe and when to stop are therefore separate failures, and different small models exhibit different ones. Because HESP and its planner run entirely on local hardware, it suits environments where telemetry cannot leave the premises. We release all code, protocols, and episode journals at https://github.com/lzwhehe/HESP.",
@@ -42707,36 +43193,6 @@
       ],
       "updated": "2026-07-24T05:10:26Z",
       "url": "https://arxiv.org/abs/2607.21983",
-      "version": 1
-    },
-    {
-      "abstract": "The alignment of Large Language Models (LLMs) is increasingly bottlenecked by data quality. As datasets scale, massive preference and instruction-tuning corpora inevitably accumulate hidden structural contradictions, safety risks, and systemic human annotation errors. Standard dataset auditing methods, such as semantic deduplication or LLM-as-a-judge, struggle to capture the actual predictive impact of individual records and often miss deep functional rule clashes. To address this, we introduce a scalable, inference-only data valuation pipeline that approximates the Shapley value without iterative model retraining. By mapping semantic k-NN neighborhoods into a directed graph, our framework evaluates data utility directly through a reference LLM's probability distribution using zero-shot and one-shot conditional log-likelihood shifts. Our pipeline then translates these predictive influence scores into localized advantage metrics to isolate gradient-conflicting records. We demonstrate the pipeline's efficacy in sanitizing two heavily vetted alignment datasets. First, applying our pipeline to the HelpSteer2 dataset reduced the manual audit search space by 99.1%, successfully uncovering falsely-labeled records across diverse failure modes. Second, applying our automated audit strategy to Anthropic's HH-RLHF training and evaluation splits identified thousands of hidden safety and factual preference inversions. Crucially, by extending this audit to the evaluation split, we expose severe vulnerabilities in current benchmark integrity: highly capable models frequently predict the safer or more helpful response, only to be penalized by objectively flawed human ground-truth labels. Overall, our work provides a mathematically grounded, highly efficient diagnostic tool to uncover human label failures, sanitize evaluation benchmarks, and ensure the integrity of LLM alignment data.",
-      "authors": [
-        "Yunting Song",
-        "Matthew Watson",
-        "Peter Grabowski",
-        "Jun Qin"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.LG"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2607.22766",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2607.22766",
-      "primary_category": "cs.LG",
-      "published": "2026-07-24T03:31:44Z",
-      "relevance_score": 6,
-      "title": "Beyond Shapley: An Influence-Based Data Auditing Pipeline for LLM Alignment and Evaluation",
-      "topics": [
-        "safety",
-        "software-security",
-        "evaluation"
-      ],
-      "updated": "2026-07-24T03:31:44Z",
-      "url": "https://arxiv.org/abs/2607.22766",
       "version": 1
     },
     {
