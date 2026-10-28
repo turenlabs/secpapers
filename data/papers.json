@@ -1,6 +1,578 @@
 {
   "papers": [
     {
+      "abstract": "As Large Language Models (LLMs) are increasingly integrated into software development workflows, they also become prime targets for adversarial attacks. Among these, backdoor attacks are a significant threat, allowing attackers to manipulate model outputs through hidden triggers embedded in training data. Detecting such backdoors remains a challenge, and one promising approach is the use of Spectral Signature defense methods that identify poisoned data by analyzing feature representations through eigenvectors. While some prior works have explored Spectral Signatures for backdoor detection in neural networks, recent studies suggest that these methods may not be optimally effective for code models. In this paper, we revisit the applicability of Spectral Signature-based defenses in the context of backdoor attacks on code models. We systematically evaluate their effectiveness under various attack scenarios and defense configurations, analyzing their strengths and limitations. We found that the widely used setting of Spectral Signature in code backdoor detection is often suboptimal. Hence, we explored the impact of different settings of the key factors. We discovered a new proxy metric that can more accurately estimate the actual performance of Spectral Signature without model retraining after the defense. Our findings contribute to a deeper understanding of the configurations of Spectral Signature defenses in securing code models and offer insights into potential improvements for future research.",
+      "authors": [
+        "Quoc Hung Le",
+        "Thanh Le-Cong",
+        "Bach Le",
+        "Bowen Xu"
+      ],
+      "categories": [
+        "cs.LG",
+        "cs.SE"
+      ],
+      "comment": "Accepted at the IEEE International Conference on Software Maintenance and Evolution (ICSME 2026). 12 pages, 4 figures",
+      "doi": null,
+      "id": "2510.13992",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2510.13992",
+      "primary_category": "cs.SE",
+      "published": "2025-10-15T18:18:08Z",
+      "relevance_score": 4,
+      "title": "Optimizing Spectral Signature in Code Backdoor Detection",
+      "topics": [
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-27T17:45:08Z",
+      "url": "https://arxiv.org/abs/2510.13992",
+      "version": 2
+    },
+    {
+      "abstract": "Prior work framed the envelope layer as the channel through which malicious content enters an agent, and established it as a defense surface independent of the LLM layer and the agent layer; however, that work only tested the envelope layer briefly and did not examine how label strength, envelope authenticity, scaffold differences, or existing memories affect defense effectiveness. Following its GDA Measurement methodology and the A/B/C/D outcome taxonomy, this paper takes the A2A-TIBA attack as the test vehicle, uses the semantic breach rate as the primary indicator with the semantic refusal rate as its complementary reference, and characterizes the security boundary of the envelope layer through a two-by-two factorial experiment and a memory experiment. The results show that: when the envelope is authentic, strong labels consistently reduce the semantic breach rate, whereas weak labels are not necessarily better than an unlabeled baseline; when the envelope can be forged, the benefit of strong labels is weakened and its direction varies across frontends; and memory has a larger effect than any label manipulation: success memory raises the semantic breach rate while failure memory lowers it, and most combinations that contain both experiences return to the no-memory baseline. Accordingly, this paper refines the envelope layer from a single admission channel into two levels, an admission channel plus a context assembly surface, and argues that its security boundary is not a fixed property of labels but a dynamic outcome jointly shaped by label claims, frontend permissions, and historical memory.",
+      "authors": [
+        "Yuelin Han"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.37415",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.37415",
+      "primary_category": "cs.CR",
+      "published": "2026-10-27T15:32:10Z",
+      "relevance_score": 6,
+      "title": "The Envelope Layer: An Underestimated Surface of LLM Agent Defense",
+      "topics": [
+        "agent-security",
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-10-27T15:32:10Z",
+      "url": "https://arxiv.org/abs/2610.37415",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models (LLMs) are usually evaluated by final-output correctness or safety, yet an endpoint label does not reveal how a failure develops throughout the reasoning process. We therefore ask whether ordinary reasoning failures and adversarially induced failures can be characterized using the same internal coordinates. Towards this end, we in this paper study a white-box diagnostic framework CauTrace to disclose the root-cause of why LLM fails from three fundamental inspections: Functional States, Propagation of Representation, Temporal-State Coordination and Reasoning Trajectory. First, seven functional states are creatively defined to represent the support and constraint processing in LLMs. Second, the propagation of representation change measures how the changes among the seven states persist across subsequent Transformer blocks. Third, temporal-state coordination and trajectory topology characterize when the commitment and verification occur relative to the support, and how the dominant state sequence evolves over the full inference process. Finally, we evaluate CauTrace on both clean reasoning failures and paired adversarial perturbations. Across Qwen and LLaMA-family models, the failed traces show weaker Attention-MLP agreement on support-state updates and less verification activity relative to commitment, while the exact representation-level signatures and timing shifts vary by architecture. Held-out repair and steering tests demonstrate consistent operational signals that were in line with our claims for certain models and specific settings, with aligned steering producing the predicted directional changes in process measures. Overall, CauTrace provides a unified diagnostic framework for analyzing failure dynamics through changes in support, commitment, and verification, which would shed light on the in-depth research on LLM security.",
+      "authors": [
+        "Zirui Ding",
+        "Xinxin Fan",
+        "Hao Yuan",
+        "Shaoye Luo",
+        "Men Niu",
+        "Yunfeng Lu"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.37369",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.37369",
+      "primary_category": "cs.AI",
+      "published": "2026-10-27T15:02:04Z",
+      "relevance_score": 4,
+      "title": "Uncovering Why LLMs Fail: From Internal Mechanisms to Adversarial Reasoning Trajectories",
+      "topics": [
+        "other"
+      ],
+      "updated": "2026-10-27T15:02:04Z",
+      "url": "https://arxiv.org/abs/2610.37369",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models (LLMs) remain vulnerable to jailbreak attacks in which adversarial prompts induce harmful outputs. Existing defenses often require access to the model internals or additional training, limiting their applicability for service providers deployed through black-box APIs. In this paper, we propose DYNASHIELD, a moving target defense framework that improves robustness by customizing decoding hyperparameters and system prompts at inference time. DYNASHIELD includes two key steps: (1) it identifies decoding configurations that reduce attack success probability, and (2) it probabilistically samples from a weighted configuration pool to introduce controlled variability in model behavior. We evaluate DYNASHIELD across 7 open-source LLMs under 4 state-of-the-art jailbreak attacks, using adversarial prompts from AdvBench. Results show substantial reductions in attack success rate compared with 7 baseline defenses, while maintaining response quality and incurring minimal inference overhead. Because DYNASHIELD operates solely through exposed runtime controls, it requires no retraining or model-internal access. These results suggest that safety-aware dynamic decoding is a promising and practically lightweight defense mechanism for black-box LLM deployments.",
+      "authors": [
+        "Xiaoqun Liu",
+        "Weiming Qi",
+        "Qiben Yan"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CR"
+      ],
+      "comment": "Accepted by The 29th International Symposium on Research in Attacks, Intrusions and Defenses (RAID) 2026",
+      "doi": null,
+      "id": "2412.07672",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2412.07672",
+      "primary_category": "cs.CR",
+      "published": "2024-12-10T17:02:28Z",
+      "relevance_score": 6,
+      "title": "DYNASHIELD: A Black-Box Moving Target Defense for LLMs via Dynamic Decoding Customization",
+      "topics": [
+        "prompt-security",
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-27T14:52:52Z",
+      "url": "https://arxiv.org/abs/2412.07672",
+      "version": 3
+    },
+    {
+      "abstract": "Automated Code Review (ACR) systems integrating Large Language Models (LLMs) are increasingly adopted in software development workflows, ranging from interactive assistants to autonomous agents in CI/CD pipelines. In this paper, we study how LLM-based vulnerability detection in ACR is affected by the framing effect: the tendency to let the presentation of information override its semantic content in forming judgments. We examine whether adversaries can exploit this through contextual-bias injection (crafting PR metadata to bias ACR security judgments) as a supply-chain attack vector against real-world ACR pipelines. To this end, we first conduct a large-scale exploratory study across 6 LLMs under five framing conditions, establishing the framing effect as a systematic and widespread phenomenon in LLM-based vulnerability detection. We then design a realistic and controlled experimental environment, evaluating 33 CVEs across 20 real-world projects and two popular ACR pipelines (Claude Code and CodeRabbit), to assess the susceptibility of real-world ACR pipelines to vulnerability re-introduction attacks. We employ two attack strategies: a template-based attack inspired by prior related work, and a novel LLM-assisted refinement attack. We find that template-based attacks are ineffective and may even backfire, as direct biasing attempts raise suspicions. Our refinement attack, on the other hand, is successful in 32/33 (97%) cases, exploiting a fundamental asymmetry: attackers can iteratively refine attacks against a local clone of the review pipeline, while defenders have only one chance to detect them. Overall, our findings highlight the dangers of over-relying on ACR and stress the importance of human oversight and contributor trust in the development process.",
+      "authors": [
+        "Georgios Alexopoulos",
+        "Nikolaos Alexopoulos",
+        "Diomidis Spinellis",
+        "Dimitris Mitropoulos"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": "To appear at the 49th International Conference on Software Engineering (ICSE 2027)",
+      "doi": null,
+      "id": "2603.18740",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2603.18740",
+      "primary_category": "cs.SE",
+      "published": "2026-03-19T10:40:27Z",
+      "relevance_score": 4,
+      "title": "When AI Agrees Too Much: Manipulating Automated Code Review via Bias Injection",
+      "topics": [
+        "software-security"
+      ],
+      "updated": "2026-10-27T14:45:00Z",
+      "url": "https://arxiv.org/abs/2603.18740",
+      "version": 5
+    },
+    {
+      "abstract": "Proprietary language models and their reasoning traces are vulnerable to API-based distillation, where an adversary trains a student model on the teacher model's outputs. To obtain evidence of distillation, model providers can watermark the teacher's outputs, aiming to leave a radioactive signal in the student's outputs. Existing black-box detectors search for such radioactivity using token-level statistics of the suspect model's outputs. However, token-level signals are not always detectable, for instance when the distillation traces are sampled at a low temperature. In this work, we discover the watermark basin, a persistent signal that enables more reliable watermark detection: during fine-tuning, watermarked teacher traces embed a distinct, key-specific geometric signal in parameter space that lies orthogonal to the ordinary task-specific fine-tuning subspace. Building on this, we introduce Watermark Basin Alignment (WM-Basin), a black-box watermark detector that queries the suspect model through its API, without access to its weights or logits. WM-Basin maps generated text to gradient representations using a fixed clean probe model, projects out the ordinary fine-tuning task directions, and tests whether the residual gradient aligns with the watermark basin induced by the watermark key. We evaluate WM-Basin extensively across diverse teacher models and student architectures (from 135M to 8.2B parameters) distilled on mathematical reasoning. At a strict 0.1% false-positive rate, WM-Basin detects 79% of distilled models at n-gram=1 and 45% at n-gram=3, substantially improving over the state-of-the-art token-level baseline (29% and 1.3%, respectively). Because the watermark signal resides in a persistent basin, it survives post-distillation modifications including quantization, pruning, and reinforcement-learning post-training.",
+      "authors": [
+        "Hongyan Chang",
+        "Hady Elsahar",
+        "Tom Sander",
+        "Pierre Fernandez",
+        "Saeed Mahloujifar",
+        "Sylvestre-Alvise Rebuffi",
+        "Tom\u00e1\u0161 Sou\u010dek",
+        "Tuan Tran",
+        "Valeriu Lacatusu",
+        "Surya Parimi",
+        "Rashel Moritz",
+        "Vanessa Stark",
+        "Alexandre Mourachko"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.37266",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.37266",
+      "primary_category": "cs.CR",
+      "published": "2026-10-27T13:59:34Z",
+      "relevance_score": 6,
+      "title": "Watermark Basins: Black-Box Detection of Distilled LLMs",
+      "topics": [
+        "safety"
+      ],
+      "updated": "2026-10-27T13:59:34Z",
+      "url": "https://arxiv.org/abs/2610.37266",
+      "version": 1
+    },
+    {
+      "abstract": "The increasing complexity of software systems and the sophistication of cyber-attacks have underscored the need for reliable automated software vulnerability detection. Data-driven approaches using deep learning models show promise but critically depend on the availability of large, accurately labeled datasets. Yet existing datasets either suffer from noisy labels, limited vulnerability coverage, or fail to reflect vulnerabilities as they occur in real-world software. This also limits large-scale benchmarking of such solutions. Automated vulnerability injection provides a way to address these limitations, but existing techniques remain limited in coverage, contextual fidelity, or injection success. In this paper, we present AVIATOR, the first AI-agentic vulnerability injection framework. AVIATOR decomposes vulnerability injection into a coordinated workflow of specialized AI agents, tool-based analysis, and iterative self-correction, explicitly mirroring expert reasoning. It integrates RAG and lightweight LoRA-based fine-tuning to produce realistic, category-specific vulnerabilities without relying on handcrafted patterns. Across three benchmarks, AVIATOR achieves high injection fidelity (91-95%) surpassing existing injection techniques in both accuracy and vulnerability coverage. When used for data augmentation to train deep learning-based vulnerability detection (DLVD) models, AVIATOR provides the strongest downstream gains in vulnerability detection. Across models and base datasets, AVIATOR improves average F1 scores by +22% over no augmentation, +25% over VGX, holding the prior best injection success rate, and +3% over VulScribeR, the prior state-of-the-art LLM-based injection model, with +7% higher recall and no precision loss. Its augmented data exhibits the lowest distributional distortion and scales efficiently with <2% syntax rejection at 4.3x lower cost than VulScribeR.",
+      "authors": [
+        "Amine Lbath",
+        "Massih-Reza Amini",
+        "Aurelien Delaitre",
+        "Vadim Okun"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2508.20866",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2508.20866",
+      "primary_category": "cs.CR",
+      "published": "2025-08-28T14:59:39Z",
+      "relevance_score": 6,
+      "title": "AVIATOR: Towards AI-Agentic Vulnerability Injection Workflow for High-Fidelity, Large-Scale Code Security Dataset",
+      "topics": [
+        "agent-security",
+        "software-security"
+      ],
+      "updated": "2026-10-27T13:07:06Z",
+      "url": "https://arxiv.org/abs/2508.20866",
+      "version": 7
+    },
+    {
+      "abstract": "Tool-augmented large language model (LLM) agents aggregate dialogue history, tool outputs, and retrieved content into an accumulated runtime state to complete multi-step tasks. This execution model exposes agents to indirect prompt injection (IPI) attacks, in which attacker-controlled instructions embedded in external artifacts enter the agent state and later influence tool use. Multi-turn IPI is especially challenging because injected content can persist across steps and trigger unauthorized state-changing actions only after merging with user intent. This creates a source-attribution problem: existing inference-time defenses can often detect suspicious behavior but do not directly distinguish whether a pending action is supported by the user task or influenced by injected content. They therefore resort to conservative blocking, termination, or broad filtering. We propose AgentSentry, an inference-time defense that operationalizes temporal causal diagnostics through boundary-local counterfactual re-executions at tool-return boundaries. It substitutes the mediator under a restored snapshot, records whether the pending proposal survives, and aggregates user-view and probe scores across adjacent boundaries. When a proposal is mediator-sensitive, AgentSentry purifies the implicated mediator content while preserving task-relevant evidence and resumes execution from the sanitized state. We evaluate AgentSentry on AgentDojo across four task suites, three IPI attack families, and three black-box LLM backbones. It records no observed successful attack in the evaluated cases (ASR = 0%) and achieves an average Utility Under Attack (UA) of 76.10%. Over the strongest evaluated baseline, it improves average UA by 1.84--7.60 percentage points, with benign FPRs of 2.06%--5.15%. We further evaluate long-horizon and adaptive attacks, imperfect purification, runtime overhead, and an OpenClaw case study.",
+      "authors": [
+        "Tian Zhang",
+        "Yiwei Xu",
+        "Juan Wang",
+        "Keyan Guo",
+        "Xiaoyang Xu",
+        "Bowen Xiao",
+        "Quanlong Guan",
+        "Jinlin Fan",
+        "Jiawei Liu",
+        "Zhiquan Liu",
+        "Hongxin Hu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "Accepted at the Network and Distributed System Security (NDSS) Symposium 2027. 18 pages, 5 figures, 4 tables",
+      "doi": null,
+      "id": "2602.22724",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2602.22724",
+      "primary_category": "cs.CR",
+      "published": "2026-02-26T07:59:10Z",
+      "relevance_score": 8,
+      "title": "AgentSentry: Mitigating Indirect Prompt Injection in LLM Agents via Temporal Causal Diagnostics and Context Purification",
+      "topics": [
+        "prompt-security",
+        "agent-security"
+      ],
+      "updated": "2026-10-27T11:52:22Z",
+      "url": "https://arxiv.org/abs/2602.22724",
+      "version": 2
+    },
+    {
+      "abstract": "Modern Network Intrusion Detection Systems (NIDS) generate vast volumes of low-level alerts that remain semantically fragmented, requiring labor-intensive manual correlation with high-level adversarial behaviors. Existing automation, namely rule-based systems and machine learning classifiers, has critical limitations: rule-based approaches fail to adapt to novel attack variations, while machine learning methods lack contextual awareness and treat tactic-technique (TT) mapping as syntactic matching rather than reasoning. Although Large Language Models (LLMs) show promise in cybersecurity, preliminary experiments reveal that existing LLM-based methods frequently hallucinate technique-tactic pairs or produce decontextualized mappings due to single-step classification. We introduce RHINO, a framework that decomposes LLM-based attack analysis into three structured phases: (1) behavioral abstraction, translating raw logs into contextualized narratives; (2) partitioned inference over the ATT&CK tactic space, generating candidate techniques by evaluating behavioral evidence against MITRE ATT&CK knowledge; and (3) knowledge-grounded refinement, cross-referencing predictions with official MITRE definitions to reduce hallucinations. We evaluate RHINO on three benchmarks (DAPT2020, CICIDS2017, IoT23) across four backbone models (ChatGPT-4o, Gemini 2.5 Flash, Claude Sonnet 4, and DeepSeek V3). Under a scenario-documented single-label formulation covering 11 distinct techniques, RHINO achieves an average top-1 accuracy of 87.34% under micro-averaging and 63.77% under macro-averaging, surpassing the strongest baseline by 16.78 and 13.60 points respectively. These results show that structured LLM reasoning can effectively translate low-level network observations into high-level adversarial behaviors.",
+      "authors": [
+        "Fanchao Meng",
+        "Jiaping Gui",
+        "Yunbo Li",
+        "Yue Wu"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2510.14233",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2510.14233",
+      "primary_category": "cs.CR",
+      "published": "2025-10-16T02:25:46Z",
+      "relevance_score": 6,
+      "title": "RHINO: Guided Reasoning for Mapping Network Logs to Adversarial Tactics and Techniques with Large Language Models",
+      "topics": [
+        "cyber-defense"
+      ],
+      "updated": "2026-10-27T09:43:42Z",
+      "url": "https://arxiv.org/abs/2510.14233",
+      "version": 2
+    },
+    {
+      "abstract": "Reliable evaluation is a critical bottleneck in privacy red-teaming of large language models (LLMs): determining whether a jailbreak response actually reveals personal information can be difficult when disclosures are indirect, contextual, partial, or obfuscated. Existing evaluation approaches increasingly rely on guard models and LLM-as-Judges, yet these evaluators may interpret the same response differently. To better characterize this evaluation setting, we conduct a systematic study of privacy evaluators and find substantial disagreement, particularly in ambiguous cases that require additional evidence or targeted analysis to resolve. Motivated by these findings, we introduce \\textsc{PrivacyEvalClaw}, a training-free deliberative agent for evaluating privacy leakage in LLM jailbreak responses. Rather than relying on isolated single-pass judgments, PrivacyEvalClaw treats evaluators and analysis modules as tools, adaptively gathers evidence, investigates uncertain disclosures, and reconciles conflicting signals before producing a final judgment. Our primary experiments use pairwise LLM-as-Judge evaluation of complete trajectories, showing that PrivacyEvalClaw achieves favorable win rates against competing baselines across outcome, process, and overall quality, while producing explicit reasoning traces that make the evaluation process more transparent and auditable.",
+      "authors": [
+        "Krishna Kanth Nakka",
+        "Yujun Wang",
+        "Shijie Zhou",
+        "Tu Nguyen",
+        "Gabriele Gelardi",
+        "Xuebing Zhou"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "Accepted to AACL-IJCNLP 2026",
+      "doi": null,
+      "id": "2610.36711",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.36711",
+      "primary_category": "cs.CR",
+      "published": "2026-10-27T06:27:09Z",
+      "relevance_score": 8,
+      "title": "PrivacyEvalClaw: A Tool-Augmented Deliberative Agent for Auditing Privacy Leakage in LLM Jailbreak Responses",
+      "topics": [
+        "prompt-security",
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-10-27T06:27:09Z",
+      "url": "https://arxiv.org/abs/2610.36711",
+      "version": 1
+    },
+    {
+      "abstract": "Third-party community-based bots are central to how social platforms such as Discord work. They moderate content, manage roles, play music, and support AI-assisted conversations across millions of servers. Yet when a bot is installed in a server, it can access messages, user profiles, and server metadata concerning members who did not participate in the installation decision, with no standardized way to communicate the associated security and privacy implications. In this paper, we analyze 23,102 third-party Discord bots and 183,142 user reviews spanning 49 detected languages and five years of feedback (2021-2026). We employ LLM-based knowledge distillation and fine-tune a DeBERTa-based classifier to identify candidate security and privacy (S&P)-relevant reviews. After manually validating the complete classifier-positive set, we retain 8,832 reviews identified as S&P-relevant, representing an observed pipeline yield of 4.82%, and map them to a 31-theme S&P taxonomy extending prior work. Our results show that S&P-related reviews focus heavily on Data Sharing (30.5%) and Data Collection (16.2%). Confession and anonymity bots have pipeline-identified SPRRs above 50%, more than ten times the ecosystem-wide pipeline yield of 4.82%. Star ratings may obscure the frequency and valence of S&P-related discussion, while conventional metadata features, such as permission count and administrator status, show only weak associations with user-reported S&P concerns. We then build BotLens, a proof-of-concept auditing framework that combines review-derived S&P signals with bot metadata to provide on-demand decision support for the community-based bot ecosystem. BotLens exposes six tools through a Model Context Protocol server, supporting bot-level checkups, server-wide comparison, and integration with AI agents.",
+      "authors": [
+        "Kofi Ampomah",
+        "Tu Le"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.HC"
+      ],
+      "comment": "Accepted to NDSS Symposium 2027. 20 pages. Artifact: https://doi.org/10.5281/zenodo.23583221; code: https://github.com/ua-spectral/BotLens",
+      "doi": null,
+      "id": "2610.36626",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.36626",
+      "primary_category": "cs.CR",
+      "published": "2026-10-27T04:31:30Z",
+      "relevance_score": 6,
+      "title": "Measuring Users' Security and Privacy Concerns About Third-Party Community Bots on Discord",
+      "topics": [
+        "agent-security",
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-10-27T04:31:30Z",
+      "url": "https://arxiv.org/abs/2610.36626",
+      "version": 1
+    },
+    {
+      "abstract": "Prompt-security claims for large language models (LLMs) are often compared as properties of individual attacks or defenses, although measured harmfulness depends on the target model, access setting, attack and defense configuration, prompt sample, and judger. We systematize 272 studies through three linked, multi-label taxonomies of jailbreak attacks, defenses, and model vulnerabilities. To make these dependencies explicit, we introduce an access-compatible evaluation protocol over configured $\\langle M,A,D,S,J\\rangle$ tuples and instantiate it in PromptSecurity, an open-source platform that records method settings, outputs, judgments, and query costs. We release two complementary datasets: JailbreakDB, with 445,752 jailbreak system-user prompt pairs and 1,094,122 benign prompts, and PromptSecurity-Eval, with 166,200 harmful-query and 25,800 benign-utility output records. We evaluate 11 target models, 20 attacks, nine defenses, and three automated judgers under a matched, single-turn protocol using 100 harmful queries and separate benign-utility tasks. Lower attack success can reflect failure to execute transformed requests rather than stronger safety; attack-category advantages can reverse when one method is excluded, and attack success varies with assistant choice. Defenses can reduce harmful outputs while degrading benign-task utility or causing backfire. Rejudging identical outputs also shows that measured attack success is sensitive to the behavior supplied to the judger, highlighting the need to report judger configurations alongside ASR. These findings motivate configuration-aware reporting rather than context-free method rankings. Resources: https://datasec-lab.github.io/PromptSecurityLeaderboard/ https://huggingface.co/datasets/youbin2014/JailbreakDB https://huggingface.co/datasets/youbin2014/PromptSecurity-Eval https://github.com/datasec-lab/PromptSecurity",
+      "authors": [
+        "Hanbin Hong",
+        "Shuang Wu",
+        "Shuya Feng",
+        "Nima Naderloui",
+        "Shenao Yan",
+        "Jingyu Zhang",
+        "Ali Arastehfard",
+        "Heqing Huang",
+        "Yuan Hong"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "To appear in the 2027 IEEE Symposium on Security and Privacy (S&P 2027 / Oakland)",
+      "doi": null,
+      "id": "2510.15476",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2510.15476",
+      "primary_category": "cs.CR",
+      "published": "2025-10-17T09:38:54Z",
+      "relevance_score": 8,
+      "title": "SoK: Systematizing LLM Prompt Security: Taxonomies, Datasets, and Unified Evaluation of Attacks and Defenses",
+      "topics": [
+        "prompt-security",
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-10-27T03:43:34Z",
+      "url": "https://arxiv.org/abs/2510.15476",
+      "version": 6
+    },
+    {
+      "abstract": "Safeguarding the Intellectual Property (IP) of Large Language Models (LLMs) against model theft represents a critical challenge in contemporary AI research. Although fingerprinting is essential for establishing forensic evidence for model derivation, existing methods are susceptible to false claim attacks, weight manipulations, or high false positive rates, undermining their utility. To overcome these limitations, we propose SELF, \\rev{a novel intrinsic weight-based fingerprinting scheme tailored for robust IP forensics via adversarial model lineage verification}. SELF eliminates dependency on input and inherently resists false claims, achieving robust \\rev{provenance detection} through unique, scalable and transformation-invariant fingerprint extraction via singular value and eigenvalue decomposition of LLM attention weights. Experimental results demonstrate that SELF maintains high IP infringement detection accuracy while significantly outperforming state-of-the-art baselines in reducing false positives and showing strong robustness against various downstream modifications, including quantization, pruning, and fine-tuning attacks. Our code is available at https://github.com/HanxiuZhang/SELF_v4.",
+      "authors": [
+        "Hanxiu Zhang",
+        "Qiang Xu",
+        "Yue Zheng"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2512.03620",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2512.03620",
+      "primary_category": "cs.CR",
+      "published": "2025-12-03T09:53:47Z",
+      "relevance_score": 6,
+      "title": "SELF: A Robust Singular Value and Eigenvalue Approach for LLM Fingerprinting",
+      "topics": [
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-27T03:24:28Z",
+      "url": "https://arxiv.org/abs/2512.03620",
+      "version": 2
+    },
+    {
+      "abstract": "The development of Large Language Models (LLMs) has led to significant advances across a wide range of language tasks, while simultaneously raising growing concerns about unauthorized online data exploitation and privacy leakage. Unlearnable examples (UEs) emerge as a promising defense by injecting crafted perturbations into data such that models trained on them exhibit degraded utility. However, existing methods for text protection are primarily designed for classification tasks and discriminative language models, which limits their broad applicability (e.g., instruction following or reasoning) in LLMs. In this work, we propose **TextCloak**, an RL-driven data synthesis framework that safeguards textual data against unauthorized LLM fine-tuning. TextCloak employs a *UE generative policy* that transforms clean text into unlearnable examples while preserving semantic fidelity and linguistic naturalness. To optimize the policy, we introduce **GRPO-UE**, which simulates the attacker's LLM fine-tuning and rewards downstream degradation via group-relative policy optimization. This overall formulates a bi-level optimization loop, allowing the generator to discover effective protective patterns. Comprehensive experiments on six publicly available datasets and nine state-of-the-art LLMs demonstrate that TextCloak consistently impairs unauthorized LLM fine-tuning while maintaining text utility for legitimate use. Further analyses confirm its transferability and robustness across model architectures, training configurations, and adaptive attacks, highlighting its broad applicability as a practical defense for online content.",
+      "authors": [
+        "Chengshuai Zhao",
+        "Pingchuan Ma",
+        "Dawei Li",
+        "Bohan Jiang",
+        "Zhiyuan Yu",
+        "Zhen Tan",
+        "Huan Liu"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2607.28862",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2607.28862",
+      "primary_category": "cs.CL",
+      "published": "2026-07-30T22:01:36Z",
+      "relevance_score": 6,
+      "title": "TextCloak: Safeguarding Data from Unauthorized LLM Fine-Tuning via RL-Driven Unlearnable Examples",
+      "topics": [
+        "privacy",
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-27T03:02:07Z",
+      "url": "https://arxiv.org/abs/2607.28862",
+      "version": 2
+    },
+    {
+      "abstract": "Attack logs and red-team reports show targets the attacks used against them, to help them repair their defenses. Prompt injections against large language models (LLMs) are plain text, so such records also hand targets a working copy. Drawing on social learning theory and work on the victim-offender overlap, we study what targets do with that copy in Tensor Trust, an online game whose players defended LLM-guarded accounts, attacked one another's, and could read every attack they received. Using all 563,349 attack records, we compare each received attack with matched attacks that circulated among similar players at the same moment but never reached the target. Reuse mainly followed success: within a week, targets attacked other players with 10.0% of the attacks that had broken their defense, versus 0.03% of matched attacks (adjusted difference: 8.8-10.0 percentage points). Near-misses, whose replies began with \"access granted\" but that scored as failures, were reused about as rarely as failures: reuse tracked whether an attack paid off, not how its reply read, consistent with payoff-biased social learning. Breaches were also followed by defense changes, after which same-family attacks became 24.5 percentage points less successful against the target, relative to other defenders. Reuse came mainly from players already attacking, not newcomers. Previously received texts accounted for 23.2% of the successful hijacks we analyze. The attack history thus served both repair and reuse; we derive testable hypotheses for how AI security tools should disclose attacks, such as describing the technique without the full text.",
+      "authors": [
+        "Zihan Chen",
+        "Lei Nico Zheng",
+        "Di Zhu"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.HC"
+      ],
+      "comment": "20 pages, 5 figures, 10 tables. Working paper",
+      "doi": null,
+      "id": "2610.36422",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.36422",
+      "primary_category": "cs.CR",
+      "published": "2026-10-27T00:04:45Z",
+      "relevance_score": 6,
+      "title": "What Victims Take Away: Attack Reuse and Defense Revision after Prompt-Injection Attacks",
+      "topics": [
+        "prompt-security",
+        "evaluation"
+      ],
+      "updated": "2026-10-27T00:04:45Z",
+      "url": "https://arxiv.org/abs/2610.36422",
+      "version": 1
+    },
+    {
+      "abstract": "Artificial intelligence (AI) shows promise for breast imaging, but limited labeled data, institutional data fragmentation, and privacy concerns hinder centralized training. We investigate a privacy-aware federated learning framework combining pretrained vision-language models (VLMs) with client-level differential privacy. We compare general-purpose CLIP models, biomedical BiomedCLIP, and an ImageNet-pretrained ViT-B/16 baseline on two public breast imaging datasets, with and without differential privacy. We also evaluate a CLIP ViT-B/16 ablation that removes the text pathway. Evaluation includes patient-level ROC-AUC with bootstrap 95% confidence intervals, baseline comparisons, threshold sensitivity, inter-model agreement, and communication cost. Under federated learning, all five models achieve high normal-versus-sick discrimination (ROC-AUC: 0.940-0.990). However, acquisition year alone achieves 0.974 on the same test partition, raising concerns about confounding rather than genuine pathology recognition. Benign-versus-malignant discrimination remains uncertain (ROC-AUC: 0.504-0.637), with all confidence intervals including 0.50. Removing the text pathway preserves classification accuracy while halving communication cost. Differential privacy reduces ROC-AUC by 0.375, attributable to perturbing the full model state rather than only trainable parameters. These findings highlight the importance of evaluating confounding, predictive reliability, privacy implementation, and deployment efficiency when developing federated AI systems for breast imaging.",
+      "authors": [
+        "Malithi Mithsara Wanniarachchi Kankanamge",
+        "Ning Yang",
+        "Sree Bash Debnath",
+        "Md Zobaer Islam",
+        "Abdur R. Shahid"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.36379",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.36379",
+      "primary_category": "cs.CV",
+      "published": "2026-10-26T22:51:11Z",
+      "relevance_score": 6,
+      "title": "Evaluating Federated Vision-Language and Vision-Only Models for Privacy-Aware Breast Cancer Imaging",
+      "topics": [
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-10-26T22:51:11Z",
+      "url": "https://arxiv.org/abs/2610.36379",
+      "version": 1
+    },
+    {
+      "abstract": "Large Language Models (LLMs) rely on proprietary system prompts to enforce task directives, safety policies, and access controls. These prompts are vulnerable to query-based leakage attacks, where black-box adversaries extract confidential instructions through adaptive, multi-turn interactions. Existing defenses often assess queries independently, missing malicious behavior that emerges across interactions. We present AdvGuard, a model-agnostic framework for detecting and mitigating system prompt leakage. AdvGuard models cross-query relationships using a bounded semantic interaction graph, statistically filters candidate components, and converts them into line graphs for graph convolutional network (GCN) classification. This approach captures multi-hop patterns in query similarity that distinguish coordinated extraction from benign workflows. A lightweight prompt-level detector provides protection before sufficient interaction history accumulates, and the framework supports black-box LLM deployments. In mixed-query evaluations, AdvGuard improves recall by up to 36% over the strongest baseline while maintaining a false positive rate of at most 3.4%. In multi-turn workloads, it achieves 97.23%-99.1% F1 with 100% recall. Leave-one-attack-family-out tests yield 99.98% mean recall and 99.99% mean F1, with no observed false positives. Integrated into the adaptive PLeak and LeakAgent attack loops, AdvGuard limits exact-match leakage to 0.00-0.01 and substring-match leakage to 0.01-0.09 across evaluated victim models. These results demonstrate robust detection of unseen attack families and substantially reduced prompt reconstruction.",
+      "authors": [
+        "Tushar Nayan",
+        "Pratik Poudel",
+        "Qian Lou",
+        "Yuede Ji",
+        "Jason Liu",
+        "Ruimin Sun"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.36295",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.36295",
+      "primary_category": "cs.CR",
+      "published": "2026-10-26T21:23:10Z",
+      "relevance_score": 6,
+      "title": "Detecting and Mitigating Query-Based System Prompt Leakage Attacks",
+      "topics": [
+        "prompt-security"
+      ],
+      "updated": "2026-10-26T21:23:10Z",
+      "url": "https://arxiv.org/abs/2610.36295",
+      "version": 1
+    },
+    {
+      "abstract": "Integrating robust safety guardrails into Large Language Models (LLMs) is essential for delivering helpful yet harmless responses. While proprietary systems exhibit reliable safety controls, their underlying methodologies and trade-offs remain largely undisclosed. Achieving comparable security in open-weight models remains a persistent challenge, as post-trained variants frequently suffer from over-refusal and degraded general quality. To overcome these drawbacks, we introduce Suan, a novel preference optimization algorithm. Unlike existing methods, we formulate the optimization objective directly at the gradient level, bypassing the standard variational derivation. As a result, we obtain more interpretable and robust training dynamics. Extensive evaluations across a diverse suite of competitive baselines and benchmarks demonstrate that Suan achieves superior safety alignment while fully preserving response utility.",
+      "authors": [
+        "Oleksandr Cherednichenko",
+        "Roman Klypa"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2609.08634",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2609.08634",
+      "primary_category": "cs.LG",
+      "published": "2026-09-08T12:04:38Z",
+      "relevance_score": 6,
+      "title": "Suan: Rectifying Direct Preference Safety Alignment in Large Language Models",
+      "topics": [
+        "safety"
+      ],
+      "updated": "2026-10-26T19:28:50Z",
+      "url": "https://arxiv.org/abs/2609.08634",
+      "version": 3
+    },
+    {
+      "abstract": "LLM agents increasingly access external tools through the Model Context Protocol (MCP), but the natural-language metadata used to describe those tools creates a prompt-injection surface. Within this established tool-poisoning surface, we study Log-To-Leak, an additive post-hoc logging attack that induces a separate attacker-controlled call after the final legitimate call. Its payload targets the user query, MCP server name, server response, and agent response. We operationalize the injected directive through Trigger, Tool Binding, Justification, and Pressure, and separately measure call success, payload fidelity, and preservation of legitimate behavior. We evaluate five MCP servers and four LLM agents using five metrics spanning effectiveness, utility, and efficiency. Across 18 model-server pairs with valid tool execution, Log-To-Leak achieves an attack success rate (ASR) of 62.64-100% and conditional logging accuracy (LA) of 76.55-95.64%; 16 pairs have absolute target-task completion changes of at most 6.63 percentage points. Three evaluated defenses leave residual ASR above 55% on GitHub MCP with GPT-4o, while an instruction detector flags 85.53% of benign descriptions. These results show that successful task completion can coexist with unauthorized post-hoc disclosure and motivate host-controlled authorization for secondary tool calls.",
+      "authors": [
+        "Yuepeng Hu",
+        "Chongyu Fan",
+        "Sirat Samyoun",
+        "Jian Du"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.36108",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.36108",
+      "primary_category": "cs.CR",
+      "published": "2026-10-26T18:20:24Z",
+      "relevance_score": 8,
+      "title": "Log-To-Leak: Prompt Injection Attacks on Tool-Using LLM Agents via the Model Context Protocol",
+      "topics": [
+        "prompt-security",
+        "agent-security",
+        "adversarial-ml"
+      ],
+      "updated": "2026-10-26T18:20:24Z",
+      "url": "https://arxiv.org/abs/2610.36108",
+      "version": 1
+    },
+    {
       "abstract": "A vulnerability costs more to fix the later it is discovered. As coding agents generate code faster than developers can review it, software needs a first line of defense screening each new function in real time. LLM agents have recently become capable of finding real-world vulnerabilities by working as a security expert would: they run analysis tools, explore the surrounding code, test hypotheses and weigh the evidence before forming their own judgement. This reasoning, however, spans many model calls, so that each verdict takes minutes of compute, far too long for real-time screening. Faster detectors, which fine-tune deep learning models or prompt an LLM for a direct verdict, are less accurate: they judge a function without the context an agent gathers, and an LLM's generated verdict is unreliable even when given some of it. We present REVA (REal-time Vulnerability Analysis), an AI vulnerability detector that brings the security context and code understanding components behind agentic detectors into a single forward pass of an LLM. For each new function, REVA gives the LLM a pre-computed threat model of its module, lightweight static analysis findings and call-graph information. REVA leverages a trained probe to read the LLM's internal representations of the new function in this context. On PrimeVul's held-out test set, REVA on GLM-5.3-Flash reaches 60.0% accuracy in about one second per function. This matches VulTriage (59.2%), the state-of-the-art agentic detector, run on the same LLM, while being over 250 times faster and less than a tenth as costly. On the same prompt, the probe is 14% to 17% more accurate than the LLM's own direct verdict. Across three open LLMs, REVA is at least as accurate as VulTriage, and about 10% more accurate on two of them. An LLM's internal representations thus encode much of what agentic detectors obtain through reasoning.",
       "authors": [
         "Amine Lbath",
@@ -5592,41 +6164,6 @@
       "updated": "2026-10-19T01:07:51Z",
       "url": "https://arxiv.org/abs/2610.25626",
       "version": 1
-    },
-    {
-      "abstract": "Prompt-security claims for large language models (LLMs) are often compared as properties of individual attacks or defenses, although measured harmfulness depends on the target model, access setting, attack and defense configuration, prompt sample, and judger. We systematize 272 studies through three linked, multi-label taxonomies of jailbreak attacks, defenses, and model vulnerabilities. To make these dependencies explicit, we introduce an access-compatible evaluation protocol over configured $\\langle M,A,D,S,J\\rangle$ tuples and instantiate it in PromptSecurity, an open-source platform that records method settings, outputs, judgments, and query costs. We release two complementary datasets: JailbreakDB, with 445,752 jailbreak system-user prompt pairs and 1,094,122 benign prompts, and PromptSecurity-Eval, with 166,200 harmful-query and 25,800 benign-utility output records. We evaluate 11 target models, 20 attacks, nine defenses, and three automated judgers under a matched, single-turn protocol using 100 harmful queries and separate benign-utility tasks. Lower attack success can reflect failure to execute transformed requests rather than stronger safety; attack-category advantages can reverse when one method is excluded, and attack success varies with assistant choice. Defenses can reduce harmful outputs while degrading benign-task utility or causing backfire. Rejudging identical outputs also shows that measured attack success is sensitive to the behavior supplied to the judger, highlighting the need to report judger configurations alongside ASR. These findings motivate configuration-aware reporting rather than context-free method rankings. Resources: https://datasec-lab.github.io/PromptSecurityLeaderboard/ https://huggingface.co/datasets/youbin2014/JailbreakDB https://huggingface.co/datasets/youbin2014/PromptSecurity-Eval https://github.com/datasec-lab/PromptSecurity",
-      "authors": [
-        "Hanbin Hong",
-        "Shuang Wu",
-        "Shuya Feng",
-        "Nima Naderloui",
-        "Shenao Yan",
-        "Jingyu Zhang",
-        "Ali Arastehfard",
-        "Heqing Huang",
-        "Yuan Hong"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CR"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2510.15476",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2510.15476",
-      "primary_category": "cs.CR",
-      "published": "2025-10-17T09:38:54Z",
-      "relevance_score": 8,
-      "title": "SoK: Systematizing LLM Prompt Security: Taxonomies, Datasets, and Unified Evaluation of Attacks and Defenses",
-      "topics": [
-        "prompt-security",
-        "software-security",
-        "evaluation"
-      ],
-      "updated": "2026-10-18T23:35:55Z",
-      "url": "https://arxiv.org/abs/2510.15476",
-      "version": 5
     },
     {
       "abstract": "Encrypted AI using fully homomorphic encryption (FHE) enables inference directly over encrypted queries, providing strong privacy guarantees. However, its computational and memory overheads have limited practical deployment. Custom FHE accelerators improve performance, but rely on advanced manufacturing technologies that limit their accessibility. GPUs offer a more widely available alternative, yet achieving ASIC-class performance on GPUs is challenging. Large models such as LLMs compound these challenges by requiring optimized kernels, terabyte-scale memory management, and efficient execution across multiple devices. We present Cerium, a multi-GPU framework for large-scale FHE inference. Cerium combines a domain-specific language, an optimizing compiler, and a runtime system to automatically generate optimized GPU kernels, compress plaintext data, manage terabyte-scale memory footprints, and optimize multi-GPU communication. Implemented on NVIDIA GPUs, Cerium outperforms expert-written GPU libraries by up to 2.25x and achieves performance competitive with state-of-the-art FHE ASICs, matching the CraterLake ASIC. It is the first GPU system to execute CKKS bootstrapping in under 10 milliseconds, achieving 7.5 milliseconds, and is the first to demonstrate encrypted inference for BERT-Base and Llama3-8B prefill in 8 seconds and 43 seconds, respectively. The Cerium framework is open-source and available at https://github.com/CMU-CAOS/Cerium",
@@ -17275,32 +17812,6 @@
       "version": 1
     },
     {
-      "abstract": "Integrating robust safety guardrails into Large Language Models (LLMs) is essential for delivering helpful yet harmless responses. While proprietary systems exhibit reliable safety controls, their underlying methodologies and trade-offs remain largely undisclosed. Achieving comparable security in open-weight models remains a persistent challenge, as post-trained variants frequently suffer from over-refusal and degraded general quality. To overcome these drawbacks, we introduce Suan, a novel preference optimization algorithm. Unlike existing methods, we formulate the optimization objective directly at the gradient level, bypassing the standard variational derivation. As a result, we obtain more interpretable and robust training dynamics. Extensive evaluations across a diverse suite of competitive baselines and benchmarks demonstrate that Suan achieves superior safety alignment while fully preserving response utility.",
-      "authors": [
-        "Oleksandr Cherednichenko",
-        "Roman Klypa"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.LG"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2609.08634",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2609.08634",
-      "primary_category": "cs.LG",
-      "published": "2026-09-08T12:04:38Z",
-      "relevance_score": 6,
-      "title": "Suan: Rectifying Direct Preference Safety Alignment in Large Language Models",
-      "topics": [
-        "safety"
-      ],
-      "updated": "2026-10-02T10:27:05Z",
-      "url": "https://arxiv.org/abs/2609.08634",
-      "version": 2
-    },
-    {
       "abstract": "Standard autoregressive (AR) models process high-level task instructions, state history, and transient tokens within a single shared sequence of tokens. Consequently, they lack the architectural mechanisms needed to isolate macro-objectives from context noise. To overcome this single-channel limitation, we introduce Latent-Steered Autoregressive (LS-AR), a dual-channel architecture that decouples continuous goal steering from discrete token decoding via FiLM conditioning. We evaluate a Static Goal Encoder (P_0) for persistent macro-objective retention across long rollouts and a Dynamic State Tracker (P_t) for recurrent latent updates during generation. On long-horizon retrieval past context limits (H=1024, W=500), LS-AR (Static) achieves 100% target recall where parameter-matched baselines collapse (0%), while increasing throughput by ~35% and cutting peak VRAM by 52.8%. In Blocksworld planning under forced perturbations (k=1), LS-AR (Dynamic) sustains an 89.0% completion rate vs. 71.0% for the baseline, though zero-shot entity scaling (N -> N+1) exposes single-vector capacity limits (0%). Finally, dual-channel authority analysis shows that text goal dropout establishes latent-dominant control, offering structural defence against text prompt injection while introducing a latent vector attack surface.",
       "authors": [
         "Anubha Gupta",
@@ -24862,35 +25373,6 @@
       "updated": "2026-09-23T12:27:12Z",
       "url": "https://arxiv.org/abs/2609.27996",
       "version": 1
-    },
-    {
-      "abstract": "Automated Code Review (ACR) systems integrating Large Language Models (LLMs) are increasingly adopted in software development workflows, ranging from interactive assistants to autonomous agents in CI/CD pipelines. In this paper, we study how LLM-based vulnerability detection in ACR is affected by the framing effect: the tendency to let the presentation of information override its semantic content in forming judgments. We examine whether adversaries can exploit this through contextual-bias injection (crafting PR metadata to bias ACR security judgments) as a supply-chain attack vector against real-world ACR pipelines. To this end, we first conduct a large-scale exploratory study across 6 LLMs under five framing conditions, establishing the framing effect as a systematic and widespread phenomenon in LLM-based vulnerability detection. We then design a realistic and controlled experimental environment, evaluating 33 CVEs across 20 real-world projects and two popular ACR pipelines (Claude Code and CodeRabbit), to assess the susceptibility of real-world ACR pipelines to vulnerability re-introduction attacks. We employ two attack strategies: a template-based attack inspired by prior related work, and a novel LLM-assisted refinement attack. We find that template-based attacks are ineffective and may even backfire, as direct biasing attempts raise suspicions. Our refinement attack, on the other hand, is successful in 32/33 (97%) cases, exploiting a fundamental asymmetry: attackers can iteratively refine attacks against a local clone of the review pipeline, while defenders have only one chance to detect them. Overall, our findings highlight the dangers of over-relying on ACR and stress the importance of human oversight and contributor trust in the development process.",
-      "authors": [
-        "Georgios Alexopoulos",
-        "Nikolaos Alexopoulos",
-        "Diomidis Spinellis",
-        "Dimitris Mitropoulos"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CR",
-        "cs.SE"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2603.18740",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2603.18740",
-      "primary_category": "cs.SE",
-      "published": "2026-03-19T10:40:27Z",
-      "relevance_score": 8,
-      "title": "Measuring and Exploiting Contextual Bias in LLM-Assisted Security Code Review",
-      "topics": [
-        "software-security"
-      ],
-      "updated": "2026-09-23T12:12:39Z",
-      "url": "https://arxiv.org/abs/2603.18740",
-      "version": 4
     },
     {
       "abstract": "Multi-stage LLM-based cyber agents may complete attack workflows while remaining brittle, costly, or reliant on incorrect interpretations of execution evidence. Success rates alone obscure inefficiency, adaptation through retries, and recognition of success or failure. We present an end-to-end diagnostic study of an Autonomous Adversary system with orchestrator, executor, and validator LLMs in enterprise-like lateral-movement scenarios. Six frontier models are evaluated across two scenarios and three modes: expert-defined, self-scaffolded, and fully autonomous. We assess validator consistency and evidence grounding; introduce a subtask-conditioned, cost-aware score for abnormal token use, retries, and runtime; and use comparative LLM-as-a-Judge analysis to identify planning deficiencies, including tool misalignment, plan similarity, over-specification, inadequate probing, and weak recovery. Validators are generally relevant and evidence-grounded but often nonspecific and overly optimistic. Bottlenecks cluster in credential and lateral-movement tasks, spread with scenario complexity, and vary more under full autonomy. Reliable evaluation must assess outcomes, evidence interpretation, resource use, and adaptation after failure.",
@@ -43380,34 +43862,6 @@
       "version": 1
     },
     {
-      "abstract": "Large language models (LLMs) remain vulnerable to jailbreak attacks in which adversarial prompts induce harmful outputs. Existing defenses often require access to the model internals or additional training, limiting their applicability for service providers deployed through black-box APIs. In this paper, we propose DYNASHIELD, a moving target defense framework that improves robustness by customizing decoding hyperparameters and system prompts at inference time. DYNASHIELD includes two key steps: (1) it identifies decoding configurations that reduce attack success probability, and (2) it probabilistically samples from a weighted configuration pool to introduce controlled variability in model behavior. We evaluate DYNASHIELD across 7 open-source LLMs under 4 state-of-the-art jailbreak attacks, using adversarial prompts from AdvBench. Results show substantial reductions in attack success rate compared with 7 baseline defenses, while maintaining response quality and incurring minimal inference overhead. Because DYNASHIELD operates solely through exposed runtime controls, it requires no retraining or model-internal access. These results suggest that safety-aware dynamic decoding is a promising and practically lightweight defense mechanism for black-box LLM deployments.",
-      "authors": [
-        "Xiaoqun Liu",
-        "Weiming Qi",
-        "Qiben Yan"
-      ],
-      "categories": [
-        "cs.CL",
-        "cs.CR"
-      ],
-      "comment": "Accepted by The 29th International Symposium on Research in Attacks, Intrusions and Defenses (RAID) 2026",
-      "doi": null,
-      "id": "2412.07672",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2412.07672",
-      "primary_category": "cs.CR",
-      "published": "2024-12-10T17:02:28Z",
-      "relevance_score": 6,
-      "title": "DYNASHIELD: A Black-Box Moving Target Defense for LLMs via Dynamic Decoding Customization",
-      "topics": [
-        "prompt-security",
-        "adversarial-ml"
-      ],
-      "updated": "2026-08-16T15:06:14Z",
-      "url": "https://arxiv.org/abs/2412.07672",
-      "version": 2
-    },
-    {
       "abstract": "Retrieval-augmented generation (RAG) has become central to large language model (LLM) deployments, grounding responses in enterprise or proprietary data to reduce hallucinations. However, this design introduces a new privacy risk: model outputs may signal the presence of specific documents in the retrieval corpus, enabling membership inference attacks (MIAs) that leak sensitive information. Existing MIAs are feasible, but they often rely on easily detected templated queries or require many non-templated yet costly and repetitive queries, limiting practicality. We ask: Can an adversary launch a limited-budget, surrogate-free, stealthy, and defense-agnostic membership inference attack using non-templated queries? We present MEntA (Membership Entailment Attack), a query-efficient MIA that leverages natural-language entailment to maximize information gained per query. By asking low-cost, broad, information-seeking questions and measuring entailment between model responses and candidate documents, MEntA eliminates the need for costly shadow models and large query budgets. Across NFCorpus, SCIDOCS, and TREC-COVID, MEntA achieves up to 0.991 AUC with only 5 queries, outperforming prior methods by up to 0.42 AUC under equivalent conditions. It remains effective under state-of-the-art (SOTA) RAG defenses, while current detectors either miss MEntA or flag benign queries at high rates. Regarding cost, MEntA reduces total attack cost by up to 65$\\times$ lower compared to SOTA attacks under the same attack setting. Our findings expose the feasibility of realistic, low-cost privacy leakage in RAG systems and highlight the urgent need for privacy-aware retrieval and defense mechanisms.",
       "authors": [
         "Nguyen Linh Bao Nguyen",
@@ -50686,40 +51140,6 @@
       ],
       "updated": "2026-07-30T22:43:57Z",
       "url": "https://arxiv.org/abs/2607.28878",
-      "version": 1
-    },
-    {
-      "abstract": "The rapid development of Large Language Models (LLMs) has led to significant advances across a wide range of language tasks, while simultaneously raising growing concerns about unauthorized data exploitation and privacy leakage. Unlearnable examples (UEs) offer a promising defense by introducing carefully designed perturbations into data such that models trained on them exhibit degraded utility. However, existing methods for text protection are primarily designed for classification tasks (e.g., sentiment analysis) in discriminative language models and often rely on injecting class-specific linguistic cues, which limits their effectiveness in the open-ended generation settings of LLMs. In this work, we propose TextCloak, an RL-driven framework for protecting textual data against unauthorized LLM exploitation. TextCloak employs a generative policy that transforms batches of clean text into unlearnable examples while preserving semantic fidelity and linguistic naturalness. To optimize the policy, we introduce GRPO-UE, which rewards generated unlearnable text based on the downstream degradation they induce in fine-tuned surrogate LLMs and updates the generator parameters via group-relative policy optimization. This bi-level optimization enables the generator to discover generalizable protective patterns beyond class-specific cues. Comprehensive experiments on six publicly available datasets and nine state-of-the-art LLMs demonstrate that TextCloak consistently impairs unauthorized fine-tuning while maintaining text utility for legitimate use. Further analyses establish its transferability and robustness across model architectures, training configurations, and adaptive attacks, highlighting its broad applicability as a practical defense against unauthorized LLM exploitation.",
-      "authors": [
-        "Chengshuai Zhao",
-        "Pingchuan Ma",
-        "Dawei Li",
-        "Bohan Jiang",
-        "Zhiyuan Yu",
-        "Zhen Tan",
-        "Huan Liu"
-      ],
-      "categories": [
-        "cs.AI",
-        "cs.CL",
-        "cs.CR",
-        "cs.LG"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2607.28862",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2607.28862",
-      "primary_category": "cs.CL",
-      "published": "2026-07-30T22:01:36Z",
-      "relevance_score": 6,
-      "title": "TextCloak: Thwarting Unauthorized LLM Exploitation via RL-Driven Unlearnable Text",
-      "topics": [
-        "privacy",
-        "adversarial-ml"
-      ],
-      "updated": "2026-07-30T22:01:36Z",
-      "url": "https://arxiv.org/abs/2607.28862",
       "version": 1
     },
     {
