@@ -1,6 +1,584 @@
 {
   "papers": [
     {
+      "abstract": "LLM-based agents execute real-world workflows via tools and memory. These affordances enable ill-intended adversaries to also use these agents to carry out complex misuse scenarios. Existing agent misuse benchmarks largely test single-prompt instructions, leaving a gap in measuring how agents end up helping with harmful or illegal tasks over multiple turns. We introduce STING (Sequential Testing of Illicit N-step Goal execution), an automated red-teaming framework that constructs a step-by-step illicit plan grounded in a benign persona and iteratively probes a target agent with adaptive follow-ups, using judge agents to track phase completion. We further introduce an analysis framework that models multi-turn red-teaming as a time-to-first-jailbreak random variable, enabling analysis tools like discovery curves, hazard-ratio attribution by attack language, and a new metric: Restricted Mean Jailbreak Discovery. Across AgentHarm scenarios, STING yields substantially higher illicit-task completion than single-turn prompting and chat-oriented multi-turn baselines adapted to tool-using agents. In multilingual evaluations across six non-English settings, we find that attack success and illicit-task completion do not consistently increase in lower-resource languages, diverging from common chatbot findings. Overall, STING provides a practical way to evaluate and stress-test agent misuse in realistic deployment settings, where interactions are inherently multi-turn and often multilingual.",
+      "authors": [
+        "Nivya Talokar",
+        "Ayush K Tarun",
+        "Murari Mandal",
+        "Maksym Andriushchenko",
+        "Antoine Bosselut"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.LG"
+      ],
+      "comment": "Accepted in ICML 2026",
+      "doi": null,
+      "id": "2602.16346",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2602.16346",
+      "primary_category": "cs.CL",
+      "published": "2026-02-18T10:31:19Z",
+      "relevance_score": 4,
+      "title": "Helpful to a Fault: Measuring Illicit Assistance in Multi-Turn, Multilingual LLM Agents",
+      "topics": [
+        "prompt-security",
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T15:11:56Z",
+      "url": "https://arxiv.org/abs/2602.16346",
+      "version": 5
+    },
+    {
+      "abstract": "Personal AI agents consume external content such as web pages and SNS feeds, and retain selected information in persistent memory. As a result, external content has become a new attack vector for memory poisoning, which steers an agent's later actions toward an adversary's bias. However, most existing attacks embed a malicious instruction in external content to make the agent retain the poisoned information, and prompt-injection filters can detect such content. We observe that agents access external content primarily through skills while curating a subset of the content into their memory. Leveraging this curation path, we present SBIA, a Stealthy Bias Injection Attack that introduces adversarial bias through ordinary external content while relying on the agent itself to perform the memory write. The adversary posts crafted comments under hot SNS feeds and distributes an SNS feed summarization skill whose curation rule admits these comments into memory. Comment cloaking expresses the bias as an ordinary opinion rather than an instruction, comment watermarking allows the skill to identify the crafted comments, and topic anchoring records them so that later related requests recall them. On BiasBench with 7,000 crafted SNS comments and seven LLMs on OpenClaw, SBIA achieves attack success rates of at least 96% across models and even 91% on GPT-5.5 in four downstream tasks. Despite this effectiveness, its skill passes all eight evaluated malicious-skill scanners and ClawHub's official skill scanning pipeline. We further propose a memory boundary defense that detects 82.1% of injected entries at a 5.6% FPR. Our findings show that external Web content and third-party skill marketplaces form a new attack surface for personal AI agent memory.",
+      "authors": [
+        "Minjae Seo",
+        "Wonwoo Choi",
+        "Geonwoo Han",
+        "Taekyoung Kwon",
+        "Yongsu Kim",
+        "Sang Seo",
+        "Jaewon Noh",
+        "Hankyul Baek",
+        "Seongyun Seo",
+        "Myoungsung You"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CY"
+      ],
+      "comment": "13 pages, 7 figures, 14 tables",
+      "doi": null,
+      "id": "2608.22061",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2608.22061",
+      "primary_category": "cs.AI",
+      "published": "2026-08-22T18:03:20Z",
+      "relevance_score": 4,
+      "title": "MEMORY Wins All: Indirect Bias Injection Attacks via Social Media Content",
+      "topics": [
+        "prompt-security",
+        "adversarial-ml"
+      ],
+      "updated": "2026-11-03T14:41:59Z",
+      "url": "https://arxiv.org/abs/2608.22061",
+      "version": 2
+    },
+    {
+      "abstract": "A privacy evaluation of de-identified text asks a language model (the adversary) to guess a person's protected attribute. We introduce a prior-normalised clipped leakage score of its confidence gain on the true value and audit the conclusions drawn from it. Each verdict depends on an evaluation interface (the queried person, answer options, prior, adversary model and scoring rule), which we vary on fixed releases of three corpora. In a stress test, an editor that writes the opposite-sex form at the same spans a redaction editor would redact misleads the adversary about most people, yet ranks first among editors scored on the same MedQA entries under this score, as under attack accuracy and proper scoring rules read as privacy. A relabelling-invariant reading of AUC ranks that editor sixth of eight, and a rule-aware adversary recovers the attribute from the same text. On ordinary releases most verdict changes are gains or losses of separability; of six choices varied over all pairs, only the adversary reverses comparisons (5 of its 124 changes), and the query can target the wrong person. SACC, a traceable editor we build as the instrument, lets us ablate two editing principles and show where its advantage does not hold.",
+      "authors": [
+        "Tuan Thanh Duong",
+        "Joongmin Shin",
+        "Jeongho Yoon",
+        "Junyoung Son",
+        "Heuiseok Lim"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CR"
+      ],
+      "comment": "49 pages including appendices",
+      "doi": null,
+      "id": "2611.04941",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04941",
+      "primary_category": "cs.CL",
+      "published": "2026-11-03T14:08:34Z",
+      "relevance_score": 6,
+      "title": "Residual Attribute Leakage Is an Interface: Auditing Privacy Evaluation After Text De-identification",
+      "topics": [
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T14:08:34Z",
+      "url": "https://arxiv.org/abs/2611.04941",
+      "version": 1
+    },
+    {
+      "abstract": "System prompt is a critical intellectual property of large language model (LLM) services. To analyze its leakage, prompt extraction attacks have been extensively studied. However, we validate that existing attacks substantially degrade on recent LLM services, whose complexity has evolved in both the prompt itself and system-level constraints. Specifically, (1) system prompts become longer and more structured to contain pre-defined tool schemas, execution logic, safety guardrails, etc., and (2) only the final post-processed outputs (e.g., agent's actions) but not the raw textual response can be observed. In this paper, we address the above increased complexity by proposing Extraction with Hierarchical Optimization (ExtraHerO), which (1) decomposes the prompt extraction into a hierarchical reconstruction process with a pre-defined structural prompt template, and (2) iteratively updates the adversarial query with guidance of feedback-template differences to observe diverse outputs. In particular, we monitor the information gain of attack optimization to early stop or reset it for a good trade-off between effectiveness and efficiency. We also find that existing evaluation metrics for prompt fidelity can be misleading because they do not account for structural information. Therefore, we rely on global textual similarity and prioritize structural keywords. Moreover, we introduce a system-level metric, adversarial utility, to measure the help of prompt extraction for real-world downstream attacks. Experimental results demonstrate the consistent superiority of ExtraHerO, with average improvements of 12.5\\% (fidelity), 2.3\\% (functionality), and 6.0\\% (adversarial utility) on chatbots, and 12.2\\%, 34.3\\%, and 30.5\\% on agents.",
+      "authors": [
+        "Shuaidong Li",
+        "Chenhao Lin",
+        "Xinshan Yang",
+        "Chao Shen",
+        "Yufei Chen",
+        "Zhengyu Zhao"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.04803",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04803",
+      "primary_category": "cs.CR",
+      "published": "2026-11-03T12:37:01Z",
+      "relevance_score": 6,
+      "title": "Extracting System Prompt of LLM Services in Complex (Agentic) Settings: Hierarchical Optimization and Reliable Evaluation Metrics",
+      "topics": [
+        "prompt-security",
+        "agent-security",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T12:37:01Z",
+      "url": "https://arxiv.org/abs/2611.04803",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models (LLMs) can generate detailed guidance, functional code, and persuasive text at scale. As one of the most widely used consumer language model products as of 2026, ChatGPT gives broad public access to these capabilities, motivating concerns about its potential use in surveillance-related tasks. We present an exploratory case study of what potentially harmful surveillance assistance looks like in ChatGPT's public web interface. We contribute a taxonomy of seven surveillance risk categories based on prior LLM risk research and reports of deployed surveillance systems, instantiated as 110 prompts, along with a manually reviewed analysis of ChatGPT's responses. Prompts were issued using two approaches: 55 jailbreak prompts drawing on five types of elicitation strategies, and 55 plain-language direct prompts, each run alone, and if unsuccessful, again with a short fixed prefix. We find that ChatGPT provides substantive surveillance guidance for 40 of the 55 jailbreak prompts and for 33 of the 55 direct prompts without any prefix. Compliant responses also rarely included policy mentions or suggestions for privacy-preserving alternatives. We manually review every response and find that even when ChatGPT states a refusal, it may still supply detailed instructions, working code, or architectural guidance alongside brief ethical caveats.",
+      "authors": [
+        "Ayana Hussain",
+        "Nicholas Vincent"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2610.40890",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2610.40890",
+      "primary_category": "cs.AI",
+      "published": "2026-10-29T19:10:04Z",
+      "relevance_score": 4,
+      "title": "ChatGPT as a Surveillance Assistant? An Exploratory Case Study of AI-Assisted Surveillance Risks",
+      "topics": [
+        "prompt-security",
+        "privacy",
+        "safety",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T12:12:57Z",
+      "url": "https://arxiv.org/abs/2610.40890",
+      "version": 2
+    },
+    {
+      "abstract": "Single-pass scoring models such as Jev give each code function a vulnerability probability, so that security teams can rank many functions for review without generating written explanations. Training an open-weight model for this task is limited by data. Benchmarks with both vulnerable and non-vulnerable labels keep few vulnerable functions once examples related to the test data are removed, while larger public vulnerability records mostly contain vulnerable functions only. Mixing the two lets the data source predict the label, and training on the labeled data alone leaves a model that often scores a fixed function above its vulnerable original. We present Cyber-JEV, a fine-tuning method that uses fix commits to turn these records into comparison groups. Each group holds a vulnerable function, its patched version and up to two unchanged functions from the same file, so the model sees the change that removed a recorded defect. One shared model learns two tasks: classifying functions from the labeled reference data, and ranking the vulnerable function above the other members of its group. At test time the input is one function and the output is a vulnerability score. On a test benchmark of 7,270 functions, an ensemble of five fine-tuned Qwen3.5-4B models reaches an area under the receiver operating characteristic curve of 0.814, compared with 0.743 for Jev 1.13. With the 4,031 alerts of Jev as the review budget, it misses 16 of 322 vulnerable functions instead of 39. Compared with training on the reference data alone, it ranks the vulnerable version above the patched version 14.8 to 29.2 percentage points more often on three sets of real fixes. Such scores can order the changed functions of a pull request or a release for review under a fixed budget.",
+      "authors": [
+        "Zhuyi Zhao",
+        "Shengjie Yuan",
+        "Shengyu Wang",
+        "Kang Wei",
+        "Wang Yang",
+        "Wenchao Xu",
+        "Fushuo Huo"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "8 pages, 3 figures, 5 tables. Added project page (manuscript unchanged): https://ricardoz-kisara.github.io/cyber-jev/",
+      "doi": null,
+      "id": "2611.02957",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.02957",
+      "primary_category": "cs.CR",
+      "published": "2026-11-02T11:24:36Z",
+      "relevance_score": 8,
+      "title": "Cyber-JEV: Matched Contrastive Fine-Tuning of Language Models for Fast Source-Code Vulnerability Triage",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T11:36:06Z",
+      "url": "https://arxiv.org/abs/2611.02957",
+      "version": 2
+    },
+    {
+      "abstract": "A zero-knowledge virtual machine (zkVM) lets an untrusted prover convince a verifier that a program, typically Rust compiled to RISC-V, ran correctly. The proof covers the compiled binary, so a miscompilation can make a correct zkVM produce a valid proof of a computation that differs from the developer's source. We present the first empirical study of miscompilation as a threat to zkVM guarantees, on the production zkVMs SP1 and Jolt. We assemble 88 known rustc and LLVM miscompilations with Rust reproducers, using an LLM agent to recover Rust triggers for 60 of 124 LLVM bugs reported only as LLVM IR. Many of the bugs carry over to zkVMs: 48 of the 88 make a guest commit a wrong output on SP1 and 46 on Jolt, including the same 15 rustc bugs on both. Most bugs that do not reproduce never reach the faulty code on the zkVM's target, e.g. because they need an instruction-set extension. Existing guest programs are rarely affected by accident. Across 13 guests of 10 popular SP1 projects, the buggy and the fixed compiler produce byte-identical binaries in 447 of the 552 guest-bug pairs that build, and the other 105 have the same code or agree on every input we ran. An attacker who contributes code to a guest, however, can trigger these bugs on purpose. For about $40 per project, an LLM agent found patches that look like ordinary optimisations, preserve the behaviour of the guest's source, and expose a known bug in 12 of 366 project-bug pairs, across 11 of 20 projects. In four cases the guest commits a wrong output, including an Ethereum client that rejects a valid block, and in the other eight it fails on a valid input. Reviewing or formally verifying the zkVM or the guest's source cannot catch such a patch, because both are correct. zkVM projects should treat their compiler as part of their trusted base and track the known bugs of their toolchain.",
+      "authors": [
+        "Hui Xuan Tan",
+        "Stefanos Chaliasos",
+        "Alastair F. Donaldson"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.PL"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.04701",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04701",
+      "primary_category": "cs.PL",
+      "published": "2026-11-03T11:22:45Z",
+      "relevance_score": 6,
+      "title": "Proving the Wrong Program: Miscompilations as a Threat to zkVM Guarantees",
+      "topics": [
+        "agent-security"
+      ],
+      "updated": "2026-11-03T11:22:45Z",
+      "url": "https://arxiv.org/abs/2611.04701",
+      "version": 1
+    },
+    {
+      "abstract": "Indirect Prompt Injection (IPI) poses a critical threat to LLM agents. Existing defenses largely focus on whether an injection induces a new tool invocation or unintended action. In this paper, we study a different attack surface, parameter poisoning, where the attacker preserves the intended action but manipulates one or more tool arguments, such as a recipient or other task-critical value. Such attacks are difficult to detect because no new action is introduced, while parameter changes themselves are often legitimate parts of the user's request. Our key insight is that the legitimacy of a parameter change should be determined by the trust of the information flow that produces it under the user query. The query induces a task-specific trust hierarchy over available information fields: some are trusted to determine particular parameters, while others should have little or no influence. Based on this insight, we propose AuthorityFlow, a three-stage parameter-level defense. First, it interprets the user query to construct a task-specific trust hierarchy over the information fields available to the agent. Second, for each tool argument, it traces the information flow that produces its current value and attributes the value to its supporting field. Finally, it accepts the value only when that field is trusted to determine the parameter under the current task, allowing high-trust changes while flagging low-trust influence as potential parameter poisoning. We further introduce FactAuthBench for evaluating parameter poisoning in LLM agents. Without defense, the attack success rate reaches 93.06%. AuthorityFlow reduces it to 9.03%, while retaining 82.64% benign task utility compared with 90.28% without defense. Our results show that effective IPI defense requires reasoning not only about what action an agent takes, but also about which information is trusted to determine its parameters.",
+      "authors": [
+        "Yao Wang",
+        "Zehua Ma",
+        "Weiming Zhang",
+        "Han Fang"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.04673",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04673",
+      "primary_category": "cs.CR",
+      "published": "2026-11-03T10:57:12Z",
+      "relevance_score": 8,
+      "title": "Right Tool, Wrong Parameters: Defending LLM Agents Against Parameter Poisoning",
+      "topics": [
+        "prompt-security",
+        "adversarial-ml"
+      ],
+      "updated": "2026-11-03T10:57:12Z",
+      "url": "https://arxiv.org/abs/2611.04673",
+      "version": 1
+    },
+    {
+      "abstract": "Large Language Models (LLMs) have made it exceptionally convenient for users to send their private data to model providers, which process them in plaintext. Fully Homomorphic Encryption (FHE) promises to secure remote inference by computing directly on encrypted data, yet it has remained prohibitively slow. The effort to make it practical remains fragmented, with most existing frameworks being closed-source, which keeps progress from compounding. We present Perseus, a free and open Python software library that supports the full stack of encrypted model inference, from the cryptographic backend and data packing, to encrypted nonlinearities and end-to-end model execution. Perseus ships with built-in novel optimizations, one at each level of the stack: in-kernel regeneration of key-switching keys at the (i) backend level, a complex variant of Cachemir packing at the (ii) data level, and a state-of-the-art bootstrap placer that is both packing- and magnitude-aware at the (iii) model level. Perseus achieves state-of-the-art latency across multiple models and modalities, within $3\\%$ of the plaintext models' accuracy and perplexity. Remarkably, it is $3.96\\times$ faster at single-token decoding than any other implementation on Llama-3-8B. We initiate, for the first time, a public speedrun on encrypted GPT-2, so that progress can compound.",
+      "authors": [
+        "Alessandro Zirilli",
+        "Davide Marincione",
+        "Evgenios M. Kornaropoulos",
+        "Giuseppe Ateniese",
+        "Emanuele Rodol\u00e0"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "4 pages, 5 tables",
+      "doi": null,
+      "id": "2611.04488",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04488",
+      "primary_category": "cs.CR",
+      "published": "2026-11-03T08:19:10Z",
+      "relevance_score": 4,
+      "title": "Perseus: A Full-Stack System for Homomorphic Model Inference",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-11-03T08:19:10Z",
+      "url": "https://arxiv.org/abs/2611.04488",
+      "version": 1
+    },
+    {
+      "abstract": "Large Language Models (LLMs) are increasingly used for code generation, raising concerns that they may be misused to produce malicious code. Meanwhile, Grammar-Constrained Decoding (GCD) has been widely adopted to improve the reliability of LLM-generated code by enforcing syntactic validity. In this paper, we reveal a counterintuitive risk: this reliability-oriented technique can itself become an attack surface. We uncover a new jailbreak attack, termed CodeSpear, that exploits GCD to induce LLMs into generating malicious code. Our experiments show that simply applying a benign code grammar constraint can effectively jailbreak LLMs. To address this vulnerability, we propose CodeShield, a safety alignment approach that robustly preserves safe behavior even under attacker-controlled grammar constraints. CodeShield aligns the model in the code modality by teaching it to generate honeypot code under GCD. Such code is semantically harmless, so it does not implement the malicious request, and structurally diverse, so it is difficult to suppress through grammar tightening. At the same time, CodeShield still preserves natural-language refusals when natural language is available. Experiments on 10 popular LLMs across 4 benchmarks show that CodeSpear outperforms representative jailbreak baselines and increases the attack success rate by more than 30 percentage points on average. CodeShield also restores safety under CodeSpear while preserving benign utility. Our findings reveal a fundamental risk of GCD and call for greater attention to its potential security implications.",
+      "authors": [
+        "Yitong Zhang",
+        "Shiteng Lu",
+        "Jia Li"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": "Directly Accepted by ICSE 2027",
+      "doi": null,
+      "id": "2606.11817",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2606.11817",
+      "primary_category": "cs.CR",
+      "published": "2026-06-10T08:50:59Z",
+      "relevance_score": 8,
+      "title": "Grammar-Constrained Decoding Can Jailbreak LLMs into Generating Malicious Code",
+      "topics": [
+        "prompt-security",
+        "safety",
+        "software-security"
+      ],
+      "updated": "2026-11-03T07:43:08Z",
+      "url": "https://arxiv.org/abs/2606.11817",
+      "version": 2
+    },
+    {
+      "abstract": "Researchers evaluate detectors of malicious smart-contract transactions on datasets that each paper assembles anew. Their positives come from incident trackers, whose citations mix attacks with setup steps and transactions that never ran, or from a detector's own output, which makes the evaluation circular; their negatives are ordinary transactions. A shared benchmark needs positives whose own execution shows the attack and negatives that use the attacks' mechanisms, with no detector deciding either label. We present TxBench, a benchmark of attack transactions and evidence-backed negatives on seven EVM chains, with the five-step pipeline that builds it. The pipeline collects every transaction that BlockSec's incident library or the EVM Hack Registry cites, maps its weakness to OWASP's SCWE taxonomy, and rebuilds its execution from free data sources. A cited transaction qualifies as a valid TxBench attack only if it extracts value from others during execution, is consistent with all verified source claims, and is independently linked to the reported incident by corroborating evidence. Negative examples are sampled from each chain's traffic near the attacks and retained only when positive evidence confirms their legitimacy. Of 1,850 cited transactions, TxBench accepts 1,012 attacks from 602 incidents, worth USD 868.1 million: 846 contract exploits and 166 key compromises. A blind review under rules fixed in advance confirms 98 of 100 sampled attacks (97.7% weighted) and all 100 sampled negatives. As baselines, four zero-shot LLMs reading anonymized traces are precise but find at most 0.43 of the attacks and no key compromise, leaving ample room for better detectors.",
+      "authors": [
+        "Tamer Abdelaziz",
+        "karim Ali"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "5 pages",
+      "doi": "10.5281/zenodo.23758032",
+      "id": "2611.04411",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04411",
+      "primary_category": "cs.CR",
+      "published": "2026-11-03T06:49:00Z",
+      "relevance_score": 6,
+      "title": "TxBench: A Benchmark of Attack Transactions and Evidence-Backed Negatives on Seven EVM Chains",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T06:49:00Z",
+      "url": "https://arxiv.org/abs/2611.04411",
+      "version": 1
+    },
+    {
+      "abstract": "LLM agents increasingly act on information retrieved from public sources they treat as credible, which turns a manipulated recommendation into a transaction, a dependency, or a decision with physical consequences. The security literature models this threat as instruction injection, in which an adversary writes a command into retrieved content and deployed defenses learn to recognize command syntax. We show that an attacker can instead steer an agent through the agent's own harm-avoidance. A single fabricated hazard, written as an ordinary review, leads the agent to disqualify the legitimate options and select the attacker's target by its own reasoning, with no command for a detector to recognize. We call this voluntary servitude. These payloads steer agents about as often as instruction injection (60.4% vs. 66.0%), and deployed injection detectors score them as benign, so behind a filter they are 1.7-4.4x more effective. We measure this at the generation stage across six models and ten consumer-service domains, for three attack families, and show that it transfers to production browser agents, outperforming instruction injection, and to a retrieval pipeline (1.0-57.0% end-to-end success, depending on the retriever). We then show that a corroboration requirement added to the agent's instructions removes roughly 95% of the exposure against a non-adaptive attacker without retraining. With the requirement in place, the agent still reads the planted hazard and no longer acts on it.",
+      "authors": [
+        "Ilan Zendel",
+        "Matan Levy",
+        "Stav Cohen",
+        "Avi Mendelson",
+        "Amit LeVi"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "Accepted at NeurIPS 2026 (Main Track). 17 pages, 7 figures, 8 tables",
+      "doi": null,
+      "id": "2611.04393",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04393",
+      "primary_category": "cs.CR",
+      "published": "2026-11-03T06:26:58Z",
+      "relevance_score": 4,
+      "title": "Voluntary Servitude: Weaponized Safety Warning Mechanisms for Controlling AI Agents",
+      "topics": [
+        "other"
+      ],
+      "updated": "2026-11-03T06:26:58Z",
+      "url": "https://arxiv.org/abs/2611.04393",
+      "version": 1
+    },
+    {
+      "abstract": "Finite element method (FEM) solvers are foundational to scientific and engineering simulation, yet their susceptibility to \\emph{efficiency attacks} remains largely unexplored. An adversary can craft syntactically valid and runnable FEM programs that complete successfully while forcing excessive computational work, enabling computational denial-of-service (DoS) attacks. Finding such inputs is challenging because FEM programs occupy a vast, structured space constrained by numerical, geometric, and constitutive requirements. We introduce CloakFEM, a domain-guided LLM-agent framework for automatically generating runnable adversarial FEM programs that amplify solver computation. CloakFEM combines LLM-guided search with an FEM-specific intermediate representation and a deterministic validity gate that enforces runnable constraints. Across three FEM stacks, 17 problem classes, and 1,068 seeds, CloakFEM discovers adversarial inputs that substantially amplify solver work while remaining valid and solvable. In the most extreme case, solver iterations increase from 43 to 247,367, a \\(5{,}752.72\\times\\) amplification. CloakFEM outperforms five generic black-box baselines and retains an advantage over evolutionary search under a controlled bounded action space. Cross-solver analysis further reveals both problem-intrinsic and solver-specific sources of vulnerability. Our results uncover an underexplored efficiency-attack surface in FEM solvers and show that runnable FEM programs can serve as adversarial inputs.",
+      "authors": [
+        "Li Zheng",
+        "Simin Chen"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.SE"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.04356",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04356",
+      "primary_category": "cs.CR",
+      "published": "2026-11-03T05:40:24Z",
+      "relevance_score": 6,
+      "title": "CloakFEM: Agentic FEM Code Generation for Red-Teaming Computational Resource Exhaustion",
+      "topics": [
+        "agent-security",
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-11-03T05:40:24Z",
+      "url": "https://arxiv.org/abs/2611.04356",
+      "version": 1
+    },
+    {
+      "abstract": "Although Large Language Models (LLMs) achieve strong alignment through supervised fine-tuning and reinforcement learning from human feedback, the alignment is often fragile under subsequent fine-tuning. Existing explanations either attribute alignment fragility to gradient geometry or characterize it as a distributional shift in model outputs, yet few provide a unified account that bridges parameter-space learning dynamics with function-space alignment behavior during fine-tuning. In this work, we introduce a tractable alignment score and derive its closed-form update during fine-tuning, yielding a unified framework for alignment dynamics. Our analysis decomposes alignment updates into two competing components: a \\textbf{\\color{red!60!black} Rebound Force}, governed jointly by the current alignment state and the narrowness of model distribution, and a \\textbf{\\color{green!60!black} Driving Force}, determined by how the training distribution aligns with outcome-conditioned posteriors over aligned and non-aligned completions. This decomposition explains why prior alignment can be reversed by later fine-tuning and why narrower posterior structure strengthens such reversal. Moreover, our framework predicts a \\textbf{Rehearsal Priming Effect}: prior alignment leaves a latent posterior imprint that amplifies the effective Driving Force upon re-exposure, leading to faster re-alignment. We validate these predictions across safety alignment, emergent misalignment, and sentiment settings, demonstrating consistent alignment reversal and accelerated re-alignment under re-exposure. In addition, controlled experiments in safety alignment confirm the predicted dependence of rebound strength on posterior narrowness. Together, these results provide a unified dynamical perspective on how alignment is disrupted and reactivated during LLM fine-tuning.",
+      "authors": [
+        "Yuhan Huang",
+        "Huanran Chen",
+        "Yinpeng Dong"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2605.18309",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2605.18309",
+      "primary_category": "cs.LG",
+      "published": "2026-05-18T12:27:12Z",
+      "relevance_score": 6,
+      "title": "Alignment Dynamics in LLM Fine-Tuning",
+      "topics": [
+        "safety"
+      ],
+      "updated": "2026-11-03T02:15:45Z",
+      "url": "https://arxiv.org/abs/2605.18309",
+      "version": 2
+    },
+    {
+      "abstract": "Multi-agent LLM systems place several agents on shared infrastructure, where each agent holds permissions far broader than the task it is delegated -- so every agent is routinely permitted to act on a peer's resources it was never assigned. We ask: under competitive pressure, what determines whether an agent crosses from its delegated scope into a peer's resources, and can such crossings be enforced away? We study this across eight LLMs in two simulated environments -- a CI/CD release pipeline and a security-operations incident queue -- using a deterministic, no-model-in-the-loop detector over hash-chained, replay-verified logs. In a controlled 2x2x2 factorial over competitive incentive, candidate visibility, and payoff information (three models, n=52 per cell), we find that action representation, not permission, governs the behavior: no agent crosses when the peer action is unlisted, whereas listing it under competitive pressure with a stated payoff raises crossings sharply -- up to 52 of 52 episodes for Claude Sonnet 4.5. We also observe a model-dependent split: two newer models (Claude Sonnet 5.5 and Opus 5.5) refuse the identical attack in 0 of 100 episodes, where prior-generation models cross in 9 of 10. We then evaluate two defenses -- a deterministic reference monitor and a model-based pre-execution judge -- both block every crossing and, when the task is winnable, cut avoidable peer deadline misses from 15/40 and 14/40 to at most 1/40. But scope enforcement is not harm prevention: an agent can still set a peer back through an authorized action on its own resources -- misreporting its incident's severity -- which neither defense detects. Our results establish action representation, not permission alone, as a controllable driver of inter-agent scope violations, and show that enforcing delegated scope is distinct from preventing harm, motivating effect-aware authorization.",
+      "authors": [
+        "Shravya Kanchi"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "10 pages, 7 figures, 5 tables. Code and data: https://github.com/shrave/delegated-scope-violation",
+      "doi": null,
+      "id": "2611.04086",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.04086",
+      "primary_category": "cs.CR",
+      "published": "2026-11-02T23:52:50Z",
+      "relevance_score": 6,
+      "title": "Permitted but Unauthorized: Affordance-Induced Delegated-Scope Violations in Multi-Agent LLM Systems",
+      "topics": [
+        "agent-security",
+        "cyber-defense"
+      ],
+      "updated": "2026-11-02T23:52:50Z",
+      "url": "https://arxiv.org/abs/2611.04086",
+      "version": 1
+    },
+    {
+      "abstract": "Practical evidence for multi-node training on desktop-class accelerators remains limited. This report presents a proof-of-concept deployment of distributed NanoChat pretraining across two NVIDIA DGX Spark systems, each with a GB10 Grace Blackwell system-on-chip and 128 GB of unified memory, administered remotely over a Tailscale mesh VPN and connected for training by a dedicated 200 Gb/s QSFP56 direct fiber link. PyTorch torchrun, DDP, and NCCL were configured with one process per node, a depth-20 NanoChat model, a device batch of 32 sequences per node, a 2,048-token context, and eight gradient-accumulation steps, giving 1,048,576 tokens per optimizer step for the 896.5-million-parameter model. The run took 4,980 steps over about four days, averaging 63.4 s of measured training time per step (about 16,540 tokens/s) and processing about 5.22 billion tokens. We document link configuration, container setup, interface binding, a step-zero evaluation bug that triggered NCCL timeouts, checkpointing, and troubleshooting lessons. We also built a cybersecurity fine-tuning dataset from 77 CISA advisories (338 training, 37 validation conversations) and compared a baseline SFT checkpoint against a CTI-augmented checkpoint on 17 held-out prompts with an Ollama-hosted LLM judge: CTI-specific categories improved while general-knowledge categories regressed, for a small overall change from 2.06 to 2.29 on a 0-10 scale. Version 2 adds a stage-2 fine-tune with a MITRE ATT&CK technique dictionary under a deterministic evaluation: in-dictionary ID-to-name lookup reaches 98.5%, yet none of 50 held-out IDs is named correctly, knowledge of held-out threat groups, software, campaigns, and vulnerabilities stays near zero, and general ability drops measurably. The study establishes feasibility rather than a scaling-efficiency claim.",
+      "authors": [
+        "Vasanth Iyer"
+      ],
+      "categories": [
+        "cs.AR",
+        "cs.LG"
+      ],
+      "comment": "v2: corrects pretraining token and throughput figures, judge model, and SFT details; adds parameter count, software provenance, and a stage-2 ATT&CK-dictionary fine-tuning study. 17 pages, 5 figures, 6 tables. Deployment runbook and code: https://github.com/viyer-research/dual-dgx-spark-tailscale-testbed",
+      "doi": null,
+      "id": "2608.07226",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2608.07226",
+      "primary_category": "cs.AR",
+      "published": "2026-08-07T13:41:57Z",
+      "relevance_score": 6,
+      "title": "Dual-Node NVIDIA DGX Spark over Tailscale: A Remote-Access Testbed for Distributed LLM Training and Cyber-Threat-Intelligence Fine-Tuning",
+      "topics": [
+        "software-security",
+        "cyber-defense",
+        "evaluation"
+      ],
+      "updated": "2026-11-02T22:47:59Z",
+      "url": "https://arxiv.org/abs/2608.07226",
+      "version": 2
+    },
+    {
+      "abstract": "We study the task of CVE-conditioned exploit generation, where a model drafts proof-of-concept (PoC) exploits given software vulnerability context. We adopt a data-centric approach, constructing a high-quality dataset via multi-stage preprocessing and introducing a scalable evaluation framework with LLM-as-judge and fine-grained rubrics. Under this unified setup, we benchmark 17 large language models across 8 evaluation criteria, providing systematic insights into their zero-shot capabilities. We further show that a compact 8B open-weight model, when fine-tuned on curated data, achieves over 42.5% improvement in exploit quality and rivals some proprietary models when combined with simple test-time rejection strategies. Our results highlight the importance of data quality, structured supervision, and evaluation design for reliable exploit generation, suggesting that these factors can be as critical as model scale in adapting LLMs to cybersecurity tasks.",
+      "authors": [
+        "Yiwei Chen",
+        "Lichi Li",
+        "Kai Cheung",
+        "Vinny Parla",
+        "Ganesh Sundaram"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "Technical Report",
+      "doi": null,
+      "id": "2606.15123",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2606.15123",
+      "primary_category": "cs.CR",
+      "published": "2026-06-13T05:28:20Z",
+      "relevance_score": 6,
+      "title": "CVE-Conditioned Exploit Generation with LLMs: A Data-Centric Study of Benchmarking and Fine-Tuning",
+      "topics": [
+        "software-security",
+        "cyber-defense",
+        "evaluation"
+      ],
+      "updated": "2026-11-02T21:38:42Z",
+      "url": "https://arxiv.org/abs/2606.15123",
+      "version": 2
+    },
+    {
+      "abstract": "Large language models (LLMs) can memorize and reproduce fragments of their training data, raising privacy and legal concerns that motivate machine unlearning. Yet poisoned training examples can remain statistically detectable after unlearning, which raises the question of whether current unlearning objectives remove what the model has memorized at all. In this work, we introduce PINT, a novel algorithm for machine unlearning that uses the Hilbert-Schmidt Independence Criterion (HSIC) to reduce the statistical dependence between tokens to be forgotten and the internal representations used to predict them. We formally relate our HSIC-based objective to Exact Memorization through a computable upper bound, connecting the training objective directly to the model's ability to reproduce the forgotten tokens. In extensive experiments, we compare forgetting-utility trade-offs across eight settings with models up to 7B parameters and demonstrate scalability to 70B parameter models. Our evaluations cover unlearning Gaussian poisons, personal information, hazardous knowledge in biology and cybersecurity, and copyrighted books and news articles. PINT achieves the strongest forgetting-utility trade-off on average and is the only method to make Gaussian poisons undetectable while maintaining near-original model utility. Code is available at: https://github.com/shkabrii/PINT",
+      "authors": [
+        "Andrii Shkabrii",
+        "Claudia Plant",
+        "Martin Pawelczyk"
+      ],
+      "categories": [
+        "cs.LG"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.03955",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.03955",
+      "primary_category": "cs.LG",
+      "published": "2026-11-02T20:53:54Z",
+      "relevance_score": 4,
+      "title": "Forget What Comes Next: LLM Unlearning via Statistical Independence",
+      "topics": [
+        "privacy",
+        "cyber-defense"
+      ],
+      "updated": "2026-11-02T20:53:54Z",
+      "url": "https://arxiv.org/abs/2611.03955",
+      "version": 1
+    },
+    {
+      "abstract": "Securing bootloaders is critical to establishing the trusted computing base of modern systems. TianoCore's edk2, the de facto UEFI-based bootloader, is widely deployed but has recently been shown to contain numerous high-severity vulnerabilities. Existing approaches either focus on post-boot interfaces or rely on heavyweight simulation, limiting their scalability, throughput, and coverage of boot-time components. We present Metis, an automated technique for fuzzing edk2 protocols (i.e., boot-time interfaces) by rehosting them as user-space applications. Our key insight is that effective fuzzing must exercise not only protocol interfaces but also their dependency interactions, which serve as additional input channels. Metis employs a Direct-dependency Component Rehosting (DCR)-based strategy to construct semantically meaningful mocks for dependencies, enabling controlled input injection across all channels. It further leverages a hybrid approach combining static analysis and Large Language Model (LLM)-guided synthesis to generate and refine fuzzing harnesses. We implement Metis on the Host Based Firmware Analyzer (HBFA) framework and evaluate it on 60 drivers covering 162 protocols. Metis achieves 73.1% coverage, approximately 1.7 times higher than FuzzUEr, the state-of-the-art edk2 fuzzing technique, and discovers 137 previously unknown bugs. We have already reported 26 of them, including 12 that are remotely triggerable, and all reported vulnerabilities have been acknowledged by the vendors.",
+      "authors": [
+        "Datta Manikanta Sri Hari Danduri",
+        "Connor Everett Glosner",
+        "Aravind Machiry"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.03854",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.03854",
+      "primary_category": "cs.CR",
+      "published": "2026-11-02T19:23:21Z",
+      "relevance_score": 4,
+      "title": "Towards Effective Fuzzing of EDK2 Components",
+      "topics": [
+        "software-security"
+      ],
+      "updated": "2026-11-02T19:23:21Z",
+      "url": "https://arxiv.org/abs/2611.03854",
+      "version": 1
+    },
+    {
+      "abstract": "Most malware detection research focuses on identifying whether a file is malicious before it executes. Far less attention goes to what happens after infection. This paper presents an empirical analysis of post-infection malware behavior across 37 families, grounded in dynamic sandbox execution using CAPEv2. Behavioral traces are modeled as heterogeneous graphs with five node types and seven typed edge relationships, preserving relational structure that flat feature vectors discard. A voting ensemble trained on graph-derived structural features achieves 94.44% accuracy and MCC of 0.863, outperforming a flat behavioral baseline by 7.4 percentage points in MCC. A multiclass classifier distinguishes 24 malware families, and a per-family behavioral fingerprint analysis characterizes post-infection activity across registry, network, process, and API dimensions. An LLM explanation layer generates analyst-readable reports with MITRE ATT&CK mappings grounded in observed behavioral evidence. The full pipeline is deployed as HeteroScan at https://ama-andam.github.io/heteroscan.",
+      "authors": [
+        "Emmanuela Andam",
+        "Emanuel S. Grant",
+        "Naima Kaabouch"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "Accepted at 2026 Cyber Awareness and Research Symposium (CARS). This is the author's accepted manuscript",
+      "doi": null,
+      "id": "2611.03774",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.03774",
+      "primary_category": "cs.CR",
+      "published": "2026-11-02T18:33:03Z",
+      "relevance_score": 6,
+      "title": "What Malware Actually Does: An Empirical Analysis of Post-Infection Behavior Across Malware Families",
+      "topics": [
+        "cyber-defense"
+      ],
+      "updated": "2026-11-02T18:33:03Z",
+      "url": "https://arxiv.org/abs/2611.03774",
+      "version": 1
+    },
+    {
       "abstract": "Large language model (LLM) coding agents increasingly operate with shell access, allowing them to write scripts, move files, alter permissions, and modify system configurations. However, an agent may achieve a user's goal while causing unintended harm, such as deleting unrelated files, weakening access controls, or corrupting data, in response to benign inputs without explicit jailbreaking. This failure mode is particularly important because apparent task success may reassure users that an agent behaved correctly, causing harmful side effects to go unnoticed. We call this harmful success: the agent successfully completes the intended benign task while simultaneously causing unintended harm. Despite its importance, harmful success is difficult to measure because conventional task-success metrics overlook harmful behaviors, while existing safety evaluations are often designed solely to assess harmful outcomes. We introduce VeriHarm, an automatic framework for constructing programmatically verifiable benchmarks that directly measure harmful success. VeriHarm minimally perturbs coding tasks to elicit unintended harmful behavior while maintaining the benignity of the task and preserving the original task objective. It then synthesizes executable harm tests that, together with the original task-correctness tests, evaluate both task accuracy and harmful outcomes. Frontier agents, including GPT-5.6-Sol and Claude-Opus-5, achieve an average task accuracy of 95% on our curated VeriHarm-Bench, yet still struggle to complete tasks safely: their safe success rate, the fraction of tasks completed successfully without triggering the designated harm, averages only 37%. These results suggest that successful task completion can frequently coexist with unintended harm, and that task-success metrics alone may substantially understate the potential safety risks of coding agents.",
       "authors": [
         "Wei-Lin Chen",
@@ -118,6 +696,33 @@
       "updated": "2026-11-02T17:58:57Z",
       "url": "https://arxiv.org/abs/2606.03344",
       "version": 3
+    },
+    {
+      "abstract": "Third-party Agent Skills extend what an autonomous agent can do, but a malicious Skill can hide data exposure or output manipulation inside a legitimate workflow. Neither reading a Skill's description nor granting it tool permissions tells whether its execution meets the user's security requirements. We introduce RuntimeTickets, a protocol that enforces and audits these requirements while a Skill runs. From released malicious-Skill datasets we derive a risk model and build adversarial-benign Skill pairs. From the task's delivery contract, a language model proposes security obligations for that task. Each obligation cites the Skill lines it answers, and the ticket tightens the host's approvals into fine-grained allowed actions but never loosens them. A runtime gate checks the recipient, object and amount of every outbound send before forwarding it, and trusted monitors record the effects within their observation scope. The ticket links these checks and observations to the approved obligations of each Skill run, and a deterministic decoder turns the ticket's status into governable data flows and verifies each obligation. Neither enforcement nor decoding involves a language model, so text injected by a Skill can change the proposal but never the rule that decides a send. We evaluate RuntimeTickets at the network egress boundary of three unmodified agent frameworks against production Skill scanners and runtime baselines, among them an AgentBound-derived allow-list and SkillGuard. RuntimeTickets eliminated both failure modes of current Skill defenses, overlook (malicious Skills let through) and overkill (benign Skills blocked): its overlook rate was 0.0% and its overkill rate 0.0%, while the scanners erred on both sides. RuntimeTickets ties approved requirements to verifiable execution evidence and offers a common foundation for the safe and auditable deployment of third-party Skills.",
+      "authors": [
+        "Kuiyi Gao",
+        "Xue Liu",
+        "Bowei He"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR"
+      ],
+      "comment": "27 Pages, Submitted to ICLR 2027 (Under review)",
+      "doi": null,
+      "id": "2611.03772",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.03772",
+      "primary_category": "cs.CR",
+      "published": "2026-11-02T17:31:13Z",
+      "relevance_score": 6,
+      "title": "RuntimeTickets: Source-Grounded Security Obligations for Agent Skills",
+      "topics": [
+        "agent-security"
+      ],
+      "updated": "2026-11-02T17:31:13Z",
+      "url": "https://arxiv.org/abs/2611.03772",
+      "version": 1
     },
     {
       "abstract": "Large language models (LLMs) using retrieval-augmented generation (RAG) can synthesize Amazon Web Services (AWS) Identity and Access Management (IAM) policies from tasks and operational documents. Attacker-controlled context may induce provider-valid policies that exceed trusted authorization requirements. We present IAMRAGBENCH, a 60-case benchmark spanning scope, conditions, explicit denies, trust, permissions boundaries, and role delegation. It combines deterministic authorization-envelope scoring with case-specific validation, including request-level checks where supported. An attack requires a provider-valid clean policy that satisfies the task and a provider-valid treatment policy that violates the envelope, matches a predeclared goal, preserves an intended request, and newly authorizes a forbidden request. Across five endpoints, included-context exposure produces 49 exact authorization deltas, including 46 goal-matched attacks (46/292; 15.75\\%). End-to-end BM25 over 720 documents retrieves the designated poison for all 60 tasks at \\(k=5\\) but produces 7/294 goal-matched attacks (2.38\\%). Presenting the same weakening as a final security architecture exception produces 74/116 attacks in a frozen two-endpoint stress test (63.79\\%) and 115/294 in a post hoc all-five extension using the same frozen prompts (39.12\\%). In a replay of 194 provider-valid treatment policies that violate task requirements, AWS \\texttt{CheckNoNewAccess} reports no new access for four of 168 goal-matched exact attacks. The full pre-deployment rule rejects all 171 exact deltas and routes five unresolved cases to review. These findings support treating IAM copilots as untrusted proposal generators whose outputs require independent authorization checks before deployment.",
@@ -308,34 +913,32 @@
       "version": 2
     },
     {
-      "abstract": "Single-pass scoring models such as Jev give each code function a vulnerability probability, so that security teams can rank many functions for review without generating written explanations. Training an open-weight model for this task is limited by data. Benchmarks with both vulnerable and non-vulnerable labels keep few vulnerable functions once examples related to the test data are removed, while larger public vulnerability records mostly contain vulnerable functions only. Mixing the two lets the data source predict the label, and training on the labeled data alone leaves a model that often scores a fixed function above its vulnerable original. We present Cyber-JEV, a fine-tuning method that uses fix commits to turn these records into comparison groups. Each group holds a vulnerable function, its patched version and up to two unchanged functions from the same file, so the model sees the change that removed a recorded defect. One shared model learns two tasks: classifying functions from the labeled reference data, and ranking the vulnerable function above the other members of its group. At test time the input is one function and the output is a vulnerability score. On a test benchmark of 7,270 functions, an ensemble of five fine-tuned Qwen3.5-4B models reaches an area under the receiver operating characteristic curve of 0.814, compared with 0.743 for Jev 1.13. With the 4,031 alerts of Jev as the review budget, it misses 16 of 322 vulnerable functions instead of 39. Compared with training on the reference data alone, it ranks the vulnerable version above the patched version 14.8 to 29.2 percentage points more often on three sets of real fixes. Such scores can order the changed functions of a pull request or a release for review under a fixed budget.",
+      "abstract": "Large Language Models (LLMs) have shown promise for empowering search agents to tackle complex information-seeking tasks. However, since acquiring external information necessitates web search, these agents are highly susceptible to various adversarial attacks (e.g., malicious information injection or stealthy context manipulation). Existing attack strategies inevitably rely on static and human-crafted templates, failing to emulate the dynamic and complex nature of real-world threats. In this paper, we propose an adversarial self-evolution framework that integrates bi-level optimization between the attacker's strategy evolution and the defender's adaptive mitigation, to expose the vulnerabilities of search agents. Specifically, we introduce the Contrastive Rollout Evolutionary Optimization (CREO) method to drive the directional evolution of the attack strategy population via contrastive evolutionary signals. To provide a stable environment for this continuous evolution, we further construct a controlled sandbox and design fine-grained metrics to quantify internal vulnerabilities. Extensive experiments across various multi-hop QA benchmarks and frontier LLMs demonstrate that the proposed framework yields attack efficacy superior to static baselines, underscoring the urgent need to develop more robust defense frameworks.",
       "authors": [
-        "Zhuyi Zhao",
-        "Shengjie Yuan",
-        "Shengyu Wang",
-        "Kang Wei",
-        "Wang Yang",
-        "Wenchao Xu",
-        "Fushuo Huo"
+        "Geyuan Wang",
+        "Shunyu Liu",
+        "Siyuan Liang",
+        "Chenyang Lyu",
+        "Dacheng Tao"
       ],
       "categories": [
+        "cs.AI",
         "cs.CR"
       ],
-      "comment": "8 pages, 3 figures, 5 tables",
+      "comment": "Accepted at NeurIPS 2026",
       "doi": null,
-      "id": "2611.02957",
+      "id": "2611.03754",
       "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2611.02957",
+      "pdf_url": "https://arxiv.org/pdf/2611.03754",
       "primary_category": "cs.CR",
-      "published": "2026-11-02T11:24:36Z",
-      "relevance_score": 8,
-      "title": "Cyber-JEV: Matched Contrastive Fine-Tuning of Language Models for Fast Source-Code Vulnerability Triage",
+      "published": "2026-11-02T11:06:25Z",
+      "relevance_score": 6,
+      "title": "The Web Doesn't Sit Still: Adversarial Self-Evolving Attacks on Search Agents",
       "topics": [
-        "software-security",
-        "evaluation"
+        "software-security"
       ],
-      "updated": "2026-11-02T11:24:36Z",
-      "url": "https://arxiv.org/abs/2611.02957",
+      "updated": "2026-11-02T11:06:25Z",
+      "url": "https://arxiv.org/abs/2611.03754",
       "version": 1
     },
     {
@@ -1989,34 +2592,6 @@
       ],
       "updated": "2026-10-29T19:51:36Z",
       "url": "https://arxiv.org/abs/2610.40926",
-      "version": 1
-    },
-    {
-      "abstract": "Large language models (LLMs) can generate detailed guidance, functional code, and persuasive text at scale. As one of the most widely used consumer language model products as of 2026, ChatGPT gives broad public access to these capabilities, motivating concerns about its potential use in surveillance-related tasks. We present an exploratory case study of what potentially harmful surveillance assistance looks like in ChatGPT's public web interface. We contribute a taxonomy of seven surveillance risk categories based on prior LLM risk research and reports of deployed surveillance systems, instantiated as 110 prompts, along with a manually reviewed analysis of ChatGPT's responses. Prompts were issued using two approaches: 55 jailbreak prompts drawing on five types of elicitation strategies, and 55 plain-language direct prompts, each run alone, and if unsuccessful, again with a short fixed prefix. We find that ChatGPT provides substantive surveillance guidance for 40 of the 55 jailbreak prompts and for 33 of the 55 direct prompts without any prefix. Compliant responses also rarely included policy mentions or suggestions for privacy-preserving alternatives. We manually review every response and find that even when ChatGPT states a refusal, it may still supply detailed instructions, working code, or architectural guidance alongside brief ethical caveats.",
-      "authors": [
-        "Ayana Hussain",
-        "Nicholas Vincent"
-      ],
-      "categories": [
-        "cs.AI"
-      ],
-      "comment": null,
-      "doi": null,
-      "id": "2610.40890",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2610.40890",
-      "primary_category": "cs.AI",
-      "published": "2026-10-29T19:10:04Z",
-      "relevance_score": 4,
-      "title": "ChatGPT as a Surveillance Assistant? An Exploratory Case Study of AI-Assisted Surveillance Risks",
-      "topics": [
-        "prompt-security",
-        "privacy",
-        "safety",
-        "evaluation"
-      ],
-      "updated": "2026-10-29T19:10:04Z",
-      "url": "https://arxiv.org/abs/2610.40890",
       "version": 1
     },
     {
@@ -50368,32 +50943,6 @@
       "updated": "2026-08-07T14:28:39Z",
       "url": "https://arxiv.org/abs/2607.20255",
       "version": 2
-    },
-    {
-      "abstract": "Compact AI systems make local language-model experimentation increasingly accessible, yet practical evidence for multi-node training on desktop-class accelerators remains limited. This report presents a proof-of-concept deployment of distributed NanoChat pretraining across two NVIDIA DGX Spark systems, each with a GB10 Grace Blackwell system-on-chip and 128 GB of unified memory, administered remotely over a Tailscale mesh VPN and connected for training by a dedicated 200 Gb/s QSFP56 direct fiber link. PyTorch torchrun, DDP, and NCCL were configured with one process per node, a depth-20 NanoChat model, a local batch size of 32 per node, and a 2,048-token context, giving a global batch of 131,072 tokens per step. The run sustained a step time of about 69.4 s (about 1,890 tokens/s), processing about 653 million tokens over four days. We document link configuration, container setup, interface binding, a step-zero evaluation bug that triggered NCCL timeouts, checkpointing, and troubleshooting lessons, as a reproducibility reference for small labs. We also built a cybersecurity fine-tuning dataset from 77 CISA advisories (338 training, 37 validation conversations) and ran a 17-question held-out evaluation comparing a baseline SFT checkpoint against a CTI-augmented checkpoint with an Ollama-hosted LLM judge. CTI-specific categories improved while general-knowledge categories regressed, for a small overall change from 2.06 to 2.29 on a 0-10 scale. The same cluster supports a 400-level AI course (CS 426) and a query engine for CompTIA Security+ POGIL activities in CBS 255, showing modest local infrastructure can serve both research and teaching. The study establishes feasibility rather than a scaling-efficiency claim, since single-node throughput used for comparison was estimated, not measured under matched conditions. Runbook and scripts are available (see Code Availability).",
-      "authors": [
-        "Vasanth Iyer"
-      ],
-      "categories": [
-        "cs.AR",
-        "cs.LG"
-      ],
-      "comment": "12 pages, 3 figures, 4 tables. Deployment runbook and code: https://github.com/viyer-research/dual-dgx-spark-tailscale-testbed",
-      "doi": null,
-      "id": "2608.07226",
-      "journal_ref": null,
-      "pdf_url": "https://arxiv.org/pdf/2608.07226",
-      "primary_category": "cs.AR",
-      "published": "2026-08-07T13:41:57Z",
-      "relevance_score": 6,
-      "title": "Dual-Node NVIDIA DGX Spark over Tailscale: A Remote-Access Testbed for Distributed LLM Training and Cyber-Threat-Intelligence Fine-Tuning",
-      "topics": [
-        "cyber-defense",
-        "evaluation"
-      ],
-      "updated": "2026-08-07T13:41:57Z",
-      "url": "https://arxiv.org/abs/2608.07226",
-      "version": 1
     },
     {
       "abstract": "Self-evolving skill (SES) systems distill agent trajectories into persistent skills, allowing untrusted experience to become trusted instruction. We introduce PoisonedEvolution, a trajectory-poisoning attack on this promotion process. Our skill-visible black-box attacker can inspect a target skill and contribute bounded evidence, but cannot observe private pools or evolution logic or edit the skill bank. Artifact poisoning requires Inclusion, Evolution Attribution, and Realization. Attribution is the distinctive bottleneck: the target behavior must appear causally useful, recurrent, and generalizable before promotion. We evaluate four representative security-effect families using inert canary specifications. At 10% attacker support, across six mainstream LLM evolvers in SkillClaw, PoisonedEvolution embeds target behaviors in 546/600 trials (91.0% SER). On the structurally different Trace2Skill pipeline at the same ratio, it embeds target behaviors in 369/600 trials (61.5% SER), demonstrating transfer across evolution architectures. In a representative controlled study, three consistent attacker records suffice in a 30-record batch, whereas a single record is much weaker. Ablations identify recurring support, causal framing, and domain-aligned encoding as the main determinants of success. These findings expose evidence promotion as a security boundary for self-evolving agents.",
