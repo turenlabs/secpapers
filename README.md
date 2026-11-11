@@ -22,19 +22,19 @@ paper revisions, and regenerates this repository from stable source data.
 ## At a glance
 
 <!-- SECPAPERS:STATS:START -->
-**2305 papers** across **4 publication years**. Latest arXiv metadata update: **2026-11-09**.
+**2324 papers** across **4 publication years**. Latest arXiv metadata update: **2026-11-10**.
 
 | Topic | Papers |
 | --- | ---: |
-| [Prompt Injection &amp; Jailbreaks](papers.md#prompt-injection--jailbreaks) | 541 |
-| [Agent &amp; Tool Security](papers.md#agent--tool-security) | 571 |
-| [Privacy &amp; Data Leakage](papers.md#privacy--data-leakage) | 360 |
-| [Safety, Alignment &amp; Misuse](papers.md#safety-alignment--misuse) | 534 |
-| [Adversarial ML, Poisoning &amp; Backdoors](papers.md#adversarial-ml-poisoning--backdoors) | 503 |
-| [Software &amp; Vulnerability Security](papers.md#software--vulnerability-security) | 675 |
-| [Malware, Phishing &amp; Cyber Defense](papers.md#malware-phishing--cyber-defense) | 276 |
-| [Evaluation, Benchmarks &amp; Red Teaming](papers.md#evaluation-benchmarks--red-teaming) | 1072 |
-| [Other LLM Security](papers.md#other-llm-security) | 150 |
+| [Prompt Injection &amp; Jailbreaks](papers.md#prompt-injection--jailbreaks) | 544 |
+| [Agent &amp; Tool Security](papers.md#agent--tool-security) | 575 |
+| [Privacy &amp; Data Leakage](papers.md#privacy--data-leakage) | 364 |
+| [Safety, Alignment &amp; Misuse](papers.md#safety-alignment--misuse) | 541 |
+| [Adversarial ML, Poisoning &amp; Backdoors](papers.md#adversarial-ml-poisoning--backdoors) | 510 |
+| [Software &amp; Vulnerability Security](papers.md#software--vulnerability-security) | 681 |
+| [Malware, Phishing &amp; Cyber Defense](papers.md#malware-phishing--cyber-defense) | 278 |
+| [Evaluation, Benchmarks &amp; Red Teaming](papers.md#evaluation-benchmarks--red-teaming) | 1079 |
+| [Other LLM Security](papers.md#other-llm-security) | 152 |
 <!-- SECPAPERS:STATS:END -->
 
 ## Latest papers
@@ -42,21 +42,21 @@ paper revisions, and regenerates this repository from stable source data.
 <!-- SECPAPERS:LATEST:START -->
 | Updated | Paper | Topics | Links |
 | --- | --- | --- | --- |
-| 2026-11-09 | **Suppression Is Not Erasure: Mechanistic Analysis and Reactivation Boundaries of Subspace Projection for LoRA Backdoor Defense**<br>Junsheng Fu, Shuangshuang Gao | Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2611.12807) / [PDF](https://arxiv.org/pdf/2611.12807) |
-| 2026-11-09 | **The Range Shrinks, the Threat Remains: Re-evaluating LLM Package Hallucinations on the 2026 Frontier-Model Cohort**<br>Aleksandr Churilov | Malware, Phishing &amp; Cyber Defense | [abstract](https://arxiv.org/abs/2605.17062) / [PDF](https://arxiv.org/pdf/2605.17062) |
-| 2026-11-09 | **LLM Watermarking as Big Data Provenance: A Deployment-Oriented Systematization**<br>Huy Phan, Kieu Dang, Ojaswi Dulal, et al. | Adversarial ML, Poisoning &amp; Backdoors, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2607.10103) / [PDF](https://arxiv.org/pdf/2607.10103) |
-| 2026-11-09 | **Text2NGAC: a multi-LLM pipeline for NGAC policy extraction with mutation-based verification**<br>Ayesha Habib, Huixiang Zhang, Dan Zhu, et al. | Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.12572) / [PDF](https://arxiv.org/pdf/2611.12572) |
-| 2026-11-09 | **Diffusion LLMs are Natural Adversaries for any LLM**<br>David Lüdke, Tom Wollschläger, Paul Ungermann, et al. | Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2511.00203) / [PDF](https://arxiv.org/pdf/2511.00203) |
-| 2026-11-09 | **Say Shibboleth: Fingerprinting the LLMs and Harnesses Behind Agentic Attacks**<br>Dario Pasquini, Reworr, Giuseppe Ateniese, et al. | Prompt Injection &amp; Jailbreaks, Agent &amp; Tool Security | [abstract](https://arxiv.org/abs/2611.12386) / [PDF](https://arxiv.org/pdf/2611.12386) |
-| 2026-11-09 | **MCP Tool Poisoning in Agentic AI Frameworks: A Cross-Framework Measurement Study**<br>Farooq Shaikh, Biagio Montaruli | Agent &amp; Tool Security, Adversarial ML, Poisoning &amp; Backdoors, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.03555) / [PDF](https://arxiv.org/pdf/2611.03555) |
-| 2026-11-09 | **SNAPRAG: Cost-Efficient Knowledge Extraction Attack on RAG Systems via Adversarial Perturbations**<br>Melih Coşğun, Mehmet Emre Gürsoy, Alptekin Küpçü, et al. | Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2611.12241) / [PDF](https://arxiv.org/pdf/2611.12241) |
-| 2026-11-09 | **Latent-space Attacks for Refusal Evasion in Language Models**<br>Giorgio Piras, Raffaele Mura, Fabio Brau, et al. | Prompt Injection &amp; Jailbreaks, Safety, Alignment &amp; Misuse, Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2605.21706) / [PDF](https://arxiv.org/pdf/2605.21706) |
-| 2026-11-09 | **OrigaMI: An LLM Serving System with First-Class Interpretability Apps**<br>Michael Blum, Mark Silberstein, Yaniv David | Prompt Injection &amp; Jailbreaks | [abstract](https://arxiv.org/abs/2607.22595) / [PDF](https://arxiv.org/pdf/2607.22595) |
-| 2026-11-09 | **StealthyPoison: Manipulating LLM Agent Behavior through Procedural Poisoning of Third-Party Skills**<br>Jingfen Qiao, Rui Li, Shuaiqun Pan, et al. | Agent &amp; Tool Security, Adversarial ML, Poisoning &amp; Backdoors, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.12155) / [PDF](https://arxiv.org/pdf/2611.12155) |
-| 2026-11-09 | **Honeyval: A Comprehensive Evaluation Framework for LLM-powered HTTP Honeypots**<br>Mark Vero, Fabian Kaczmarczyck, Ivan Petrov, et al. | Agent &amp; Tool Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2605.29963) / [PDF](https://arxiv.org/pdf/2605.29963) |
-| 2026-11-09 | **Harness Matters: Measuring and Dissecting Security Resilience in Web Agents**<br>Xinyi Wu, Jiagui Chen, JiaYi Dong, et al. | Prompt Injection &amp; Jailbreaks, Agent &amp; Tool Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.11971) / [PDF](https://arxiv.org/pdf/2611.11971) |
-| 2026-11-09 | **Alignment Dynamics in LLM Fine-Tuning**<br>Yuhan Huang, Huanran Chen, Yinpeng Dong | Safety, Alignment &amp; Misuse | [abstract](https://arxiv.org/abs/2605.18309) / [PDF](https://arxiv.org/pdf/2605.18309) |
-| 2026-11-09 | **Spectral Unlearning: Transformer Structure-Preserving Updates for Language Models**<br>Sung Il Choi, Junhao Cai, Dohun Kim, et al. | Privacy &amp; Data Leakage | [abstract](https://arxiv.org/abs/2611.11902) / [PDF](https://arxiv.org/pdf/2611.11902) |
+| 2026-11-10 | **NICE: A Framework for Declarative and Machine-Checkable Vulnerability Reproduction**<br>Minh-Luân Nguyen, Olivier Levillain, Julien Malka, et al. | Software &amp; Vulnerability Security, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2606.00625) / [PDF](https://arxiv.org/pdf/2606.00625) |
+| 2026-11-10 | **Model-Based Authoring of SOC Simulation Exercises for Cybersecurity Education**<br>Felix Härer | Malware, Phishing &amp; Cyber Defense, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.14227) / [PDF](https://arxiv.org/pdf/2611.14227) |
+| 2026-11-10 | **Known By Their Actions: Fingerprinting LLM Browser Agents via UI Traces**<br>William Lugoloobi, Samuele Marro, Jabez Magomere, et al. | Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2605.14786) / [PDF](https://arxiv.org/pdf/2605.14786) |
+| 2026-11-10 | **Rotated Robustness: A Training-Free Defense against Bit-Flip Attacks on Large Language Models**<br>Deng Liu, Song Chen | Adversarial ML, Poisoning &amp; Backdoors, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2603.16382) / [PDF](https://arxiv.org/pdf/2603.16382) |
+| 2026-11-10 | **Specify Privacy Yourself: Assessing Inference-Time Personalized Privacy Preservation Ability of Large Vision-Language Models**<br>Xingqi Wang, Xiaoyuan Yi, Xing Xie, et al. | Privacy &amp; Data Leakage, Safety, Alignment &amp; Misuse | [abstract](https://arxiv.org/abs/2611.13997) / [PDF](https://arxiv.org/pdf/2611.13997) |
+| 2026-11-10 | **From Attack Surface to Defense Architecture: Compositional Security for Agentic Coding Harnesses**<br>Simon Hegelich, Bardh Prenkaj, Habiba Sarhan, et al. | Agent &amp; Tool Security, Safety, Alignment &amp; Misuse | [abstract](https://arxiv.org/abs/2611.13960) / [PDF](https://arxiv.org/pdf/2611.13960) |
+| 2026-11-10 | **Domain-Invariant and Language-Model-Assisted Acoustic Side-Channel Attacks on Keyboards**<br>Bikrant Bikram Pratap Maurya | Other LLM Security | [abstract](https://arxiv.org/abs/2611.13922) / [PDF](https://arxiv.org/pdf/2611.13922) |
+| 2026-11-10 | **BadMoE: Backdooring Mixture-of-Experts LLMs via Routing-Aware Triggers and Task-Underutilized Experts**<br>Qingyue Wang, Qi Pang, Xixun Lin, et al. | Safety, Alignment &amp; Misuse, Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2504.18598) / [PDF](https://arxiv.org/pdf/2504.18598) |
+| 2026-11-10 | **On Private Knowledge Retrieval and Private Inference for secure multi-agent systems**<br>Vicenç Torra, Maria Bras-Amorós | Agent &amp; Tool Security, Privacy &amp; Data Leakage, Adversarial ML, Poisoning &amp; Backdoors, Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2611.13696) / [PDF](https://arxiv.org/pdf/2611.13696) |
+| 2026-11-10 | **BypassGym: A Benchmark for Evaluating AI Agents' Endpoint Defense Evasion Capabilities**<br>Weifeng Yuan, Zifan Chen, Yucheng Zhang, et al. | Software &amp; Vulnerability Security, Malware, Phishing &amp; Cyber Defense, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.13684) / [PDF](https://arxiv.org/pdf/2611.13684) |
+| 2026-11-10 | **Specification-based Security Evaluation of Real-World Agents Tool-Calling under Long-Horizon Context Tasks**<br>Yuchuan Fu, Minghe Wang, Xiaohan Yuan, et al. | Prompt Injection &amp; Jailbreaks, Agent &amp; Tool Security, Adversarial ML, Poisoning &amp; Backdoors, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2506.15253) / [PDF](https://arxiv.org/pdf/2506.15253) |
+| 2026-11-10 | **MOAI: Module-Optimizing Architecture for non-interactive secure transformer Inference**<br>Linru Zhang, Xiangning Wang, Jun Jie Sim, et al. | Privacy &amp; Data Leakage, Evaluation, Benchmarks &amp; Red Teaming | [abstract](https://arxiv.org/abs/2611.13641) / [PDF](https://arxiv.org/pdf/2611.13641) |
+| 2026-11-10 | **POEM: Output-Relative Block-Sparse Attention for Long-Context Prefilling**<br>Haoyi Wu, Yunkai Dang, Wanyu Zhang, et al. | Prompt Injection &amp; Jailbreaks, Safety, Alignment &amp; Misuse, Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2611.13578) / [PDF](https://arxiv.org/pdf/2611.13578) |
+| 2026-11-10 | **TERM: Target-Free Jailbreak Defense via Entropy-Guided Residual Modulation**<br>Yunkai Dang, Wanyu Zhang, Meiyi Zhu, et al. | Prompt Injection &amp; Jailbreaks, Safety, Alignment &amp; Misuse, Adversarial ML, Poisoning &amp; Backdoors | [abstract](https://arxiv.org/abs/2611.13577) / [PDF](https://arxiv.org/pdf/2611.13577) |
+| 2026-11-10 | **RoCoMark: Robust Code Watermarking Against LLM-Based Functionality-Preserving Rewriting Attacks**<br>Hongjie Zhang, Xingcheng Li, Hanzhou Wu, et al. | Adversarial ML, Poisoning &amp; Backdoors, Software &amp; Vulnerability Security | [abstract](https://arxiv.org/abs/2611.11399) / [PDF](https://arxiv.org/pdf/2611.11399) |
 <!-- SECPAPERS:LATEST:END -->
 
 ## Scope
