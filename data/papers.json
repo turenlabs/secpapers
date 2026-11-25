@@ -1,6 +1,282 @@
 {
   "papers": [
     {
+      "abstract": "Users of large language model (LLM) services receive token bills with limited evidence of which calls incurred their charges. In broker-mediated agent workflows, calls arise after authorization and billing evidence spans service domains. A bill can count one genuine receipt twice and omit another. Valid metering evidence can also be attributed to the wrong execution. We present \\textsc{TokenProv}, which uses authenticated provider acceptances to establish settlement coverage and verify token charges. An authenticated causal history links runtime attempts to the signed policy, and jointly signed handoffs bind intent, dispatch, and acceptance to the same call. Handoffs submitted independently of the bill can reveal omitted calls. The auditor requires a one-to-one match between observable acceptances and settled receipts. For each acceptance, a common provider relation binds metered usage to the cache-dependent execution of the accepted input using the registered model and serving rules, and checks the charge under the pricing rule. To limit serving-path overhead, providers can use attested state transitions in trusted execution environments or defer proof generation until audit by committing to witnesses in receipts before settlement. The auditor recomputes the bill from the verified charges. We prove audit soundness relative to authenticated evidence. Across five models, \\textsc{TokenProv} with signed provider receipts achieves 94.4--107.4\\% of baseline throughput with 54--66\\,ms of online non-LLM processing per request. In a separate eight-call replay, deferring scoped proofs reduces foreground protocol time from 1.20\\,s to 8.65\\,ms (99.28\\%). The auditor rejects all 1,600 validly signed attack queries across 100 adaptive episodes.",
+      "authors": [
+        "Jiayuan Du",
+        "Yebo Feng",
+        "Lin Zhang",
+        "Konglin Zhu"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.31806",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31806",
+      "primary_category": "cs.CR",
+      "published": "2026-11-24T01:57:53Z",
+      "relevance_score": 6,
+      "title": "Where Did My Tokens Go? Verifiable Token Billing for LLM Services",
+      "topics": [
+        "other"
+      ],
+      "updated": "2026-11-24T01:57:53Z",
+      "url": "https://arxiv.org/abs/2611.31806",
+      "version": 1
+    },
+    {
+      "abstract": "LLM agents increasingly collaborate in group chats while holding tool access to confidential records, which makes the shared chat an attack surface. It remains unclear whether several colluding attackers extract such information more effectively than one. We introduce SwarmLeak, a red-teaming dataset of 24 synthetic group-chat scenarios across healthcare, law, finance, and software engineering, where attackers pose as colleagues to make a victim agent post protected fields despite an explicit confidentiality policy. With GLM 5.2 attacking five victim models through seven conversational strategies, we compare one attacker with a swarm of four sharing a private channel, matching scenarios, strategies, and a 200,000-token budget that also covers swarm coordination. Swarms show no advantage: a single attacker matches or exceeds them on every victim, and the share of runs leaking any field differs between conditions by at most 14.3 percentage points, whereas changing the victim shifts it from 0% to 99.4%. On the two most vulnerable models, nearly every run leaks under both conditions, but single attackers expose more of the record at first disclosure (85.4% vs. 68.1% of protected fields on Nemotron 3.5 Lightning). Four of the five victims leaked despite the policy. GLM 5.2 retrieved protected data in 64.3% of individual-attack runs and leaked in 0.6%: retrieval does not imply disclosure, but in high-stakes settings even one leaked field can identify a patient or client. At equal budgets, a larger red team is not automatically a stronger one; the victim model matters far more.",
+      "authors": [
+        "Asma Farajidizaji",
+        "Vyas Raina",
+        "Vatsal Raina",
+        "Ivaxi Sheth"
+      ],
+      "categories": [
+        "cs.CL",
+        "cs.CR"
+      ],
+      "comment": "12 pages, 4 figures, 3 tables",
+      "doi": null,
+      "id": "2611.31791",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31791",
+      "primary_category": "cs.CR",
+      "published": "2026-11-24T01:43:42Z",
+      "relevance_score": 8,
+      "title": "SwarmLeak: Does Coordination Improve Privacy Attacks on LLM Agents?",
+      "topics": [
+        "privacy",
+        "evaluation"
+      ],
+      "updated": "2026-11-24T01:43:42Z",
+      "url": "https://arxiv.org/abs/2611.31791",
+      "version": 1
+    },
+    {
+      "abstract": "Split-training privacy evaluations fail through distinct mechanisms. Evaluators can overlook an exposed gradient channel, align reconstructions against shifted labels, or deploy uncalibrated probes before testing a candidate defence, while calibrated attacks can also refute real defences. Separating these failure modes alters which claims survive. We conduct a retrospective evidentiary reanalysis across four split-LLM campaigns and two cross-cutting scope checks covering host key custody and variational mutual-information bounds, mapping every recorded claim to one of five admissibility states (breach, non-detection, undetermined coverage, invalid measurement, or out-of-scope inference). Across a 19-configuration exploration, only four of 24 required probes qualified, yet those four calibrated probes still established qualified privacy breaches in 13 configurations, while utility or learning-gain failures eliminated the remaining 6. In a seven-cell defence-redesign pilot, 2 quantised configurations failed utility gates, calibrated next-byte structure probes breached the 0.02 gate on all 7 cells (0.097 to 0.112), and qualified punctuation-property probes reached 0.79 to 0.89, yielding 4 failed and 3 undetermined composite privacy assessments (the latter from marginal null-band excursions on punctuation bindings). Negative evidence against both defence families remains intact. Scope checks further show that shared-key orthogonal wrappers protect passive network captures without hiding activations from a compromised restoring host, and why near-zero variational lower bounds leave worst-case leakage unconstrained. Rerunnable scripts verify 1,522 checks across 122 SHA-256-pinned artifacts while preserving each campaign's native seed intervals and retrospective boundaries.",
+      "authors": [
+        "Georgios Politis",
+        "Evangelos Pappas"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.DC"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.31752",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31752",
+      "primary_category": "cs.CR",
+      "published": "2026-11-24T01:00:20Z",
+      "relevance_score": 8,
+      "title": "Separating Measurement Failures from Defence Failures in Split Language-Model Privacy",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-11-24T01:00:20Z",
+      "url": "https://arxiv.org/abs/2611.31752",
+      "version": 1
+    },
+    {
+      "abstract": "Vulnerability auditing of large C/C++ codebases is constrained by limited review attention. Human auditors and LLM-based agents need operational priors that indicate where to look first and what to suspect, but such priors are rarely available in directly usable form. Rather than proposing a new vulnerability detector, we derive audit-steering artifacts from evidence-backed root-cause analysis (RCA) reports. We introduce two complementary representations: Occurrence Context (OC), a location prior based on file role, function role, and data-structure class; and Vulnerability-Inducing Structural Patterns (VISP), reusable failure-mechanism priors. OC guides where to inspect, while VISP guides what to suspect. On 108 CVEs from Vul4C, OC's parser-based priority ranking, without LLM inference, outperforms generic prioritization baselines with moderate-to-large effect sizes. Packaged as executable SKILLs, OC and VISP form a dual-SKILL workflow that improves audit-relevant broad coverage, defined as match-or-partial findings within ground-truth functions that share the patch's failure mechanism, as assessed by three LLM judges. Across the 108-CVE cohort, dual-SKILL improves function-level broad matches by 5.3 percentage points; gains reach 7.2 points on mid-size projects and 15.0 points on large (1500-4999-line) vulnerable files. These results suggest that RCA-derived priors help direct limited audit attention toward vulnerable code. The agent-coverage evaluation is a single-run operational probe, with one run per commit, characterizing the direction and scale of the effect rather than its precise magnitude.",
+      "authors": [
+        "Yuhei Kawakoya",
+        "Eitaro Shioji",
+        "Yuto Otsuki",
+        "Makoto Iwamura"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "25 pages. Preprint",
+      "doi": null,
+      "id": "2611.31744",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31744",
+      "primary_category": "cs.CR",
+      "published": "2026-11-24T00:56:32Z",
+      "relevance_score": 6,
+      "title": "Mixed-Initiative Mining of Root-Cause Analyses into Audit Priors for C/C++ Vulnerability Hunting",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-11-24T00:56:32Z",
+      "url": "https://arxiv.org/abs/2611.31744",
+      "version": 1
+    },
+    {
+      "abstract": "We identify a structural weakness in current large language model (LLM) alignment: refusal mechanisms in these models are fail-open. While existing approaches tend to encode refusal behaviors across multiple latent features, suppressing a single feature (via prompt-based jailbreaks) is sufficient to collapse alignment, leading to unsafe generation. Motivated by this, we propose fail-closed alignment as a design principle for robust LLM safety: refusal mechanisms should remain effective even under partial failures via redundant, independent causal pathways. We present a concrete instantiation of this principle: a progressive alignment framework that iteratively identifies and ablates previously learned refusal directions, forcing the model to reconstruct safety along new, independent subspaces. Across six jailbreak attacks, our method achieves the lowest observed average attack success rate (1.6%) while largely preserving generation quality and preventing excessive over-refusals, with negligible computational overhead. Additional analyses confirm that models trained with our method encode multiple, causally independent refusal directions that prompt-based jailbreaks cannot fully suppress, providing empirical support for fail-closed alignment as a principled foundation for robust LLM safety. Our code for reproducing the results is available at https://github.com/Trustworthy-and-Responsible-AI-Lab/Fail-Closed-Alignment",
+      "authors": [
+        "Zachary Coalson",
+        "Sanghyun Hong"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.LG"
+      ],
+      "comment": "Accepted at NeurIPS 2026 [Poster]",
+      "doi": null,
+      "id": "2602.16977",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2602.16977",
+      "primary_category": "cs.LG",
+      "published": "2026-02-19T00:33:35Z",
+      "relevance_score": 8,
+      "title": "Fail-Closed Alignment for Large Language Models",
+      "topics": [
+        "prompt-security",
+        "safety"
+      ],
+      "updated": "2026-11-23T23:13:03Z",
+      "url": "https://arxiv.org/abs/2602.16977",
+      "version": 2
+    },
+    {
+      "abstract": "LLM-based security review agents can reason about vulnerabilities that deterministic tools miss, but deploying them responsibly requires knowing whether they actually work. Existing benchmarks construct ground truth synthetically or from public CVE databases and are blind to the vulnerability patterns specific to a given production codebase. We present an evaluation framework grounded in an organisation's own vulnerabilities, with three contributions. First, a dataset construction methodology that derives ground truth from operational security data (bug bounty reports, penetration test findings and internally reported vulnerabilities), exploiting the property that a confirmed vulnerability must exist immediately before its fix is merged and be absent immediately after. Second, two complementary evaluation strategies: one reviewing the pull request that introduced a vulnerability and one searching a repository where it already exists. Both run through a two-agent pipeline pairing a Security Engineer agent, which reviews code without knowledge of the vulnerability, with a Judge agent that decides whether its findings would have mitigated the known issue. Third, a trace-level behavioural characterisation of how frontier models reason about these vulnerabilities. Across GPT-5.5, Sonnet 4.6 and Opus 4.7, GPT-5.5 shows higher discovery rates on the pull-request strategy (57%, 95% CI [42%, 72%]) after a round of OPRO-style improvements, and Sonnet 4.6 on the repository strategy (69%, 95% CI [56%, 81%]). Trace analysis shows the models have complementary strengths that explain these differences, and that outcome-only scoring can mischaracterise their production behaviour. The methodology relies only on artefacts that vulnerability management workflows commonly produce, though all results come from a single organisation's codebase and we have not tested how well they generalise.",
+      "authors": [
+        "Mudita Khurana",
+        "Karim Liman-Tinguiri"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": "Accepted at CAMLIS 2026; to appear in Proceedings of Machine Learning Research, vol. 349",
+      "doi": null,
+      "id": "2611.31606",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31606",
+      "primary_category": "cs.CR",
+      "published": "2026-11-23T21:51:15Z",
+      "relevance_score": 8,
+      "title": "Evaluating LLM Security Review Agents with Operationally Sourced Ground Truth",
+      "topics": [
+        "software-security",
+        "evaluation"
+      ],
+      "updated": "2026-11-23T21:51:15Z",
+      "url": "https://arxiv.org/abs/2611.31606",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models are increasingly fine-tuned on sensitive data, where the same person's information may appear multiple times across records. This can cause models to memorize sensitive information, but memorization does not necessarily mean that the information can be recovered. A more serious privacy risk arises when the model begins to reproduce that information during generation. In this paper, we study how often sensitive information must appear in the fine-tuning data before it becomes recoverable. Across four language models, we vary the frequency of email addresses and phone numbers from $1\\times$ to $50\\times$ and compare standard fine-tuning, gradient clipping, and differentially private training. We find that the number of repetitions required before sensitive information becomes recoverable varies substantially across models. Gradient clipping can delay extraction, but it does not consistently prevent leakage at high repetition. DP-SGD at $\\varepsilon=5$ produces zero observed extraction through $50\\times$ repetition across all four models under the attacks we test, although the utility cost varies by model. These findings characterize how observed extraction varies across sensitive-data frequencies, model families, and training mechanisms, and highlight substantial differences in extraction behavior across models. Code and data are publicly available.",
+      "authors": [
+        "Aymen Noor",
+        "Ke Lyu",
+        "Honglu Jiang"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.31581",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31581",
+      "primary_category": "cs.AI",
+      "published": "2026-11-23T21:22:08Z",
+      "relevance_score": 6,
+      "title": "Frequency-Conditioned Privacy Auditing of Fine-Tuned Language Models",
+      "topics": [
+        "privacy"
+      ],
+      "updated": "2026-11-23T21:22:08Z",
+      "url": "https://arxiv.org/abs/2611.31581",
+      "version": 1
+    },
+    {
+      "abstract": "Android kernels have long suffered from slow patch propagation from Linux upstream, with fixes often reaching devices far later than conventional Linux distributions. Until recently, this lag was largely a patch-management problem. With rapidly improving LLM agents, it is becoming an exploitation problem: public upstream patches can now serve as blueprints for building working n-day exploits before downstream devices are fixed. We test this threat end to end by building an automated pipeline that screens upstream Linux patches, reproduces memory-safety vulnerabilities on Android targets, and drives an LLM agent to construct local privilege escalation exploits from an untrusted application. Across 152 candidate CVEs reported over 33 months, we reproduce 38 vulnerabilities and generate 17 independently verified exploits under production defenses. Exploitation takes a median of 14.3 agent-hours and $321 in API cost, with 90% median reliability; 12 of 14 trials succeed on Pixel 9 and Pixel 10 devices. Notably, the pipeline relies only on publicly available, off-the-shelf models. Surprisingly, only 3 of the 17 exploited CVEs appear in Android Security Bulletins, suggesting limited visibility into which upstream fixes address vulnerabilities that affect Android kernels. For these 17 CVEs, the corresponding upstream patches reach Pixel devices with a median delay of 181 days. Together, these results reveal a stark asymmetry: attackers can increasingly automate exploitation in hours, while defenders still identify and deploy fixes on the timescale of months.",
+      "authors": [
+        "Kareem Shehada",
+        "Zhiyun Qian"
+      ],
+      "categories": [
+        "cs.CR",
+        "cs.OS"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2611.31547",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31547",
+      "primary_category": "cs.CR",
+      "published": "2026-11-23T20:58:46Z",
+      "relevance_score": 4,
+      "title": "Aftershock: Yesterday's Linux Kernel Bugs, Tomorrow's Android Exploits",
+      "topics": [
+        "agent-security",
+        "software-security"
+      ],
+      "updated": "2026-11-23T20:58:46Z",
+      "url": "https://arxiv.org/abs/2611.31547",
+      "version": 1
+    },
+    {
+      "abstract": "As LLMs become more capable, agents can perform more complex tasks with tools and maintain longer interactions with users. These benign conversations contain evidence on task results, user concerns, and operational constraints. The risk is that attackers who can observe benign conversations (evidence) may construct stronger indirect prompt injections without increasing the attackers' control over prior turns or the later injection. However, we still lack a clear study of how effectively attackers can select and use this evidence. To address this gap, we introduce ContextLure, a red-teaming framework in which an attacker silently observes an existing benign conversation, extracts evidence, and constructs an injection. The challenges are twofold: (a) selecting useful evidence and (b) presenting it as reasons for an unauthorized action, without changing the prior benign conversation. To efficiently exploit (a) the effect of evidence on attack success, our framework selects evidence across 2 dimensions: User/System Preferences with 3 selection policies. And to enhance (b) the process of turning the selected information into the malicious request, we introduce an Urgency/Priority matrix with 4 rewriting strategies. Across the evaluated conditions, we reach 67.4% ASR on AgentDojo and 87.3% on InjecAgent. These results show that attackers can use benign interaction evidence in later attacks without first poisoning the benign conversation.",
+      "authors": [
+        "Yi Han",
+        "Zhen Sun",
+        "Zhijie Deng",
+        "Yini Huang",
+        "Yangyang Zheng",
+        "Dongyi Zhang",
+        "Xinlei He"
+      ],
+      "categories": [
+        "cs.AI"
+      ],
+      "comment": "17 pages, 8 figures",
+      "doi": null,
+      "id": "2611.31424",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31424",
+      "primary_category": "cs.AI",
+      "published": "2026-11-23T19:11:44Z",
+      "relevance_score": 4,
+      "title": "ContextLure: Exploiting Benign Conversation History for Indirect Prompt Injection",
+      "topics": [
+        "prompt-security",
+        "adversarial-ml",
+        "evaluation"
+      ],
+      "updated": "2026-11-23T19:11:44Z",
+      "url": "https://arxiv.org/abs/2611.31424",
+      "version": 1
+    },
+    {
+      "abstract": "Large language models (LLMs) operate under safety requirements that vary across applications and evolve with emerging threats and deployment policies. Conventional training-based interventions make adapting model behavior computationally expensive. Mixture-of-Experts (MoE) models introduce a further control challenge because each input activates only a subset of experts, coupling safety behavior to discrete routing decisions. Rapid adaption of MoE LLMs therefore requires a lightweight mechanism for identifying and controlling the routing decisions that produce the target behavior. We present MASCing (MoE Activation Steering Configuration), a framework that enables flexible configuration of safety-related MoE behavior without training the underlying model. MASCing uses an LSTM surrogate model to capture cross-layer dependencies and map routing logits to downstream behaviors. Guided by this surrogate, it identifies safety-relevant experts and optimizes a sparse steering mask to bias expert selection. This enables targeted enhancement or suppression of specific behaviors while preserving model utility. We evaluate MASCing on three contrasting safety objectives and observe consistent gains across seven MoE models. For multi-turn jailbreak defense, it improves the average defense success rate from 52.5% to 83.9%. For adult-content generation, MASCing enables models to comply with such requests that would otherwise be refused, increasing the average generation success rate from 52.6% to 82.0%. For political neutrality, MASCing makes models decline to state personal opinions on political questions, which they otherwise often give, raising the share of such questions on which they take no position from 31.8% to 75.4% while other questions remain answered. These results establish MASCing as a practical, lightweight, and flexible framework for task-specific safety configuration in MoE models.",
+      "authors": [
+        "Jona te Lintelo",
+        "Lichao Wu",
+        "Marina Kr\u010dek",
+        "Sengim Karayal\u00e7in",
+        "Stjepan Picek"
+      ],
+      "categories": [
+        "cs.CR"
+      ],
+      "comment": null,
+      "doi": null,
+      "id": "2604.27818",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2604.27818",
+      "primary_category": "cs.CR",
+      "published": "2026-04-30T12:58:57Z",
+      "relevance_score": 4,
+      "title": "MASCing: Configurable Mixture-of-Experts Behavior via Activation Steering Masks",
+      "topics": [
+        "prompt-security"
+      ],
+      "updated": "2026-11-23T18:55:42Z",
+      "url": "https://arxiv.org/abs/2604.27818",
+      "version": 2
+    },
+    {
       "abstract": "Model alignment is the primary safety and security mechanism for enforcing refusal of malicious prompts in modern foundation models; yet, existing adversarial evaluations implicitly assume underlying hardware integrity. In this paper, we present FATCAT, the first physical fault-injection attacks capable of eliminating refusal in modern large language and vision-language models. Specifically, we present a non-invasive electromagnetic (EM) fault injection attack targeting GPU-accelerated Systems-on-Chip with physical access, requiring neither software execution privileges nor model-layer access. By leveraging an autonomous Radio Frequency (RF) side-channel trigger to synchronize EM faults to the prompt prefill phase, the attack corrupts safety-critical memory transactions across off-chip LPDDR5 DRAM and on-chip LPDDR physical interfaces without crashing the system while preserving model coherence. Evaluated on an NVIDIA Jetson Orin Nano and AGX Thor running Llama 3.2 1B and Gemma 3 1B, localized physical faults reliably force models to fulfill restricted requests, demonstrating that model-level alignment provides no robust security guarantees without hardware-level fault tolerance. Finally, we demonstrate the physical-world consequences of this vulnerability on an active 6-DoF robotic manipulator controlled by a SmolVLA vision-language-action policy. Our attack silently corrupts the model forcing the arm into abrupt, hazardous lunges; in two instances the robotic arm attempted to pinch the paper author -- proving that hardware faults can directly translate into real physical harm.",
       "authors": [
         "Peter Horvath",
@@ -708,6 +984,35 @@
       ],
       "updated": "2026-11-22T14:58:43Z",
       "url": "https://arxiv.org/abs/2611.29532",
+      "version": 1
+    },
+    {
+      "abstract": "Recent Multi-Agent Systems (MAS) increasingly use shared memory to store and reuse successful collaboration records, enabling teams to improve across tasks. However, this memory introduces a new attack surface for malicious insiders. Unlike existing insider attacks that inject misleading information directly into the current collaboration, misinformation stored in shared memory can later appear as successful team experience and gain greater credibility and influence. We propose MIMPA (Multi-Agent Insider Memory Poisoning Attack), which exploits this vulnerability using only normal participation privileges, without direct memory access. During an earlier task, the malicious agent embeds a target-specific payload while helping the team answer correctly, allowing the payload to be retained in a successful collaboration record. When retrieved for a later target task, this poisoned record can steer benign agents toward a designated wrong answer, further amplified by malicious triggering. Across three benchmarks and two LLM backbones, MIMPA substantially outperforms existing insider attacks and remains effective under hierarchical memory management, while auditing only partially mitigates it. These results reveal that shared memory intended to accumulate team experience can become a persistent channel for insider attacks. Our code is available at https://github.com/ahnji0520/MIMPA-code.",
+      "authors": [
+        "Jihyung Ahn",
+        "Buru Chang"
+      ],
+      "categories": [
+        "cs.AI",
+        "cs.CR",
+        "cs.MA"
+      ],
+      "comment": "28 pages, 19 figures, 9 tables",
+      "doi": null,
+      "id": "2611.31307",
+      "journal_ref": null,
+      "pdf_url": "https://arxiv.org/pdf/2611.31307",
+      "primary_category": "cs.MA",
+      "published": "2026-11-22T12:18:13Z",
+      "relevance_score": 6,
+      "title": "When Successful Collaboration Becomes an Attack Surface: Insider Memory Poisoning in Multi-Agent Systems",
+      "topics": [
+        "agent-security",
+        "adversarial-ml",
+        "software-security"
+      ],
+      "updated": "2026-11-22T12:18:13Z",
+      "url": "https://arxiv.org/abs/2611.31307",
       "version": 1
     },
     {
